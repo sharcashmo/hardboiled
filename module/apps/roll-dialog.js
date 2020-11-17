@@ -2,7 +2,10 @@ export class RollDialog {
 
 	static async create()
 	{
-		const html = await renderTemplate('systems/hardboiled/templates/apps/bonus.html');
+		const html = await renderTemplate('systems/hardboiled/templates/apps/bonus.html',
+				{
+					cssClass: "hardboiled"
+				});
 		return new Promise((resolve) => {
 			let formData = null;
 			const dlg = new Dialog({

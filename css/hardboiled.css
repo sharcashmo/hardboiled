@@ -9,10 +9,6 @@
 }
 
 /* Global styles */
-.window-app {
-  font: medium hardboiled;
-}
-
 .rollable:hover, .rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
@@ -20,7 +16,7 @@
 }
 
 /* Styles limited to hardboiled sheets */
-.hardboiled label {
+.hardboiled * {
   font-family: hardboiled;
 }
 
