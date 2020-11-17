@@ -2,9 +2,9 @@
   "name": "hardboiled",
   "title": "Hardboiled",
   "description": "The Hardboiled system for FoundryVTT!",
-  "version": "1.0.0",
-  "minimumCoreVersion": "0.7.6",
-  "compatibleCoreVersion": "0.7.6",
+  "version": "0.0.1",
+  "minimumCoreVersion": "0.7.5",
+  "compatibleCoreVersion": "0.7.7",
   "templateVersion": 2,
   "author": "sharcashmo",
   "esmodules": ["module/hardboiled.js"],
@@ -16,14 +16,19 @@
       "lang": "es",
       "name": "Español",
       "path": "lang/es.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
     }
   ],
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
-  "url": "",
-  "manifest": "",
+  "url": "https://github.com/sharcashmo/hardboiled",
+  "manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
   "download": "",
   "license": "LICENSE.txt"
 }
