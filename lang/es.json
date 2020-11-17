@@ -22,5 +22,9 @@
 	
 	"Hardboiled.Roll": "Tirada",
 	"Hardboiled.Success": "Éxito",
-	"Hardboiled.Fail": "Fallo"
+	"Hardboiled.Fail": "Fallo",
+	
+	"Hardboiled.BonusSelectionWindow": "Seleccionar modificador",
+	"Hardboiled.Modifier": "Modificador",
+	"Hardboiled.RollDice": "¡Tirar dados!"
 }

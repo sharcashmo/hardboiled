@@ -22,5 +22,9 @@
 	
 	"Hardboiled.Roll": "Roll",
 	"Hardboiled.Success": "Success",
-	"Hardboiled.Fail": "Fail"
+	"Hardboiled.Fail": "Fail",
+	
+	"Hardboiled.BonusSelectionWindow": "Select modifier",
+	"Hardboiled.Modifier": "Modifier",
+	"Hardboiled.RollDice": "Roll dice!"
 }

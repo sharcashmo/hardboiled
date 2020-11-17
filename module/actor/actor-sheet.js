@@ -1,3 +1,5 @@
+import { RollDialog } from '../apps/roll-dialog.js';
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -168,6 +170,11 @@ export class HardboiledActorSheet extends ActorSheet {
 		console.log(dataset);
 		
 		if (dataset.attributecheck) {
+			const usage = await RollDialog.create();
+			let diceModifier = 0;
+			if( usage) {
+				diceModifier = usage.get('modifier') * 10;
+			}
 			console.log("Checking "+ dataset.attributecheck);
 			const template = 'systems/hardboiled/templates/chat/basic-check.html';
 			const speaker = ChatMessage.getSpeaker(this.actor);
@@ -177,10 +184,11 @@ export class HardboiledActorSheet extends ActorSheet {
 				actor: this.actor,
 				rollCheck: {
 					value: roll.results[0],
-					success: (roll.results[0] <= this.actor.data.data.characteristics[dataset.attributecheck].value ?
+					success: (roll.results[0] <= (this.actor.data.data.characteristics[dataset.attributecheck].value + diceModifier) ?
 								true : false)
 				},
-				attribute: this.actor.data.data.characteristics[dataset.attributecheck]
+				attribute: this.actor.data.data.characteristics[dataset.attributecheck],
+				diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
 			
 			console.log(this.actor);
