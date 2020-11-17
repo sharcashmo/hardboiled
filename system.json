@@ -2,7 +2,7 @@
   "name": "hardboiled",
   "title": "Hardboiled",
   "description": "The Hardboiled system for FoundryVTT!",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.7",
   "templateVersion": 2,
