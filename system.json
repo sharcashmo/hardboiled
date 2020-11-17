@@ -1,0 +1,29 @@
+{
+  "name": "hardboiled",
+  "title": "Hardboiled",
+  "description": "The Hardboiled system for FoundryVTT!",
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.7.6",
+  "compatibleCoreVersion": "0.7.6",
+  "templateVersion": 2,
+  "author": "sharcashmo",
+  "esmodules": ["module/hardboiled.js"],
+  "styles": ["css/hardboiled.css"],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power",
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt"
+}

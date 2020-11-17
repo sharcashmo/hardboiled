@@ -1,0 +1,532 @@
+@font-face {
+  font-family: hardboiled;
+  src: url("fonts/DecoturaICG.ttf");
+}
+
+@font-face {
+  font-family: hardboiled-inline;
+  src: url("fonts/decoturaicginline.ttf");
+}
+
+/* Global styles */
+.window-app {
+  font: medium hardboiled;
+}
+
+.rollable:hover, .rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+/* Styles limited to hardboiled sheets */
+.hardboiled label {
+  font-family: hardboiled;
+}
+
+.hardboiled input[type="text"],
+.hardboiled select {
+  height: calc(100% - 2px);
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.05);
+  color: #191813;
+  margin: 0.2em;
+}
+
+.hardboiled input[type="text"]:hover,
+.hardboiled input[type="text"]:focus {
+  border: 1px solid #111;
+  -webkit-box-shadow: 0 0 8px red;
+  box-shadow: 0 0 8px red;
+}
+
+.hardboiled input[data-dtype="Number"] {
+  width: 2em;
+}
+
+.hardboiled input:disabled,
+.hardboiled select:disabled,
+.hardboiled textarea:disabled {
+  color: #4b4a44;
+}
+
+.hardboiled input:disabled:hover,
+.hardboiled select:disabled:hover,
+.hardboiled textarea:disabled:hover,
+.hardboiled input:disabled:focus,
+.hardboiled select:disabled:focus,
+.hardboiled textarea:disabled:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid transparent !important;
+  outline: none !important;
+}
+
+.hardboiled label.char-label {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d0a72e;
+}
+
+.hardboiled .item-form {
+  font-family: hardboiled;
+}
+
+.hardboiled .window-content {
+  background: url(images/background-top.png) top no-repeat, url(images/background-bottom.png) bottom left no-repeat, url(images/background-bottom-line.png) bottom left repeat-x, url(images/background-bg.png) repeat-y, #f5e1bf;
+}
+
+.hardboiled .chat-card {
+  background: no-repeat top/100% url(images/background-top.png), no-repeat bottom left/100% url(images/background-bottom.png), repeat-y left/2.7% url(images/background-bg.png), #f5e1bf;
+}
+
+.hardboiled header.sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.hardboiled header.sheet-header .traits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  padding: 40px 5px 0 15px;
+}
+
+.hardboiled header.sheet-header .traits .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 110px;
+  flex: 0 0 110px;
+  height: 110px;
+  margin-right: 10px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  background-color: white;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  border: 5px solid #d0a72e;
+  border-radius: 5px;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  border-width: 10px 1px;
+  border-color: #d0a72e;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: .1em .3em;
+  background-color: white;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .main-traits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 3;
+  -ms-flex: 3 1 auto;
+  flex: 3 1 auto;
+  margin-right: .3em;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .main-traits div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .main-traits label {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .main-traits input {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .main-traits input[data-dtype="Number"] {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 2em;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .secondary-traits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .secondary-traits div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .secondary-traits label {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.hardboiled header.sheet-header .traits .trait-fields .secondary-traits input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.hardboiled header.sheet-header .characteristics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border-width: 10px 1px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: .1em .3em;
+  background-color: white;
+  margin-left: 14px;
+  margin-right: 5px;
+  font-size: x-large;
+}
+
+.hardboiled header.sheet-header .characteristics label.char-label.rollable:hover,
+.hardboiled header.sheet-header .characteristics label.char-label.rollable:hover {
+  text-shadow: 0 0 10px black;
+  color: darkred;
+}
+
+.hardboiled header.sheet-header .characteristics input {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 1.5em;
+  font-size: smaller;
+}
+
+.hardboiled header.card-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 20px 5px 0 10px;
+}
+
+.hardboiled header.card-header .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  border-width: 5px 1px;
+  border-color: #d0a72e;
+  border-style: solid;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 4px grey;
+  box-shadow: 0 0 4px grey;
+  padding: .05em .15em;
+  background-color: white;
+}
+
+.hardboiled header.card-header .description .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50px;
+  flex: 0 0 50px;
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  background-color: white;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  -webkit-box-shadow: 0 0 4px grey;
+  box-shadow: 0 0 4px grey;
+  border: 3px solid #d0a72e;
+  border-radius: 3px;
+}
+
+.hardboiled header.card-header .description .description-fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  font-size: 150%;
+}
+
+.hardboiled div.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  padding: 0 5px 10px 10px;
+}
+
+.hardboiled div.result label {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 4px grey;
+  box-shadow: 0 0 4px grey;
+  background: lightgrey;
+  font-size: 200%;
+  margin: 2px;
+}
+
+.hardboiled div.result label.roll-result {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.hardboiled div.result label.roll-result[data-success="true"] {
+  color: green;
+}
+
+.hardboiled div.result label.roll-result[data-success="false"] {
+  color: darkred;
+}
+
+.hardboiled div.result label.roll-success {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 100%;
+  flex: 1 0 100%;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.hardboiled div.result label.roll-success.success {
+  color: #d0a72e;
+}
+
+.hardboiled div.result label.roll-success.fail {
+  color: #d0a72e;
+}
+
+.hardboiled .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.hardboiled .sheet-body,
+.hardboiled .sheet-body .tab,
+.hardboiled .sheet-body .tab .editor {
+  height: 100%;
+}
+
+.hardboiled .tox .tox-editor-container {
+  background: #fff;
+}
+
+.hardboiled .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.hardboiled .resource-label {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hardboiled .tabs {
+  height: 40px;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+}
+
+.hardboiled .tabs .item {
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.hardboiled .tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
+}
+
+.hardboiled .items-list {
+  list-style: none;
+  margin: 7px 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.hardboiled .items-list .item-header {
+  font-weight: bold;
+}
+
+.hardboiled .items-list .item {
+  height: 30px;
+  line-height: 24px;
+  padding: 3px 0;
+  border-bottom: 1px solid #BBB;
+}
+
+.hardboiled .items-list .item .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 24px;
+  flex: 0 0 24px;
+  margin-right: 5px;
+}
+
+.hardboiled .items-list .item img {
+  display: block;
+}
+
+.hardboiled .items-list .item-name {
+  margin: 0;
+}
+
+.hardboiled .items-list .item-controls {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 86px;
+  flex: 0 0 86px;
+  text-align: right;
+}

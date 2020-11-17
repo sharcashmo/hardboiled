@@ -1,0 +1,304 @@
+label {
+	font-family: hardboiled;
+}
+
+input[type="text"],
+select {
+	height: calc(100% - 2px);
+	border: 1px solid transparent;
+	background: rgba(0, 0, 0, 0.05);
+	color: #191813;
+	margin: 0.2em;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+	border: 1px solid #111;
+	box-shadow: 0 0 8px red;
+}
+
+input[data-dtype="Number"] {
+	width: 2em;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+	color: #4b4a44;
+}
+
+input:disabled:hover,
+select:disabled:hover,
+textarea:disabled:hover,
+input:disabled:focus,
+select:disabled:focus,
+textarea:disabled:focus {
+	box-shadow: none !important;
+	border: 1px solid transparent !important;
+	outline: none !important;
+}
+
+label.char-label {
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: $c-mustard;
+}
+
+.item-form {
+	font-family: hardboiled;
+}
+
+.window-content {
+	background: url(images/background-top.png) top no-repeat,
+	url(images/background-bottom.png) bottom left no-repeat,
+	url(images/background-bottom-line.png) bottom left repeat-x,
+	url(images/background-bg.png) repeat-y,
+	#f5e1bf;
+}
+
+.chat-card {
+	background: no-repeat top/100% url(images/background-top.png),
+	no-repeat bottom left/100% url(images/background-bottom.png),
+	repeat-y left/2.7% url(images/background-bg.png),
+	#f5e1bf;
+}
+
+header.sheet-header {
+	flex: 0 0 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	
+	.traits {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		margin-bottom: 10px;
+		padding: 40px 5px 0 15px;
+
+		.profile-img {
+			flex: 0 0 110px;
+			height: 110px;
+			margin-right: 10px;
+			object-fit: cover;
+			object-position: top;
+			background-color: white;
+			transform: rotate(-5deg);
+			box-shadow: 0 0 8px grey;
+			border: 5px solid $c-mustard;
+			border-radius: 5px;
+		}
+		
+		.trait-fields {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex: 1 1 auto;
+			border-width: 10px 1px;
+			border-color: $c-mustard;
+			border-style: solid;
+			border-radius: 5px;
+			box-shadow: 0 0 8px grey;
+			padding: .1em .3em;
+			background-color: white;
+			
+			.main-traits {
+				display: flex;
+				flex-direction: column;
+				flex: 3 1 auto;
+				margin-right: .3em;
+				
+				div {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: space-between;
+				}
+				
+				label {
+					flex: 0 0 auto;
+				}
+				
+				input {
+					flex: 0 0 auto;
+					width: auto;
+				}
+				
+				input[data-dtype="Number"] {
+					flex: 0 0 auto;
+					width: 2em;
+				}
+			}
+			
+			.secondary-traits {
+				display:flex;
+				flex-direction: column;
+				flex: 1 1 auto;
+				
+				div {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+				}
+				
+				label {
+					flex: 1 0 auto;
+				}
+				
+				input {
+					flex: 1 1 auto;
+				}
+			}
+		}
+	}
+	
+	.characteristics {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+		border-width: 10px 1px;
+		border-color: darkred;
+		border-style: solid;
+		border-radius: 5px;
+		box-shadow: 0 0 8px grey;
+		padding: .1em .3em;
+		background-color: white;
+		margin-left: 14px;
+		margin-right: 5px;
+		font-size: x-large;
+		
+		label.char-label.rollable:hover,
+		label.char-label.rollable:hover {
+			text-shadow: 0 0 10px black;
+			color: darkred;
+		}
+		
+		input {
+			flex: 0 0 auto;
+			width: 1.5em;
+			font-size: smaller;
+		}
+	}
+}
+
+header.card-header {
+	flex: 0 0 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: 20px 5px 0 10px;
+
+	.description {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		border-width: 5px 1px;
+		border-color: $c-mustard;
+		border-style: solid;
+		border-radius: 3px;
+		box-shadow: 0 0 4px grey;
+		padding: .05em .15em;
+		background-color: white;
+
+		.profile-img {
+			flex: 0 0 50px;
+			height: 50px;
+			width: 50px;
+			margin-right: 10px;
+			object-fit: cover;
+			object-position: top;
+			background-color: white;
+			transform: rotate(-5deg);
+			box-shadow: 0 0 4px grey;
+			border: 3px solid $c-mustard;
+			border-radius: 3px;
+		}
+		
+		.description-fields {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex: 1 1 auto;
+			font-size: 150%;
+		}
+	}
+}
+
+div.result {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: 0 5px 10px 10px;
+	
+	label {
+		text-align: center;
+		border: 1px solid black;
+		border-radius: 3px;
+		box-shadow: 0 0 4px grey;
+		background: lightgrey;
+		font-size: 200%;
+		margin: 2px;
+	}
+		
+	label.roll-result {
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	
+	label.roll-result[data-success="true"] {
+		color: green;
+	}
+	
+	label.roll-result[data-success="false"] {
+		color: darkred;
+	}
+	
+	label.roll-success {
+		flex: 1 0 100%;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	
+	label.roll-success.success {
+		color: $c-mustard;
+	}
+	
+	label.roll-success.fail {
+		color: $c-mustard;
+	}
+}
+
+.sheet-tabs {
+  flex: 0;
+}
+
+.sheet-body,
+.sheet-body .tab,
+.sheet-body .tab .editor {
+  height: 100%;
+}
+
+.tox {
+  .tox-editor-container {
+    background: $c-white;
+  }
+
+  .tox-edit-area {
+    padding: 0 8px;
+  }
+}

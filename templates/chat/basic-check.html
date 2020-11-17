@@ -1,0 +1,28 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+	<div class="chat-card attribute-check">
+	
+		{{!-- Card Body --}}
+		<header class="card-header">
+			<div class="description">
+				<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+				<div class="description-fields">
+					<label>{{actor.name}}</label>
+					<div>
+						<label>{{localize "Hardboiled.Roll"}}</label>
+						<label class="char-label">{{localize attribute.label}}</label>
+						<label>({{attribute.value}})</label></div>
+				</div>
+			</div>
+		</header>
+		
+	    {{!-- Card Body --}}
+		<div class="card-body result">
+			<label class="roll-result" data-success="{{rollCheck.success}}">{{rollCheck.value}}</label>
+			{{#if rollCheck.success}}
+			<label class="roll-success success">{{localize "Hardboiled.Success"}}</label>
+			{{^}}
+			<label class="roll-success fail">{{localize "Hardboiled.Fail"}}</label>
+			{{/if}}
+		</div>
+	</div>
+</form>

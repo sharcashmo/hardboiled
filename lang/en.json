@@ -1,0 +1,26 @@
+{
+	"I18N.LANGUAGE": "English",
+	"I18N.MAINTAINERS": "",
+	
+	"Hardboiled.title": "Hardboiled",
+	
+	"Hardboiled.Name": "Name",
+	"Hardboiled.Profession": "Profession",
+	"Hardboiled.Nationality": "Nationality",
+	"Hardboiled.HomeTown": "Home Town",
+	"Hardboiled.Age": "Age",
+	"Hardboiled.Height": "Height",
+	"Hardboiled.Genre": "Genre",
+	"Hardboiled.Weight": "Weight",
+	"Hardboiled.Level": "Level",
+	"Hardboiled.Experience": "XP",
+	"Hardboiled.Vigour": "Vigour",
+	"Hardboiled.Dextery": "Dextery",
+	"Hardboiled.Insight": "Insight",
+	"Hardboiled.Charisma": "Charisma",
+	"Hardboiled.Luck": "Luck",
+	
+	"Hardboiled.Roll": "Roll",
+	"Hardboiled.Success": "Success",
+	"Hardboiled.Fail": "Fail"
+}

@@ -1,0 +1,26 @@
+{
+	"I18N.LANGUAGE": "English",
+	"I18N.MAINTAINERS": "",
+	
+	"Hardboiled.title": "Hardboiled",
+	
+	"Hardboiled.Name": "Nombre",
+	"Hardboiled.Profession": "Profesión",
+	"Hardboiled.Nationality": "Nacionalidad",
+	"Hardboiled.HomeTown": "Ciudad de origen",
+	"Hardboiled.Age": "Edad",
+	"Hardboiled.Height": "Altura",
+	"Hardboiled.Genre": "Sexo",
+	"Hardboiled.Weight": "Peso",
+	"Hardboiled.Level": "Nivel",
+	"Hardboiled.Experience": "PX",
+	"Hardboiled.Vigour": "Vigor",
+	"Hardboiled.Dextery": "Destreza",
+	"Hardboiled.Insight": "Perspicacia",
+	"Hardboiled.Charisma": "Carisma",
+	"Hardboiled.Luck": "Suerte",
+	
+	"Hardboiled.Roll": "Tirada",
+	"Hardboiled.Success": "Éxito",
+	"Hardboiled.Fail": "Fallo"
+}

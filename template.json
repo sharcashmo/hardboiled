@@ -1,0 +1,149 @@
+{
+	"Actor": {
+		"types": ["character", "npc"],
+		"templates": {
+			"characteristics": {
+				"characteristics": {
+				"vigour": {
+					"short": "Hardboiled.VIG",
+					"label": "Hardboiled.Vigour",
+					"value": 50
+				},
+				"dextery": {
+					"short": "Hardboiled.DEX",
+					"label": "Hardboiled.Dextery",
+					"value": 50
+				},
+				"insight": {
+					"short": "Hardboiled.INS",
+					"label": "Hardboiled.Insight",
+					"value": 50
+				},
+				"charisma": {
+					"short": "Hardboiled.CHR",
+					"label": "Hardboiled.Charisma",
+					"value": 50
+				},
+				"luck": {
+					"short": "Hardboiled.LCK",
+					"label": "Hardboiled.Luck",
+					"value": 25
+				}
+			}
+		},
+		"attributes": {
+			"attributes": {
+				"hp": {
+					"short": "",
+					"label": "",
+					"value": 50,
+					"max": 50,
+					"auto": true
+				},
+				"punch": {
+					"short": "",
+					"label": "",
+					"value": 50,
+					"max": 50,
+					"auto": true
+				},
+				"movement": {
+					"short": "",
+					"label": "",
+					"value": 50,
+					"max": 50,
+					"auto": true
+				}
+			}
+		}
+	},
+    "character": {
+      "templates": ["characteristics", "attributes"],
+      "profession": "",
+      "nationality": "",
+      "homeTown": ""
+    },
+    "npc": {
+      "templates": ["characteristics", "attributes"],
+      "profession": ""
+    }
+  },
+  "Item": {
+    "types": ["skill", "talent", "profession", "equipment", "weapon", "explosive", "venom"],
+    "templates": {
+      "base": {
+        "description": ""
+      },
+      "item": {
+    	"weight": 0,
+    	"cost": 0,
+    	"notes": ""
+      },
+      "weapon": {
+    	"damage": ""
+      },
+      "rangedWeapon": {
+    	"range": {
+    	  "short": 0,
+    	  "basic": 0
+    	},
+    	"fireRate": {
+    	  "short": 0,
+    	  "medium": 0,
+    	  "comlete": 0
+    	},
+        "ammunition": {
+          "current": 0,
+          "max": 10
+        },
+    	"year": 1900
+      },
+      "explosive": {
+    	"primaryDamage": {
+    	  "radius": 1,
+    	  "damage": {
+    	    "check": "luck",
+    	    "failed": "",
+    	    "passed": ""
+    	  }
+    	},
+      	"secondaryDamage": {
+      	  "radius": 1,
+      	  "damage": {
+      	    "check": "luck",
+      	    "failed": "",
+      	    "passed": ""
+      	  }
+    	}
+      },
+      "venom": {
+        "check": "vigour",
+        "damagePassed": "",
+        "damageFailed": ""
+      }
+    },
+    "skill": {
+      "templates": ["base"],
+      "baseAttribute": ""
+    },
+    "talent": {
+      "templates": ["base"],
+      "affectedSkills": []
+    },
+    "profession": {
+      "templates": ["base"],
+      "primarySkills": [],
+      "secondasrySkills": [],
+      "talents": []
+    },
+    "equipment": {
+      "templates": ["base", "item"]
+    },
+    "weapon": {
+      "templates": ["base", "item", "weapon", "rangedWeapon"]
+    },
+    "venom": {
+      "templates": ["base", "venom"]
+    }
+  }
+}
