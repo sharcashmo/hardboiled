@@ -1,27 +1,38 @@
 @font-face {
-  font-family: hardboiled;
+  font-family: hardboiled-title;
   src: url("fonts/DecoturaICG.ttf");
 }
 
 @font-face {
-  font-family: hardboiled-inline;
-  src: url("fonts/decoturaicginline.ttf");
+  font-family: hardboiled-text;
+  src: url("fonts/Kalam-Regular.ttf");
 }
 
-/* Global styles */
+.window-app {
+  font: small hardboiled-text;
+}
+
 .rollable:hover, .rollable:focus {
-  color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
 
-/* Styles limited to hardboiled sheets */
-.hardboiled * {
-  font-family: hardboiled;
+label, label.char-label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success {
+  font-family: hardboiled-title;
 }
 
-.hardboiled input[type="text"],
-.hardboiled select {
+label.char-label, .hardboiled div.result label.char-label.roll-result, .hardboiled div.result label.char-label.roll-success {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d0a72e;
+}
+
+label.char-label.rollable:hover, .hardboiled div.result label.char-label.rollable.roll-result:hover, .hardboiled div.result label.char-label.rollable.roll-success:hover, label.char-label.rollable:hover, .hardboiled div.result label.char-label.rollable.roll-result:hover, .hardboiled div.result label.char-label.rollable.roll-success:hover {
+  color: darkred;
+  text-shadow: 0 0 10px black;
+}
+
+input[type="text"],
+select {
   height: calc(100% - 2px);
   border: 1px solid transparent;
   background: rgba(0, 0, 0, 0.05);
@@ -29,50 +40,37 @@
   margin: 0.2em;
 }
 
-.hardboiled input[type="text"]:hover,
-.hardboiled input[type="text"]:focus {
+input[type="text"]:hover,
+input[type="text"]:focus {
   border: 1px solid #111;
   -webkit-box-shadow: 0 0 8px red;
   box-shadow: 0 0 8px red;
 }
 
-.hardboiled input[data-dtype="Number"] {
+input[data-dtype="Number"] {
   width: 2em;
 }
 
-.hardboiled input:disabled,
-.hardboiled select:disabled,
-.hardboiled textarea:disabled {
+input:disabled,
+select:disabled,
+textarea:disabled {
   color: #4b4a44;
 }
 
-.hardboiled input:disabled:hover,
-.hardboiled select:disabled:hover,
-.hardboiled textarea:disabled:hover,
-.hardboiled input:disabled:focus,
-.hardboiled select:disabled:focus,
-.hardboiled textarea:disabled:focus {
+input:disabled:hover,
+select:disabled:hover,
+textarea:disabled:hover,
+input:disabled:focus,
+select:disabled:focus,
+textarea:disabled:focus {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border: 1px solid transparent !important;
   outline: none !important;
 }
 
-.hardboiled label.char-label {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  color: #d0a72e;
-}
-
-.hardboiled .item-form {
-  font-family: hardboiled;
-}
-
 .hardboiled .window-content {
   background: url(images/background-top.png) top no-repeat, url(images/background-bottom.png) bottom left no-repeat, url(images/background-bottom-line.png) bottom left repeat-x, url(images/background-bg.png) repeat-y, #f5e1bf;
-}
-
-.hardboiled .chat-card {
-  background: no-repeat top/100% url(images/background-top.png), no-repeat bottom left/100% url(images/background-bottom.png), repeat-y left/2.7% url(images/background-bg.png), #f5e1bf;
 }
 
 .hardboiled header.sheet-header {
@@ -204,9 +202,8 @@
 
 .hardboiled header.sheet-header .traits .trait-fields .main-traits input {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  width: auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 .hardboiled header.sheet-header .traits .trait-fields .main-traits input[data-dtype="Number"] {
@@ -254,7 +251,34 @@
   flex: 1 1 auto;
 }
 
-.hardboiled header.sheet-header .characteristics {
+.hardboiled header.sheet-header .chars-attribs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  border-width: 10px 1px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: .1em .3em;
+  background-color: white;
+  margin-left: 14px;
+  margin-right: 5px;
+  font-size: x-large;
+}
+
+.hardboiled header.sheet-header .chars-attribs .characteristics {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -270,31 +294,64 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  border-width: 10px 1px;
-  border-color: darkred;
-  border-style: solid;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 8px grey;
-  box-shadow: 0 0 8px grey;
-  padding: .1em .3em;
-  background-color: white;
-  margin-left: 14px;
-  margin-right: 5px;
-  font-size: x-large;
 }
 
-.hardboiled header.sheet-header .characteristics label.char-label.rollable:hover,
-.hardboiled header.sheet-header .characteristics label.char-label.rollable:hover {
-  text-shadow: 0 0 10px black;
-  color: darkred;
-}
-
-.hardboiled header.sheet-header .characteristics input {
+.hardboiled header.sheet-header .chars-attribs .characteristics input {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   width: 1.5em;
   font-size: smaller;
+}
+
+.hardboiled header.sheet-header .chars-attribs .attributes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.hardboiled header.sheet-header .chars-attribs .attributes input {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 1.5em;
+  font-size: smaller;
+}
+
+.hardboiled .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.hardboiled .sheet-body,
+.hardboiled .sheet-body .tab,
+.hardboiled .sheet-body .tab .editor {
+  height: 100%;
+}
+
+.hardboiled .tox .tox-editor-container {
+  background: #fff;
+}
+
+.hardboiled .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.hardboiled .chat-card {
+  background: no-repeat top/100% url(images/background-top.png), no-repeat bottom left/100% url(images/background-bottom.png), repeat-y left/2.7% url(images/background-bg.png), #f5e1bf;
 }
 
 .hardboiled header.card-header {
@@ -408,7 +465,7 @@
   padding: 0 5px 10px 10px;
 }
 
-.hardboiled div.result label {
+.hardboiled div.result label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success {
   text-align: center;
   border: 1px solid black;
   border-radius: 3px;
@@ -436,34 +493,7 @@
   -ms-flex: 1 0 100%;
   flex: 1 0 100%;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.hardboiled div.result label.roll-success.success {
   color: #d0a72e;
-}
-
-.hardboiled div.result label.roll-success.fail {
-  color: #d0a72e;
-}
-
-.hardboiled .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
-
-.hardboiled .sheet-body,
-.hardboiled .sheet-body .tab,
-.hardboiled .sheet-body .tab .editor {
-  height: 100%;
-}
-
-.hardboiled .tox .tox-editor-container {
-  background: #fff;
-}
-
-.hardboiled .tox .tox-edit-area {
-  padding: 0 8px;
 }
 
 .hardboiled .resource-label {
@@ -525,4 +555,19 @@
   -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
+}
+
+.dialog .hardboiled label, .dialog .hardboiled div.result label.roll-result, .dialog .hardboiled div.result label.roll-success {
+  font: large hardboiled-text;
+}
+
+#modifier-roll-form {
+  margin: 10px 0;
+}
+
+#modifier-roll-form label {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  margin: 0 10px 0 0;
 }

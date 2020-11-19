@@ -4,13 +4,19 @@
 @import 'utils/mixins';
 @import 'utils/variables';
 
-/* Global styles */
-@import 'global/window';
+// Global styles
+@import 'global/formatting';
 
-/* Styles limited to hardboiled sheets */
+// Styles limited to hardboiled sheets
 .hardboiled {
-  @import 'components/forms';
-  @import 'components/resource';
-  @import 'components/tabs';
-  @import 'components/items';
+	@import 'components/forms';
+	@import 'components/chat';
+	@import 'components/resource';
+	@import 'components/tabs';
+	@import 'components/items';
+}
+
+// Styles limited to hardboiled dialogs
+.dialog .hardboiled {
+	@import 'components/dialogs';
 }

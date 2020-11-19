@@ -1,0 +1,81 @@
+// Rules for text formatting
+
+// Main text font for the system
+.window-app {
+	font: $font-primary;
+}
+
+//
+// Clickable content
+//
+.rollable {
+	&:hover,
+	&:focus {
+		text-shadow: 0 0 10px red;
+		cursor: pointer;
+	}
+}
+
+//
+// Fonts for titles and labels
+//
+%label, label {
+	font-family: hardboiled-title;
+}
+
+// Outlined labels
+@mixin outlined($color: #000) {
+	@extend label;
+	text-shadow: -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color, 1px 1px 0 $color;
+}
+
+// Characteristics labels
+label.char-label {
+	@include outlined(#000);
+	color: $c-mustard;
+}
+			
+label.char-label.rollable:hover,
+label.char-label.rollable:hover {
+	color: darkred;
+	text-shadow: 0 0 10px black;
+}
+
+//
+// Editable areas
+//
+input[type="text"],
+select {
+	height: calc(100% - 2px);
+	border: 1px solid transparent;
+	background: rgba(0, 0, 0, 0.05);
+	color: #191813;
+	margin: 0.2em;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+	border: 1px solid #111;
+	box-shadow: 0 0 8px red;
+}
+
+input[data-dtype="Number"] {
+	width: 2em;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+	color: #4b4a44;
+}
+
+input:disabled:hover,
+select:disabled:hover,
+textarea:disabled:hover,
+input:disabled:focus,
+select:disabled:focus,
+textarea:disabled:focus {
+	box-shadow: none !important;
+	border: 1px solid transparent !important;
+	outline: none !important;
+}

@@ -1,0 +1,94 @@
+
+.chat-card {
+	background: no-repeat top/100% url(images/background-top.png),
+	no-repeat bottom left/100% url(images/background-bottom.png),
+	repeat-y left/2.7% url(images/background-bg.png),
+	#f5e1bf;
+}
+
+header.card-header {
+	flex: 0 0 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: 20px 5px 0 10px;
+
+	.description {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content: flex-start;
+		border-width: 5px 1px;
+		border-color: $c-mustard;
+		border-style: solid;
+		border-radius: 3px;
+		box-shadow: 0 0 4px grey;
+		padding: .05em .15em;
+		background-color: white;
+
+		.profile-img {
+			flex: 0 0 50px;
+			height: 50px;
+			width: 50px;
+			margin-right: 10px;
+			object-fit: cover;
+			object-position: top;
+			background-color: white;
+			transform: rotate(-5deg);
+			box-shadow: 0 0 4px grey;
+			border: 3px solid $c-mustard;
+			border-radius: 3px;
+		}
+		
+		.description-fields {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex: 1 1 auto;
+			font-size: 150%;
+		}
+	}
+}
+
+div.result {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: 0 5px 10px 10px;
+	
+	label {
+		text-align: center;
+		border: 1px solid black;
+		border-radius: 3px;
+		box-shadow: 0 0 4px grey;
+		background: lightgrey;
+		font-size: 200%;
+		margin: 2px;
+	}
+		
+	label.roll-result {
+		@include outlined;
+	}
+	
+	label.roll-result[data-success="true"] {
+		color: green;
+	}
+	
+	label.roll-result[data-success="false"] {
+		color: darkred;
+	}
+	
+	label.roll-success {
+		flex: 1 0 100%;
+		@include outlined;
+		color: $c-mustard;
+	}
+}

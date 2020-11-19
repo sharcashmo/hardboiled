@@ -1,0 +1,15 @@
+
+label {
+	font: large hardboiled-text;
+}
+
+@at-root {
+	#modifier-roll-form {
+		margin: 10px 0;
+		
+		label {
+			flex: 0 0 auto;
+			margin: 0 10px 0 0;
+		}
+	}
+}

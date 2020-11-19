@@ -1,11 +1,11 @@
 @font-face {
-	font-family: hardboiled;
+	font-family: hardboiled-title;
 	src: url("fonts/DecoturaICG.ttf");
 }
 
 @font-face {
-	font-family: hardboiled-inline;
-	src: url("fonts/decoturaicginline.ttf");
+	font-family: hardboiled-text;
+	src: url("fonts/Kalam-Regular.ttf");
 }
 
-$font-primary: medium hardboiled;
+$font-primary: small hardboiled-text;
