@@ -19,6 +19,22 @@
 	"Hardboiled.Insight": "Perspicacia",
 	"Hardboiled.Charisma": "Carisma",
 	"Hardboiled.Luck": "Suerte",
+	"Hardboiled.VIG": "VIG",
+	"Hardboiled.DEX": "DES",
+	"Hardboiled.INS": "PER",
+	"Hardboiled.CHR": "CAR",
+	"Hardboiled.LCK": "SUE",
+	"Hardboiled.HitPoints": "PV",
+	"Hardboiled.TotalHitPoints": "PV Totales",
+	"Hardboiled.Punch": "Pegada",
+	"Hardboiled.MovementRange": "Rango de Movimiento",
+	"Hardboiled.Injuries": "Heridas",
+	"Hardboiled.SeriouslyInjured": "Gravemente Herido",
+	"Hardboiled.Dying": "Moribundo",
+	"Hardboiled.Critical": "Crítico",
+	"Hardboiled.Dead": "Muerto",
+	"Hardboiled.Unconscious": "Inconsciente",
+	"Hardboiled.Skills": "Habilidades",
 	
 	"Hardboiled.Roll": "Tirada",
 	"Hardboiled.Success": "Éxito",
@@ -26,5 +42,8 @@
 	
 	"Hardboiled.BonusSelectionWindow": "Seleccionar modificador",
 	"Hardboiled.Modifier": "Modificador",
-	"Hardboiled.RollDice": "¡Tirar dados!"
+	"Hardboiled.RollDice": "¡Tirar dados!",
+		
+	"Hardboiled.Description": "Descripción",
+	"Hardboiled.Details": "Detalles"
 }

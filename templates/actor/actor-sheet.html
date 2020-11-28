@@ -1,161 +1,163 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
+<form class="{{cssClass}}" autocomplete="off">
 
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
 		<div class="traits">
-			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
 			<div class="trait-fields">
 				<div class="main-traits">
 					<div>
-						<label>{{ localize 'Hardboiled.Name' }}</label>
-						<input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'Hardboiled.Name' }}"/>
-						<label>{{ localize 'Hardboiled.Profession' }}</label>
-						<input name="data.profession" type="text" value="{{data.profession}}" placeholder="{{ localize 'Hardboiled.Profession' }}"/>
+						<label>{{localize 'Hardboiled.Name'}}</label>
+						<input name="name" type="text" data-dtype="String" value="{{actor.name}}" placeholder="{{localize 'Hardboiled.Name'}}"/>
+						<label>{{localize 'Hardboiled.Profession'}}</label>
+						<input name="data.profession" type="text" data-dtype="String" value="{{data.profession}}" placeholder="{{localize 'Hardboiled.Profession'}}"/>
 					</div>
 					<div>
-						<label>{{ localize 'Hardboiled.Nationality' }}</label>
-						<input name="data.nationality" type="text" value="{{data.nationality}}" placeholder="{{ localize 'Hardboiled.Nationality' }}"/>
-						<label>{{ localize 'Hardboiled.HomeTown' }}</label>
-						<input name="data.homeTown" type="text" value="{{data.homeTown}}" placeholder="{{ localize 'Hardboiled.HomeTown' }}"/>
+						<label>{{localize 'Hardboiled.Nationality'}}</label>
+						<input name="data.nationality" type="text" data-dtype="String" value="{{data.nationality}}" placeholder="{{localize 'Hardboiled.Nationality'}}"/>
+						<label>{{localize 'Hardboiled.HomeTown'}}</label>
+						<input name="data.homeTown" type="text" data-dtype="String" value="{{data.homeTown}}" placeholder="{{localize 'Hardboiled.HomeTown'}}"/>
 					</div>
 					<div>
-						<label>{{ localize 'Hardboiled.Age' }}</label>
-						<input name="data.age" type="text" data-dtype="Number" value="{{data.age}}" placeholder="{{ localize 'Hardboiled.Age' }}"/>
-						<label>{{ localize 'Hardboiled.Height' }}</label>
-						<input name="data.height" type="text" data-dtype="Number" value="{{data.height}}" placeholder="{{ localize 'Hardboiled.Height' }}"/>
-						<label>{{ localize 'Hardboiled.Weight' }}</label>
-						<input name="data.weight" type="text" data-dtype="Number" value="{{data.weight}}" placeholder="{{ localize 'Hardboiled.Weight' }}"/>
-						<label>{{ localize 'Hardboiled.Genre' }}</label>
-						<input name="data.genre" type="text" value="{{data.genre}}" placeholder="{{ localize 'Hardboiled.Genre' }}"/>
-					</div>
-				</div>
-				<div class="secondary-traits">
-					<div>
-						<label>{{ localize 'Hardboiled.Level' }}</label>
-						<input name="data.level" type="text" data-dtype="Number" value="{{data.level}}" placeholder="{{ localize 'Hardboiled.Level' }}"/>
-					</div>
-					<div>
-						<label>{{ localize 'Hardboiled.Experience' }}</label>
-						<input name="data.experience" type="text" data-dtype="Number" value="{{data.experience}}" placeholder="{{ localize 'Hardboiled.Experience' }}"/>
+						<label>{{localize 'Hardboiled.Age'}}</label>
+						<input name="data.age" type="text" data-dtype="Number" value="{{data.age}}" placeholder="{{localize 'Hardboiled.Age'}}"/>
+						<label>{{localize 'Hardboiled.Height'}}</label>
+						<input name="data.height" type="text" data-dtype="Number" value="{{data.height}}" placeholder="{{localize 'Hardboiled.Height'}}"/>
+						<label>{{localize 'Hardboiled.Weight'}}</label>
+						<input name="data.weight" type="text" data-dtype="Number" value="{{data.weight}}" placeholder="{{localize 'Hardboiled.Weight'}}"/>
+						<label>{{localize 'Hardboiled.Genre'}}</label>
+						<input name="data.genre" type="text" data-dtype="String" value="{{data.genre}}" placeholder="{{localize 'Hardboiled.Genre'}}"/>
+						<label>{{localize 'Hardboiled.Level'}}</label>
+						<input name="data.level" type="text" data-dtype="Number" value="{{data.level}}" placeholder="{{localize 'Hardboiled.Level'}}"/>
+						<label>{{localize 'Hardboiled.Experience'}}</label>
+						<input name="data.experience" type="text" data-dtype="Number" value="{{data.experience}}" placeholder="{{localize 'Hardboiled.Experience'}}"/>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="characteristics">
-			{{#each data.characteristics as |char key|}}
-			<div>
-				<label class="char-label rollable"
-				       data-attributeCheck="{{key}}">{{ localize char.label }}</label>
-				<input name="data.{{char}}.value" type="text" value="{{char.value}}" placeholder="{{ localize char.label }}"/>
+		<div class="chars-attribs">
+			<div class="characteristics">
+				{{#each data.characteristics as |char key|}}
+				<div>
+					<label class="char-label rollable"
+					       data-attributeCheck="{{key}}">{{localize char.label}}</label>
+					<input name="data.characteristics.{{key}}.value" type="text" data-dtype="Number" value="{{char.value}}" placeholder="{{localize char.short}}"/>
+				</div>
+				{{/each}}
 			</div>
-			{{/each}}
+			<div class="attributes">
+				<div>
+					<label>{{localize data.attributes.punch.label}}</label>
+					<input name="data.attributes.punch.value" type="text" data-dtype="Number" value="{{data.attributes.punch.value}}" {{~#if data.attributes.punch.auto}}disabled readonly{{/if}}>
+				</div>
+				<div>
+					<label>{{localize data.attributes.movement.label}}</label>
+					<input name="data.attributes.movement.value" type="text" data-dtype="Number" value="{{data.attributes.movement.value}}" {{~#if data.attributes.movement.auto}}disabled readonly{{/if}}>
+				</div>
+				<div>
+					<label>{{localize data.attributes.hp.label}}</label>
+					<input name="data.attributes.hp.value" type="text" data-dtype="Number" value="{{data.attributes.hp.value}}" {{~#if data.attributes.hp.auto}}disabled readonly{{/if}}>
+					/
+					<input name="data.attributes.maxhp.value" type="text" data-dtype="Number" value="{{data.attributes.maxhp.value}}" {{~#if data.attributes.maxhp.auto}}disabled readonly{{/if}}>
+				</div>
+				<div>
+					<label>{{localize data.flags.injured.label}}</label>
+					<i class="{{data.flags.unconscious.icon}}" style="color:{{data.flags.unconscious.color}};" title="{{localize data.flags.unconscious.label}}"></i>
+					{{#each data.flags.injured.values as |injury key|}}
+					{{#if injury.icon}}
+					<i class="{{injury.icon}}" style="color:{{injury.color}};" title="{{localize injury.label}}"></i>
+					{{/if}}
+					{{/each}}
+				</div>
+			</div>
 		</div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-3col">
-            {{#each data.abilities as |ability key|}}
-              <div class="ability flexrow flex-group-center">
-                <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
-                <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-                <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{key}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-              </div>
-            {{/each}}
-          </div>
-        </div>
-    </header>
+	</header>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">Description</a>
-        <a class="item" data-tab="items">Items</a>
-        <a class="item" data-tab="features">Features</a>
-        <a class="item" data-tab="spells">Spells</a>
-    </nav>
+	{{!-- Sheet Tab Navigation --}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="skills">{{localize "Hardboiled.Skills"}}</a>
+		<a class="item" data-tab="description">Description</a>
+		<a class="item" data-tab="items">Items</a>
+		<a class="item" data-tab="features">Features</a>
+	</nav>
+	
+	{{!-- Sheet Body --}}
+	<section class="sheet-body">
+	
+		{{!-- Owned Skills Tab --}}
+		<div class="tab features" data-group="primary" data-tab="skills">
+			<ol class="items-list">
+				<li class="item flexrow item-header">
+					<div class="item-image"></div>
+					<div class="item-name">Name</div>
+					<div class="item-controls">
+						<a class="item-control item-create" title="Create item" data-type="feature"><i class="fas fa-plus"></i> Add item</a>
+					</div>
+				</li>
+				{{#each data.skills as |item id|}}
+				<li class="item flexrow" data-item-id="{{item._id}}">
+					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+					<h4 class="item-name">{{item.name}}</h4>
+					<div class="item-controls">
+						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+						<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+					</div>
+				</li>
+				{{/each}}
+			</ol>
+		</div>
 
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
+		{{!-- Biography Tab --}}
+		<div class="tab biography" data-group="primary" data-tab="description">
+			{{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+		</div>
 
-        {{!-- Biography Tab --}}
-        <div class="tab biography" data-group="primary" data-tab="description">
-            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
-        </div>
+		{{!-- Owned Items Tab --}}
+		<div class="tab items" data-group="primary" data-tab="items">
+			<ol class="items-list">
+				<li class="item flexrow item-header">
+					<div class="item-image"></div>
+					<div class="item-name">Name</div>
+					<div class="item-controls">
+						<a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
+					</div>
+				</li>
+				{{#each actor.gear as |item id|}}
+				<li class="item flexrow" data-item-id="{{item._id}}">
+					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+					<h4 class="item-name">{{item.name}}</h4>
+					<div class="item-controls">
+						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+						<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+					</div>
+				</li>
+				{{/each}}
+			</ol>
+		</div>
+		
+		{{!-- Owned Features Tab --}}
+		<div class="tab features" data-group="primary" data-tab="features">
+			<ol class="items-list">
+				<li class="item flexrow item-header">
+					<div class="item-image"></div>
+					<div class="item-name">Name</div>
+					<div class="item-controls">
+						<a class="item-control item-create" title="Create item" data-type="feature"><i class="fas fa-plus"></i> Add item</a>
+					</div>
+				</li>
+				{{#each actor.features as |item id|}}
+				<li class="item flexrow" data-item-id="{{item._id}}">
+					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+					<h4 class="item-name">{{item.name}}</h4>
+					<div class="item-controls">
+						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+						<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+					</div>
+				</li>
+				{{/each}}
+			</ol>
+		</div>
 
-        {{!-- Owned Items Tab --}}
-        <div class="tab items" data-group="primary" data-tab="items">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-image"></div>
-                  <div class="item-name">Name</div>
-                  <div class="item-controls">
-                    <a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
-                  </div>
-                </li>
-            {{#each actor.gear as |item id|}}
-                <li class="item flexrow" data-item-id="{{item._id}}">
-                    <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                    <h4 class="item-name">{{item.name}}</h4>
-                    <div class="item-controls">
-                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-            {{/each}}
-            </ol>
-        </div>
-
-        {{!-- Owned Features Tab --}}
-        <div class="tab features" data-group="primary" data-tab="features">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-image"></div>
-                  <div class="item-name">Name</div>
-                  <div class="item-controls">
-                    <a class="item-control item-create" title="Create item" data-type="feature"><i class="fas fa-plus"></i> Add item</a>
-                  </div>
-                </li>
-            {{#each actor.features as |item id|}}
-                <li class="item flexrow" data-item-id="{{item._id}}">
-                    <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                    <h4 class="item-name">{{item.name}}</h4>
-                    <div class="item-controls">
-                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                    </div>
-                </li>
-            {{/each}}
-            </ol>
-        </div>
-
-        {{!-- Owned Spells Tab --}}
-        <div class="tab spells" data-group="primary" data-tab="spells">
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                  <div class="item-image"></div>
-                  <div class="item-name">Name</div>
-                  <div class="item-controls"></div>
-                </li>
-                {{#each actor.spells as |spells spellLevel|}}
-                    <li class="item flexrow item-header">
-                      <div class="item-name">Level {{spellLevel}} Spells</div>
-                      <div class="item-controls">
-                        <a class="item-control item-create" title="Create item" data-type="spell" data-spell-level="{{spellLevel}}"><i class="fas fa-plus"></i> Add LVL {{spellLevel}}</a>
-                      </div>
-                    </li>
-                    {{#each spells as |item id|}}
-                        <li class="item flexrow" data-item-id="{{item._id}}">
-                            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-                            <h4 class="item-name">{{item.name}}</h4>
-                            <div class="item-controls">
-                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                            </div>
-                        </li>
-                    {{/each}}
-                {{/each}}
-            </ol>
-        </div>
-
-    </section>
+	</section>
 </form>
 

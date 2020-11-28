@@ -19,6 +19,22 @@
 	"Hardboiled.Insight": "Insight",
 	"Hardboiled.Charisma": "Charisma",
 	"Hardboiled.Luck": "Luck",
+	"Hardboiled.VIG": "VIG",
+	"Hardboiled.DEX": "DEX",
+	"Hardboiled.INS": "INS",
+	"Hardboiled.CHR": "CHR",
+	"Hardboiled.LCK": "LCK",
+	"Hardboiled.HitPoints": "HP",
+	"Hardboiled.TotalHitPoints": "Total HP",
+	"Hardboiled.Punch": "Punch",
+	"Hardboiled.MovementRange": "Movement Range",
+	"Hardboiled.Injuries": "Injuries",
+	"Hardboiled.SeriouslyInjured": "Seriously Injured",
+	"Hardboiled.Dying": "Dying",
+	"Hardboiled.Critical": "Critical",
+	"Hardboiled.Dead": "Dead",
+	"Hardboiled.Unconscious": "Unconscious",
+	"Hardboiled.Skills": "Sklls",
 	
 	"Hardboiled.Roll": "Roll",
 	"Hardboiled.Success": "Success",
@@ -26,5 +42,8 @@
 	
 	"Hardboiled.BonusSelectionWindow": "Select modifier",
 	"Hardboiled.Modifier": "Modifier",
-	"Hardboiled.RollDice": "Roll dice!"
+	"Hardboiled.RollDice": "Roll dice!",
+		
+	"Hardboiled.Description": "Description",
+	"Hardboiled.Details": "Details"
 }
