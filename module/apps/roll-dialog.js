@@ -1,7 +1,6 @@
 export class RollDialog {
 
-	static async create()
-	{
+	static async create() {
 		const html = await renderTemplate('systems/hardboiled/templates/apps/bonus.html',
 				{
 					cssClass: "hardboiled"
