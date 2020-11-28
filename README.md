@@ -13,16 +13,32 @@ I’ve just provided some basics skills that you can use.
 Install in foundry VTT from the Game Systems tab using the following manifest :  
 <https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json>  
 
-## What is working  
+## What is working
 
-Version 0.0.1 :  
+Version 0.0.2 :  
+
+* No longer apply Decotura font to every text in Foundry. Only sheets, dialogs and cards will use it.
+  * Reorganize and clean SCSS files.
+  * Add attributes (Hit Points, Punch, etc) to character sheet.
+  * Implemented Skill sheet.
+
+Version 0.0.1 :
 
 * The character sheet.  
   * You can enter your image, characteristics and traits.
   * Characteristics are rollable. Clicking on them opens a dialog to select a modifier before roll is done.
-  * Dice so Nice! is supported.  
+  * Dice so Nice! is supported.
 
 ## Future plans
 
 * [ ] Complete main attributes in character sheet.
-* [ ] Implement skill sheet.
+* [ ] Add characteristic selection in roll modifier dialog, to allow use it instead of skill in a check.
+* [ ] Move all style and presentation logic from html templates to CSS files. Including "flexrow" and similar classes.
+* [ ] Add skill tabs to character sheet.
+* [ ] Add talents to character sheet.
+* [ ] Reorganize status flags and icons.
+
+### Version 0.0.2
+
+* [X] Add a new font for regular text.
+* [X] Implement skill sheet.
