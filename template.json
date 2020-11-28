@@ -34,37 +34,77 @@
 			"attributes": {
 				"attributes": {
 					"hp": {
-						"short": "",
-						"label": "",
+						"label": "Hardboiled.HitPoints",
 						"value": 50,
-						"max": 50,
+						"auto": false
+					},
+					"maxhp": {
+						"label": "Hardboiled.TotalHitPoints",
+						"value": 50,
 						"auto": true
 					},
 					"punch": {
-						"short": "",
-						"label": "",
+						"label": "Hardboiled.Punch",
 						"value": 50,
-						"max": 50,
 						"auto": true
 					},
 					"movement": {
-						"short": "",
-						"label": "",
+						"label": "Hardboiled.MovementRange",
 						"value": 50,
-						"max": 50,
 						"auto": true
+					}
+				}
+			},
+			"flags": {
+				"flags": {
+					"injured": {
+						"label": "Hardboiled.Injuries",
+						"value": 0,
+						"values": [
+							{
+								"label": "Hardboiled.Healty",
+								"icon": "",
+								"color": ""
+							},
+							{
+								"label": "Hardboiled.SeriouslyInjured",
+								"icon": "fas fa-user-injured",
+								"color": "darkorange"
+							},
+							{
+								"label": "Hardboiled.Dying",
+								"icon": "fas fa-heartbeat",
+								"color": "darkred"
+							},
+							{
+								"label": "Hardboiled.Critical",
+								"icon": "fas fa-heart-broken",
+								"color": "darkred"
+							},
+							{
+								"label": "Hardboiled.Dead",
+								"icon": "fas fa-skull",
+								"color": "black"
+							}
+						]
+					},
+					"unconscious": {
+						"label": "Hardboiled.Unconscious",
+						"icon": "fas fa-dizzy",
+						"color": "darkorange",
+						"value": false
 					}
 				}
 			}
 		},
 		"character": {
-			"templates": ["characteristics", "attributes"],
+			"templates": ["characteristics", "attributes", "flags"],
 			"profession": "",
 			"nationality": "",
 			"homeTown": ""
 		},
 		"npc": {
-			"templates": ["characteristics", "attributes"],
+			"templates": ["characteristics", "attributes", "flags"],
 			"profession": ""
 		}
 	},
@@ -124,7 +164,7 @@
 		},
 		"skill": {
 			"templates": ["base"],
-			"baseAttribute": ""
+			"value": 0
 		},
 		"talent": {
 			"templates": ["base"],
