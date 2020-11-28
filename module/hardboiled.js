@@ -17,7 +17,7 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "@attributes.dextery.value",
+    formula: "@characteristics.dextery.value + @characteristics.insight.value / 100",
     decimals: 4
   };
 
