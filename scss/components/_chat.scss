@@ -3,7 +3,7 @@
 	background: no-repeat top/100% url(images/background-top.png),
 	no-repeat bottom left/100% url(images/background-bottom.png),
 	repeat-y left/2.7% url(images/background-bg.png),
-	#f5e1bf;
+	$c-paper;
 }
 
 header.card-header {

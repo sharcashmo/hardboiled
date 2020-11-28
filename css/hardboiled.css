@@ -8,34 +8,16 @@
   src: url("fonts/Kalam-Regular.ttf");
 }
 
-.window-app {
-  font: small hardboiled-text;
-}
-
 .rollable:hover, .rollable:focus {
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
 
-label, label.char-label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success {
-  font-family: hardboiled-title;
-}
-
-label.char-label, .hardboiled div.result label.char-label.roll-result, .hardboiled div.result label.char-label.roll-success {
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  color: #d0a72e;
-}
-
-label.char-label.rollable:hover, .hardboiled div.result label.char-label.rollable.roll-result:hover, .hardboiled div.result label.char-label.rollable.roll-success:hover, label.char-label.rollable:hover, .hardboiled div.result label.char-label.rollable.roll-result:hover, .hardboiled div.result label.char-label.rollable.roll-success:hover {
-  color: darkred;
-  text-shadow: 0 0 10px black;
-}
-
 input[type="text"],
 select {
-  height: calc(100% - 2px);
+  height: auto;
   border: 1px solid transparent;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.02);
   color: #191813;
   margin: 0.2em;
 }
@@ -69,11 +51,11 @@ textarea:disabled:focus {
   outline: none !important;
 }
 
-.hardboiled .window-content {
-  background: url(images/background-top.png) top no-repeat, url(images/background-bottom.png) bottom left no-repeat, url(images/background-bottom-line.png) bottom left repeat-x, url(images/background-bg.png) repeat-y, #f5e1bf;
+.hardboiled.actor .window-content {
+  background: url(images/background-top.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
 }
 
-.hardboiled header.sheet-header {
+.hardboiled.actor header.sheet-header {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -95,7 +77,7 @@ textarea:disabled:focus {
   justify-content: flex-start;
 }
 
-.hardboiled header.sheet-header .traits {
+.hardboiled.actor header.sheet-header .traits {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -115,7 +97,7 @@ textarea:disabled:focus {
   padding: 40px 5px 0 15px;
 }
 
-.hardboiled header.sheet-header .traits .profile-img {
+.hardboiled.actor header.sheet-header .traits .profile-img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 110px;
   flex: 0 0 110px;
@@ -135,7 +117,7 @@ textarea:disabled:focus {
   border-radius: 5px;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields {
+.hardboiled.actor header.sheet-header .traits .trait-fields {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,9 +144,14 @@ textarea:disabled:focus {
   box-shadow: 0 0 8px grey;
   padding: .1em .3em;
   background-color: white;
+  font-size: large;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .main-traits {
+.hardboiled.actor header.sheet-header .traits .trait-fields input {
+  font-size: smaller;
+}
+
+.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,7 +165,7 @@ textarea:disabled:focus {
   margin-right: .3em;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .main-traits div {
+.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,26 +181,26 @@ textarea:disabled:focus {
   justify-content: space-between;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .main-traits label {
+.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .main-traits .item.active {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .main-traits input {
+.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .main-traits input[data-dtype="Number"] {
+.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits input[data-dtype="Number"] {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  width: 2em;
+  width: 2.2em;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .secondary-traits {
+.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,7 +213,7 @@ textarea:disabled:focus {
   flex: 1 1 auto;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .secondary-traits div {
+.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -239,19 +226,19 @@ textarea:disabled:focus {
   align-items: center;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .secondary-traits label {
+.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .secondary-traits .item.active {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
-.hardboiled header.sheet-header .traits .trait-fields .secondary-traits input {
+.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits input {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
 
-.hardboiled header.sheet-header .chars-attribs {
+.hardboiled.actor header.sheet-header .chars-attribs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -275,10 +262,9 @@ textarea:disabled:focus {
   background-color: white;
   margin-left: 14px;
   margin-right: 5px;
-  font-size: x-large;
 }
 
-.hardboiled header.sheet-header .chars-attribs .characteristics {
+.hardboiled.actor header.sheet-header .chars-attribs .characteristics {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -294,9 +280,10 @@ textarea:disabled:focus {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  font-size: x-large;
 }
 
-.hardboiled header.sheet-header .chars-attribs .characteristics input {
+.hardboiled.actor header.sheet-header .chars-attribs .characteristics input {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -304,7 +291,7 @@ textarea:disabled:focus {
   font-size: smaller;
 }
 
-.hardboiled header.sheet-header .chars-attribs .attributes {
+.hardboiled.actor header.sheet-header .chars-attribs .attributes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -320,14 +307,123 @@ textarea:disabled:focus {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  font-size: large;
 }
 
-.hardboiled header.sheet-header .chars-attribs .attributes input {
+.hardboiled.actor header.sheet-header .chars-attribs .attributes input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
-  width: 1.5em;
+  width: 2em;
   font-size: smaller;
+}
+
+.hardboiled.item .window-content {
+  background: url(images/background-top-plain.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
+}
+
+.hardboiled.item header.sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 10px 2px 0 8px;
+}
+
+.hardboiled.item header.sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 55px;
+  flex: 0 0 55px;
+  height: 55px;
+  width: 55px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+  background-color: white;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  border: 5px solid #d0a72e;
+  border-radius: 5px;
+}
+
+.hardboiled.item header.sheet-header .header-fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  border-width: 10px 1px;
+  border-color: #d0a72e;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: 0 .3em;
+  background-color: white;
+  font-size: xx-large;
+}
+
+.hardboiled.item header.sheet-header .header-fields input[type="text"] {
+  margin: 0;
+}
+
+.hardboiled.item .sheet-body {
+  border-width: 10px 1px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: 0.5em;
+  background-color: white;
+  margin: 0px 2px 0 8px;
+}
+
+.hardboiled label, .hardboiled label.char-label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success, .hardboiled .tabs, .hardboiled .tabs .item.active {
+  font-family: hardboiled-title;
+}
+
+.hardboiled label.char-label, .hardboiled div.result label.char-label.roll-result, .hardboiled div.result label.char-label.roll-success, .hardboiled .char-label.tabs, .hardboiled .tabs .char-label.item.active {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d0a72e;
+}
+
+.hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover, .hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover {
+  color: darkred;
+  text-shadow: 0 0 10px black;
 }
 
 .hardboiled .sheet-tabs {
@@ -340,14 +436,6 @@ textarea:disabled:focus {
 .hardboiled .sheet-body .tab,
 .hardboiled .sheet-body .tab .editor {
   height: 100%;
-}
-
-.hardboiled .tox .tox-editor-container {
-  background: #fff;
-}
-
-.hardboiled .tox .tox-edit-area {
-  padding: 0 8px;
 }
 
 .hardboiled .chat-card {
@@ -465,7 +553,7 @@ textarea:disabled:focus {
   padding: 0 5px 10px 10px;
 }
 
-.hardboiled div.result label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success {
+.hardboiled div.result label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success, .hardboiled div.result .tabs, .hardboiled div.result .tabs .item.active, .hardboiled .tabs div.result .item.active {
   text-align: center;
   border: 1px solid black;
   border-radius: 3px;
@@ -476,19 +564,19 @@ textarea:disabled:focus {
   margin: 2px;
 }
 
-.hardboiled div.result label.roll-result {
+.hardboiled div.result label.roll-result, .hardboiled div.result .roll-result.tabs, .hardboiled div.result .tabs .roll-result.item.active, .hardboiled .tabs div.result .roll-result.item.active {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.hardboiled div.result label.roll-result[data-success="true"] {
+.hardboiled div.result label.roll-result[data-success="true"], .hardboiled div.result .roll-result.tabs[data-success="true"], .hardboiled div.result .tabs .roll-result.item.active[data-success="true"], .hardboiled .tabs div.result .roll-result.item.active[data-success="true"] {
   color: green;
 }
 
-.hardboiled div.result label.roll-result[data-success="false"] {
+.hardboiled div.result label.roll-result[data-success="false"], .hardboiled div.result .roll-result.tabs[data-success="false"], .hardboiled div.result .tabs .roll-result.item.active[data-success="false"], .hardboiled .tabs div.result .roll-result.item.active[data-success="false"] {
   color: darkred;
 }
 
-.hardboiled div.result label.roll-success {
+.hardboiled div.result label.roll-success, .hardboiled div.result .roll-success.tabs, .hardboiled div.result .tabs .roll-success.item.active, .hardboiled .tabs div.result .roll-success.item.active {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 100%;
   flex: 1 0 100%;
@@ -502,19 +590,40 @@ textarea:disabled:focus {
 }
 
 .hardboiled .tabs {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d0a72e;
   height: 40px;
-  border-top: 1px solid #AAA;
-  border-bottom: 1px solid #AAA;
+  font-size: x-large;
 }
 
 .hardboiled .tabs .item {
   line-height: 40px;
-  font-weight: bold;
+  margin: 0 20px;
+  border-width: 10px 10px 0 10px;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 5px 5px 0 0;
+  padding: 0 5px 5px 5px;
+}
+
+.hardboiled .tabs .item:hover {
+  color: darkred;
+  text-shadow: 0 0 10px black;
 }
 
 .hardboiled .tabs .item.active {
-  text-decoration: underline;
-  text-shadow: none;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  border-width: 10px 10px 0 10px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px 5px 0 0;
+  background-color: #fff;
+}
+
+.hardboiled nav.sheet-tabs.tabs {
+  border: 0;
+  margin: 4px 0 -10px 0;
+  height: auto;
 }
 
 .hardboiled .items-list {
@@ -557,7 +666,7 @@ textarea:disabled:focus {
   text-align: right;
 }
 
-.dialog .hardboiled label, .dialog .hardboiled div.result label.roll-result, .dialog .hardboiled div.result label.roll-success {
+.dialog .hardboiled label, .dialog .hardboiled div.result label.roll-result, .dialog .hardboiled div.result label.roll-success, .dialog .hardboiled .tabs, .dialog .hardboiled .tabs .item.active {
   font: large hardboiled-text;
 }
 
@@ -565,7 +674,7 @@ textarea:disabled:focus {
   margin: 10px 0;
 }
 
-#modifier-roll-form label {
+#modifier-roll-form label, #modifier-roll-form .hardboiled .tabs, .hardboiled #modifier-roll-form .tabs, #modifier-roll-form .hardboiled .tabs .item.active, .hardboiled .tabs #modifier-roll-form .item.active {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;

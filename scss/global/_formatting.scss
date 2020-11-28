@@ -1,10 +1,5 @@
 // Rules for text formatting
 
-// Main text font for the system
-.window-app {
-	font: $font-primary;
-}
-
 //
 // Clickable content
 //
@@ -17,38 +12,13 @@
 }
 
 //
-// Fonts for titles and labels
-//
-%label, label {
-	font-family: hardboiled-title;
-}
-
-// Outlined labels
-@mixin outlined($color: #000) {
-	@extend label;
-	text-shadow: -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color, 1px 1px 0 $color;
-}
-
-// Characteristics labels
-label.char-label {
-	@include outlined(#000);
-	color: $c-mustard;
-}
-			
-label.char-label.rollable:hover,
-label.char-label.rollable:hover {
-	color: darkred;
-	text-shadow: 0 0 10px black;
-}
-
-//
 // Editable areas
 //
 input[type="text"],
 select {
-	height: calc(100% - 2px);
+	height: auto;
 	border: 1px solid transparent;
-	background: rgba(0, 0, 0, 0.05);
+	background: rgba(0, 0, 0, 0.02);
 	color: #191813;
 	margin: 0.2em;
 }
