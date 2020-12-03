@@ -8,6 +8,7 @@
 		url(images/background-bottom.png) bottom left/100% no-repeat,
 		url(images/background-bg.png) left/2.7% repeat-y,
 		$c-paper;
+		padding: 40px 5px 0 20px;
 	}
 	
 	header.sheet-header {
@@ -18,6 +19,7 @@
 		flex-wrap: nowrap;
 		align-items: stretch;
 		justify-content: flex-start;
+		overflow: visible;
 		
 		.traits {
 			display: flex;
@@ -26,12 +28,11 @@
 			align-items: flex-start;
 			justify-content: flex-start;
 			margin-bottom: 10px;
-			padding: 40px 5px 0 15px;
 	
 			.profile-img {
-				flex: 0 0 110px;
-				height: 110px;
-				margin-right: 10px;
+				flex: 0 0 100px;
+				height: 100px;
+				margin: 0 5px 0 0;
 				object-fit: cover;
 				object-position: top;
 				background-color: white;
@@ -72,6 +73,7 @@
 						flex-direction: row;
 						align-items: center;
 						justify-content: space-between;
+						margin: 0.1em 0;
 					}
 					
 					label {
@@ -97,6 +99,7 @@
 						display: flex;
 						flex-direction: row;
 						align-items: center;
+						margin: 0.1em 0;
 					}
 					
 					label {
@@ -122,8 +125,6 @@
 			box-shadow: 0 0 8px grey;
 			padding: .1em .3em;
 			background-color: white;
-			margin-left: 14px;
-			margin-right: 5px;
 			
 			.characteristics {
 				display: flex;
@@ -156,6 +157,35 @@
 			}
 		}
 	}
+	
+	// Skills tab
+	.tab.skills {
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: stretch;
+		justify-content: flex-start;
+		
+		ol.items-list {
+			width: 30%;
+			
+			li.skillrow {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				align-items: centr;
+			}
+		}
+		
+		.item-value input {
+			flex: 0 1 auto;
+			width: 2em;
+		}
+		
+		.item-name {
+			flex: 1 0 auto;
+		}
+	}
 }
 
 //
@@ -168,6 +198,7 @@
 		url(images/background-bottom.png) bottom left/100% no-repeat,
 		url(images/background-bg.png) left/2.7% repeat-y,
 		$c-paper;
+		padding: 12px 5px 0 16px;
 	}
 	
 	header.sheet-header {
@@ -179,7 +210,6 @@
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 10px;
-		padding: 10px 2px 0 8px;
 		
 		.profile-img {
 			flex: 0 0 55px;
@@ -214,17 +244,6 @@
 				margin: 0;
 			}
 		}
-	}
-	
-	.sheet-body {
-		border-width: 10px 1px;
-		border-color: darkred;
-		border-style: solid;
-		border-radius: 5px;
-		box-shadow: 0 0 8px grey;
-		padding: 0.5em;
-		background-color: white;
-		margin: 0px 2px 0 8px;
 	}
 }
 

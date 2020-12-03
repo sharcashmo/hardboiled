@@ -8,7 +8,7 @@
 	.item {
 		line-height: 40px;
 		margin: 0 20px;
-		border-width: 10px 10px 0 10px;
+		border-width: 10px 1px 0 1px;
 		border-color: transparent;
 		border-style: solid;
 		border-radius: 5px 5px 0 0;
@@ -21,13 +21,23 @@
 		
 		@include unify-parent(".active") {
 			@include outlined(#000);
-			border-width: 10px 10px 0 10px;
+			border-width: 10px 1px 0 1px;
 			border-color: darkred;
 			border-style: solid;
 			border-radius: 5px 5px 0 0;
 			background-color: $c-white;
 		}
 	}
+}
+	
+.sheet-body {
+	border-width: 10px 1px;
+	border-color: darkred;
+	border-style: solid;
+	border-radius: 5px;
+	box-shadow: 0 0 8px grey;
+	padding: 0.5em;
+	background-color: white;
 }
 
 nav.sheet-tabs.tabs {

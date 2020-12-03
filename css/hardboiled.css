@@ -8,43 +8,43 @@
   src: url("fonts/Kalam-Regular.ttf");
 }
 
-.rollable:hover, .rollable:focus {
+.hardboiled .rollable:hover, .hardboiled .rollable:focus {
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
 
-input[type="text"],
-select {
-  height: auto;
+.hardboiled input[type="text"],
+.hardboiled select {
+  height: calc(100% - 2px);
   border: 1px solid transparent;
   background: rgba(0, 0, 0, 0.02);
   color: #191813;
-  margin: 0.2em;
+  margin: 0 0.2em;
 }
 
-input[type="text"]:hover,
-input[type="text"]:focus {
+.hardboiled input[type="text"]:hover,
+.hardboiled input[type="text"]:focus {
   border: 1px solid #111;
   -webkit-box-shadow: 0 0 8px red;
   box-shadow: 0 0 8px red;
 }
 
-input[data-dtype="Number"] {
+.hardboiled input[data-dtype="Number"] {
   width: 2em;
 }
 
-input:disabled,
-select:disabled,
-textarea:disabled {
+.hardboiled input:disabled,
+.hardboiled select:disabled,
+.hardboiled textarea:disabled {
   color: #4b4a44;
 }
 
-input:disabled:hover,
-select:disabled:hover,
-textarea:disabled:hover,
-input:disabled:focus,
-select:disabled:focus,
-textarea:disabled:focus {
+.hardboiled input:disabled:hover,
+.hardboiled select:disabled:hover,
+.hardboiled textarea:disabled:hover,
+.hardboiled input:disabled:focus,
+.hardboiled select:disabled:focus,
+.hardboiled textarea:disabled:focus {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   border: 1px solid transparent !important;
@@ -53,6 +53,7 @@ textarea:disabled:focus {
 
 .hardboiled.actor .window-content {
   background: url(images/background-top.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
+  padding: 40px 5px 0 20px;
 }
 
 .hardboiled.actor header.sheet-header {
@@ -75,6 +76,7 @@ textarea:disabled:focus {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  overflow: visible;
 }
 
 .hardboiled.actor header.sheet-header .traits {
@@ -94,15 +96,14 @@ textarea:disabled:focus {
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 10px;
-  padding: 40px 5px 0 15px;
 }
 
 .hardboiled.actor header.sheet-header .traits .profile-img {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 110px;
-  flex: 0 0 110px;
-  height: 110px;
-  margin-right: 10px;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 100px;
+  margin: 0 5px 0 0;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: top;
@@ -179,6 +180,7 @@ textarea:disabled:focus {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin: 0.1em 0;
 }
 
 .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .main-traits .item.active {
@@ -224,6 +226,7 @@ textarea:disabled:focus {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin: 0.1em 0;
 }
 
 .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .secondary-traits .item.active {
@@ -260,8 +263,6 @@ textarea:disabled:focus {
   box-shadow: 0 0 8px grey;
   padding: .1em .3em;
   background-color: white;
-  margin-left: 14px;
-  margin-right: 5px;
 }
 
 .hardboiled.actor header.sheet-header .chars-attribs .characteristics {
@@ -318,8 +319,59 @@ textarea:disabled:focus {
   font-size: smaller;
 }
 
+.hardboiled.actor .tab.skills {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.hardboiled.actor .tab.skills ol.items-list {
+  width: 30%;
+}
+
+.hardboiled.actor .tab.skills ol.items-list li.skillrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: centr;
+  -ms-flex-align: centr;
+  align-items: centr;
+}
+
+.hardboiled.actor .tab.skills .item-value input {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 2em;
+}
+
+.hardboiled.actor .tab.skills .item-name {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
 .hardboiled.item .window-content {
   background: url(images/background-top-plain.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
+  padding: 12px 5px 0 16px;
 }
 
 .hardboiled.item header.sheet-header {
@@ -343,7 +395,6 @@ textarea:disabled:focus {
   -ms-flex-pack: center;
   justify-content: center;
   margin-bottom: 10px;
-  padding: 10px 2px 0 8px;
 }
 
 .hardboiled.item header.sheet-header .profile-img {
@@ -398,18 +449,6 @@ textarea:disabled:focus {
 
 .hardboiled.item header.sheet-header .header-fields input[type="text"] {
   margin: 0;
-}
-
-.hardboiled.item .sheet-body {
-  border-width: 10px 1px;
-  border-color: darkred;
-  border-style: solid;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 8px grey;
-  box-shadow: 0 0 8px grey;
-  padding: 0.5em;
-  background-color: white;
-  margin: 0px 2px 0 8px;
 }
 
 .hardboiled label, .hardboiled label.char-label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success, .hardboiled .tabs, .hardboiled .tabs .item.active {
@@ -599,7 +638,7 @@ textarea:disabled:focus {
 .hardboiled .tabs .item {
   line-height: 40px;
   margin: 0 20px;
-  border-width: 10px 10px 0 10px;
+  border-width: 10px 1px 0 1px;
   border-color: transparent;
   border-style: solid;
   border-radius: 5px 5px 0 0;
@@ -613,11 +652,22 @@ textarea:disabled:focus {
 
 .hardboiled .tabs .item.active {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  border-width: 10px 10px 0 10px;
+  border-width: 10px 1px 0 1px;
   border-color: darkred;
   border-style: solid;
   border-radius: 5px 5px 0 0;
   background-color: #fff;
+}
+
+.hardboiled .sheet-body {
+  border-width: 10px 1px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: 0.5em;
+  background-color: white;
 }
 
 .hardboiled nav.sheet-tabs.tabs {
@@ -641,7 +691,6 @@ textarea:disabled:focus {
   height: 30px;
   line-height: 24px;
   padding: 3px 0;
-  border-bottom: 1px solid #BBB;
 }
 
 .hardboiled .items-list .item .item-image {
@@ -659,11 +708,27 @@ textarea:disabled:focus {
   margin: 0;
 }
 
+.hardboiled .items-list .item-value {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  text-align: right;
+}
+
 .hardboiled .items-list .item-controls {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 86px;
-  flex: 0 0 86px;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   text-align: right;
+}
+
+.hardboiled .items-list .item-button {
+  text-align: center;
+  border: 1px solid darkred;
+  border-radius: 3px;
+  background-color: lightgray;
+  width: 100%;
+  display: block;
 }
 
 .dialog .hardboiled label, .dialog .hardboiled div.result label.roll-result, .dialog .hardboiled div.result label.roll-success, .dialog .hardboiled .tabs, .dialog .hardboiled .tabs .item.active {

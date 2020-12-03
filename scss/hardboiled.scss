@@ -5,10 +5,11 @@
 @import 'utils/variables';
 
 // Global styles
-@import 'global/formatting';
+//@import 'global/formatting';
 
 // Styles limited to hardboiled sheets
 .hardboiled {
+	@import 'components/formatting';
 	@import 'components/forms';
 	@import 'components/chat';
 	@import 'components/resource';
