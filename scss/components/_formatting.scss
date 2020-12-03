@@ -16,11 +16,11 @@
 //
 input[type="text"],
 select {
-	height: auto;
+	height: calc(100% - 2px);
 	border: 1px solid transparent;
 	background: rgba(0, 0, 0, 0.02);
 	color: #191813;
-	margin: 0.2em;
+	margin: 0 0.2em;
 }
 
 input[type="text"]:hover,
