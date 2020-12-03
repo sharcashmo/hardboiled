@@ -1,34 +1,35 @@
 {
-  "name": "hardboiled",
-  "title": "Hardboiled",
-  "description": "The Hardboiled system for FoundryVTT!",
-  "version": "0.0.2",
-  "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.7",
-  "templateVersion": 2,
-  "author": "sharcashmo",
-  "esmodules": ["module/hardboiled.js"],
-  "styles": ["css/hardboiled.css"],
-  "scripts": [],
-  "packs": [],
-  "languages": [
-    {
-      "lang": "es",
-      "name": "Español",
-      "path": "lang/es.json"
-    },
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power",
-  "url": "https://github.com/sharcashmo/hardboiled",
-  "manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
-  "download": "",
-  "license": "LICENSE.txt"
+	"name": "hardboiled",
+	"title": "Hardboiled",
+	"description": "The Hardboiled system for FoundryVTT!",
+	"version": "0.0.3",
+	"minimumCoreVersion": "0.7.5",
+	"compatibleCoreVersion": "0.7.7",
+	"templateVersion": 2,
+	"author": "sharcashmo",
+	"esmodules": ["module/hardboiled.js"],
+	"styles": ["css/hardboiled.css"],
+	"scripts": [],
+	"packs": [],
+	"languages": [
+		{
+			"lang": "es",
+			"name": "Español",
+			"path": "lang/es.json"
+		},
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"gridDistance": 5,
+	"gridUnits": "ft",
+	"primaryTokenAttribute": "health",
+	"secondaryTokenAttribute": "power",
+	"url": "https://github.com/sharcashmo/hardboiled",
+	"manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
+	"license": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE.txt",
+	"readme": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/README.md",
+	"download": ""
 }
