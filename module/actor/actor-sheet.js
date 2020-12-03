@@ -10,8 +10,8 @@ export class HardboiledActorSheet extends ActorSheet {
 		return mergeObject(super.defaultOptions, {
 			classes: ["hardboiled", "sheet", "actor"],
 			template: "systems/hardboiled/templates/actor/actor-sheet.html",
-			width: 600,
-			height: 600,
+			width: 672,
+			height: 765,
 			tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }]
 		});
 	}
