@@ -4,7 +4,7 @@
 	"description": "The Hardboiled system for FoundryVTT!",
 	"version": "0.0.3",
 	"minimumCoreVersion": "0.7.5",
-	"compatibleCoreVersion": "0.7.7",
+	"compatibleCoreVersion": "0.7.8",
 	"templateVersion": 2,
 	"author": "sharcashmo",
 	"esmodules": ["module/hardboiled.js"],
