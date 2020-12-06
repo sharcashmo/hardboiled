@@ -238,56 +238,97 @@
 // Item skill sheet
 //
 @include unify-parent(".item") {
+	// Initial size is also the minimum one
+	min-width: 520px;
+	min-height: 480px;
 
 	.window-content {
+		// Background and background related padding
 		background: url(images/background-top-plain.png) top left/100% no-repeat,
-		url(images/background-bottom.png) bottom left/100% no-repeat,
-		url(images/background-bg.png) left/2.7% repeat-y,
-		$c-paper;
-		padding: 12px 5px 0 16px;
-	}
-	
-	header.sheet-header {
-		flex: 0 0 auto;
-		overflow: hidden;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		justify-content: center;
-		margin-bottom: 10px;
+			url(images/background-bottom.png) bottom left/100% no-repeat,
+			url(images/background-bg.png) left/2.7% repeat-y,
+			$c-paper;
+		padding: 12px 5px 12px 16px;
 		
-		.profile-img {
-			flex: 0 0 55px;
-			height: 55px;
-			width: 55px;
-			object-fit: cover;
-			object-position: top;
-			background-color: white;
-			transform: rotate(-5deg);
-			box-shadow: 0 0 8px grey;
-			border: 5px solid $c-mustard;
-			border-radius: 5px;
-		}
-			
-		.header-fields {
+		form {
+			// Flex properties
+			// It shows sheet-header, sheet-tabs and sheet-body, only the
+			// last one will expand
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			flex-wrap: nowrap;
-			align-items: center;
-			justify-content: flex-start;
-			flex: 1 1 auto;
-			border-width: 10px 1px;
-			border-color: $c-mustard;
-			border-style: solid;
-			border-radius: 5px;
-			box-shadow: 0 0 8px grey;
-			padding: 0 .3em;
-			background-color: white;
-			font-size: xx-large;
-			
-			input[type="text"] {
-				margin: 0;
+			justify-content: stretch;
+	
+			header.sheet-header {
+				// How it is displayed in form flex. Header does not stretch
+				flex: 0 0 auto;
+				// Its own flex properties
+				// It has a picture and the item name
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				align-items: stretch;
+				margin-bottom: 10px;
+				
+				.header-fields {
+					// This field does not stretch
+					flex: 0 0 auto;
+					// It is shown as a row with the picture and the name
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: center;
+					// Header box properties
+					border-width: 10px 1px;
+					border-color: $c-mustard;
+					border-style: solid;
+					border-radius: 5px;
+					box-shadow: 0 0 8px grey;
+					padding: 0 .3em;
+					background-color: white;
+					// Header font size
+					font-size: xx-large;
+				
+					.profile-img {
+						// Image is 55px size
+						flex: 0 0 55px;
+						height: 55px;
+						width: 55px;
+						// How item image is fit into the square
+						object-fit: cover;
+						object-position: top;
+						// and its rotation
+						transform: rotate(-5deg);
+						// Picture box properties
+						background-color: white;
+						box-shadow: 0 0 8px grey;
+						border: 5px solid $c-mustard;
+						border-radius: 5px;
+					}
+					
+					input[type="text"] {
+						flex: 1 1 auto;
+						margin: 0;
+					}
+				}
+			}
+	
+			.sheet-body {
+				// This block stretches
+				flex: 1 0 auto;
+				// Sheet body is organized in a column
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				align-items: stretch;
+				
+				div.editor {
+					// This block stretches
+					flex: 1 0 auto;
+				}
 			}
 		}
 	}
