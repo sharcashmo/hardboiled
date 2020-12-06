@@ -1,25 +1,27 @@
 .items-list {
 	list-style: none;
-	margin: 7px 0;
+	margin: 0;
 	padding: 0;
 	overflow-y: auto;
+	font-size: smaller;
 	
 	.item-header {
 		font-weight: bold;
 	}
 	
 	.item {
-		height: 30px;
-		line-height: 24px;
-		padding: 3px 0;
+		height: 22px;
+		line-height: 20px;
 		
 		.item-image {
-			flex: 0 0 24px;
-			margin-right: 5px;
+			flex: 0 0 20px;
+			margin-right: 3px;
 		}
 		
 		img {
 			display: block;
+			width: 20px;
+			height: 20px;
 		}
 	}
 	
@@ -35,6 +37,7 @@
 	.item-controls {
 		flex: 0 0 auto;
 		text-align: right;
+		margin-left: 3px;
 	}
 	
 	.item-button {

@@ -1,55 +1,59 @@
-// Import Modules
+//Import Modules
 import { HardboiledActor } from "./actor/actor.js";
 import { HardboiledActorSheet } from "./actor/actor-sheet.js";
 import { HardboiledItem } from "./item/item.js";
 import { HardboiledItemSheet } from "./item/item-sheet.js";
+import { preloadHandlebarsTemplates } from "./templates.js";
 
 Hooks.once('init', async function() {
 
-  game.hardboiled = {
-    HardboiledActor,
-    HardboiledItem,
-    rollItemMacro
-  };
+	game.hardboiled = {
+			HardboiledActor,
+			HardboiledItem,
+			rollItemMacro
+	};
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: "@characteristics.dextery.value + @characteristics.insight.value / 100",
-    decimals: 4
-  };
+	/**
+	 * Set an initiative formula for the system
+	 * @type {String}
+	 */
+	CONFIG.Combat.initiative = {
+			formula: "@characteristics.dextery.value + @characteristics.insight.value / 100",
+			decimals: 4
+	};
 
-  // Define custom Entity classes
-  CONFIG.Actor.entityClass = HardboiledActor;
-  CONFIG.Item.entityClass = HardboiledItem;
+	// Define custom Entity classes
+	CONFIG.Actor.entityClass = HardboiledActor;
+	CONFIG.Item.entityClass = HardboiledItem;
 
-  // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("hardboiled", HardboiledActorSheet, { makeDefault: true });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("hardboiled", HardboiledItemSheet, { makeDefault: true });
+	// Register sheet application classes
+	Actors.unregisterSheet("core", ActorSheet);
+	Actors.registerSheet("hardboiled", HardboiledActorSheet, { makeDefault: true });
+	
+	Items.unregisterSheet("core", ItemSheet);
+	Items.registerSheet("hardboiled", HardboiledItemSheet, { makeDefault: true });
+	
+	preloadHandlebarsTemplates();
 
-  // If you need to add Handlebars helpers, here are a few useful examples:
-  Handlebars.registerHelper('concat', function() {
-    var outStr = '';
-    for (var arg in arguments) {
-      if (typeof arguments[arg] != 'object') {
-        outStr += arguments[arg];
-      }
-    }
-    return outStr;
-  });
+	// If you need to add Handlebars helpers, here are a few useful examples:
+	Handlebars.registerHelper('concat', function() {
+		var outStr = '';
+		for (var arg in arguments) {
+			if (typeof arguments[arg] != 'object') {
+				outStr += arguments[arg];
+			}
+		}
+		return outStr;
+	});
 
-  Handlebars.registerHelper('toLowerCase', function(str) {
-    return str.toLowerCase();
-  });
+	Handlebars.registerHelper('toLowerCase', function(str) {
+		return str.toLowerCase();
+	});
 });
 
 Hooks.once("ready", async function() {
-  // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createHardboiledMacro(data, slot));
+	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+	Hooks.on("hotbarDrop", (bar, data, slot) => createHardboiledMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -64,24 +68,24 @@ Hooks.once("ready", async function() {
  * @returns {Promise}
  */
 async function createHardboiledMacro(data, slot) {
-  if (data.type !== "Item") return;
-  if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
-  const item = data.data;
+	if (data.type !== "Item") return;
+	if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
+	const item = data.data;
 
-  // Create the macro command
-  const command = `game.hardboiled.rollItemMacro("${item.name}");`;
-  let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
-  if (!macro) {
-    macro = await Macro.create({
-      name: item.name,
-      type: "script",
-      img: item.img,
-      command: command,
-      flags: { "hardboiled.itemMacro": true }
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
+	// Create the macro command
+	const command = `game.hardboiled.rollItemMacro("${item.name}");`;
+	let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
+	if (!macro) {
+		macro = await Macro.create({
+			name: item.name,
+			type: "script",
+			img: item.img,
+			command: command,
+			flags: { "hardboiled.itemMacro": true }
+		});
+	}
+	game.user.assignHotbarMacro(macro, slot);
+	return false;
 }
 
 /**
@@ -91,13 +95,13 @@ async function createHardboiledMacro(data, slot) {
  * @return {Promise}
  */
 function rollItemMacro(itemName) {
-  const speaker = ChatMessage.getSpeaker();
-  let actor;
-  if (speaker.token) actor = game.actors.tokens[speaker.token];
-  if (!actor) actor = game.actors.get(speaker.actor);
-  const item = actor ? actor.items.find(i => i.name === itemName) : null;
-  if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+	const speaker = ChatMessage.getSpeaker();
+	let actor;
+	if (speaker.token) actor = game.actors.tokens[speaker.token];
+	if (!actor) actor = game.actors.get(speaker.actor);
+	const item = actor ? actor.items.find(i => i.name === itemName) : null;
+	if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
 
-  // Trigger the item roll
-  return item.roll();
+	// Trigger the item roll
+	return item.roll();
 }

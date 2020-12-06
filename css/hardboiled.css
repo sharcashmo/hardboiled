@@ -3,11 +3,6 @@
   src: url("fonts/DecoturaICG.ttf");
 }
 
-@font-face {
-  font-family: hardboiled-text;
-  src: url("fonts/Kalam-Regular.ttf");
-}
-
 .hardboiled .rollable:hover, .hardboiled .rollable:focus {
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -51,16 +46,17 @@
   outline: none !important;
 }
 
-.hardboiled.actor .window-content {
-  background: url(images/background-top.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
-  padding: 40px 5px 0 20px;
+.hardboiled.actor {
+  min-width: 672px;
+  min-height: 765px;
 }
 
-.hardboiled.actor header.sheet-header {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  overflow: hidden;
+.hardboiled.actor .window-content {
+  background: url(images/background-top.png) top left/100% no-repeat, url(images/background-bottom.png) bottom left/100% no-repeat, url(images/background-bg.png) left/2.7% repeat-y, #f5e1bf;
+  padding: 40px 5px 15px 20px;
+}
+
+.hardboiled.actor .window-content form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,16 +66,37 @@
   flex-direction: column;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+}
+
+.hardboiled.actor .window-content form header.sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   overflow: visible;
 }
 
-.hardboiled.actor header.sheet-header .traits {
+.hardboiled.actor .window-content form header.sheet-header .traits {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,16 +106,16 @@
   flex-direction: row;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   margin-bottom: 10px;
 }
 
-.hardboiled.actor header.sheet-header .traits .profile-img {
+.hardboiled.actor .window-content form header.sheet-header .traits .profile-img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
@@ -108,35 +125,35 @@
   object-fit: cover;
   -o-object-position: top;
   object-position: top;
-  background-color: white;
   -webkit-transform: rotate(-5deg);
   -ms-transform: rotate(-5deg);
   transform: rotate(-5deg);
-  -webkit-box-shadow: 0 0 8px grey;
-  box-shadow: 0 0 8px grey;
+  background-color: white;
   border: 5px solid #d0a72e;
   border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   border-width: 10px 1px;
   border-color: #d0a72e;
   border-style: solid;
@@ -148,25 +165,14 @@
   font-size: large;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields input {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields input {
   font-size: smaller;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 3;
-  -ms-flex: 3 1 auto;
-  flex: 3 1 auto;
-  margin-right: .3em;
-}
-
-.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits div {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,35 +180,40 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin: 0.1em 0;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .main-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .main-traits .item.active {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div label, .hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div .tabs, .hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div .tabs .item.active, .hardboiled.actor .tabs .window-content form header.sheet-header .traits .trait-fields div .item.active {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits input {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields .main-traits input[data-dtype="Number"] {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div input[data-dtype="Number"] {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   width: 2.2em;
 }
 
-.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits {
+.hardboiled.actor .window-content form header.sheet-header .chars-attribs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,51 +221,12 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-}
-
-.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 0.1em 0;
-}
-
-.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits label, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs, .hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits .tabs .item.active, .hardboiled.actor .tabs header.sheet-header .traits .trait-fields .secondary-traits .item.active {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-
-.hardboiled.actor header.sheet-header .traits .trait-fields .secondary-traits input {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-}
-
-.hardboiled.actor header.sheet-header .chars-attribs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   border-width: 10px 1px;
   border-color: darkred;
   border-style: solid;
@@ -265,7 +237,10 @@
   background-color: white;
 }
 
-.hardboiled.actor header.sheet-header .chars-attribs .characteristics {
+.hardboiled.actor .window-content form header.sheet-header .chars-attribs .characteristics {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -275,16 +250,16 @@
   flex-direction: row;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: x-large;
 }
 
-.hardboiled.actor header.sheet-header .chars-attribs .characteristics input {
+.hardboiled.actor .window-content form header.sheet-header .chars-attribs .characteristics input {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -292,7 +267,10 @@
   font-size: smaller;
 }
 
-.hardboiled.actor header.sheet-header .chars-attribs .attributes {
+.hardboiled.actor .window-content form header.sheet-header .chars-attribs .attributes {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,16 +280,16 @@
   flex-direction: row;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: large;
 }
 
-.hardboiled.actor header.sheet-header .chars-attribs .attributes input {
+.hardboiled.actor .window-content form header.sheet-header .chars-attribs .attributes input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
@@ -319,26 +297,11 @@
   font-size: smaller;
 }
 
-.hardboiled.actor .tab.skills {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.hardboiled.actor .tab.skills ol.items-list {
-  width: 30%;
-}
-
-.hardboiled.actor .tab.skills ol.items-list li.skillrow {
+.hardboiled.actor .window-content form .tab.skills {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -346,27 +309,77 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.hardboiled.actor .window-content form .tab.skills ol.items-list {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 70%;
+  flex: 0 0 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -webkit-box-align: centr;
-  -ms-flex-align: centr;
-  align-items: centr;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border-width: 0 2px 0 0;
+  border-color: darkred;
+  border-style: solid;
+  padding: 0 2px 0 0;
 }
 
-.hardboiled.actor .tab.skills .item-value input {
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-name {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-value input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
   width: 2em;
 }
 
-.hardboiled.actor .tab.skills .item-name {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow + li.skillrow {
+  margin: 0 5px;
 }
 
 .hardboiled.item .window-content {
@@ -463,18 +476,6 @@
 .hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover, .hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover {
   color: darkred;
   text-shadow: 0 0 10px black;
-}
-
-.hardboiled .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
-
-.hardboiled .sheet-body,
-.hardboiled .sheet-body .tab,
-.hardboiled .sheet-body .tab .editor {
-  height: 100%;
 }
 
 .hardboiled .chat-card {
@@ -633,6 +634,10 @@
   color: #d0a72e;
   height: 40px;
   font-size: x-large;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  z-index: 1;
 }
 
 .hardboiled .tabs .item {
@@ -659,15 +664,9 @@
   background-color: #fff;
 }
 
-.hardboiled .sheet-body {
-  border-width: 10px 1px;
-  border-color: darkred;
-  border-style: solid;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 8px grey;
-  box-shadow: 0 0 8px grey;
-  padding: 0.5em;
-  background-color: white;
+.hardboiled .tabs .item.active:hover {
+  color: darkred;
+  text-shadow: 0 0 10px black;
 }
 
 .hardboiled nav.sheet-tabs.tabs {
@@ -676,11 +675,40 @@
   height: auto;
 }
 
+.hardboiled .sheet-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 0;
+  border-width: 10px 1px;
+  border-color: darkred;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px grey;
+  box-shadow: 0 0 8px grey;
+  padding: 0.5em;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
 .hardboiled .items-list {
   list-style: none;
-  margin: 7px 0;
+  margin: 0;
   padding: 0;
   overflow-y: auto;
+  font-size: smaller;
 }
 
 .hardboiled .items-list .item-header {
@@ -688,20 +716,21 @@
 }
 
 .hardboiled .items-list .item {
-  height: 30px;
-  line-height: 24px;
-  padding: 3px 0;
+  height: 22px;
+  line-height: 20px;
 }
 
 .hardboiled .items-list .item .item-image {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 24px;
-  flex: 0 0 24px;
-  margin-right: 5px;
+  -ms-flex: 0 0 20px;
+  flex: 0 0 20px;
+  margin-right: 3px;
 }
 
 .hardboiled .items-list .item img {
   display: block;
+  width: 20px;
+  height: 20px;
 }
 
 .hardboiled .items-list .item-name {
@@ -720,6 +749,7 @@
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   text-align: right;
+  margin-left: 3px;
 }
 
 .hardboiled .items-list .item-button {

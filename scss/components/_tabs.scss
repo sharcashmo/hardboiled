@@ -4,6 +4,8 @@
 	color: $c-mustard;
 	height: 40px;
 	font-size: x-large;
+	flex: 0 0 auto;
+	z-index: 1;
 	
 	.item {
 		line-height: 40px;
@@ -26,11 +28,26 @@
 			border-style: solid;
 			border-radius: 5px 5px 0 0;
 			background-color: $c-white;
+		
+			&:hover {
+				color: darkred;
+				text-shadow: 0 0 10px black;
+			}
 		}
 	}
 }
+
+nav.sheet-tabs.tabs {
+	border: 0;
+	margin: 4px 0 -10px 0;
+	height: auto;
+}
 	
 .sheet-body {
+	// Sheet body is the block to stretch
+	flex: 1 0 auto;
+	height: 0;    // height is 0px so it's actual size is got from stretching
+	// Text box properties
 	border-width: 10px 1px;
 	border-color: darkred;
 	border-style: solid;
@@ -38,10 +55,9 @@
 	box-shadow: 0 0 8px grey;
 	padding: 0.5em;
 	background-color: white;
-}
-
-nav.sheet-tabs.tabs {
-	border: 0;
-	margin: 4px 0 -10px 0;
-	height: auto;
+	// Content will be in a row
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
 }

@@ -5,33 +5,31 @@
 		<div class="traits">
 			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
 			<div class="trait-fields">
-				<div class="main-traits">
-					<div>
-						<label>{{localize 'Hardboiled.Name'}}</label>
-						<input name="name" type="text" data-dtype="String" value="{{actor.name}}" placeholder="{{localize 'Hardboiled.Name'}}"/>
-						<label>{{localize 'Hardboiled.Profession'}}</label>
-						<input name="data.profession" type="text" data-dtype="String" value="{{data.profession}}" placeholder="{{localize 'Hardboiled.Profession'}}"/>
-					</div>
-					<div>
-						<label>{{localize 'Hardboiled.Nationality'}}</label>
-						<input name="data.nationality" type="text" data-dtype="String" value="{{data.nationality}}" placeholder="{{localize 'Hardboiled.Nationality'}}"/>
-						<label>{{localize 'Hardboiled.HomeTown'}}</label>
-						<input name="data.homeTown" type="text" data-dtype="String" value="{{data.homeTown}}" placeholder="{{localize 'Hardboiled.HomeTown'}}"/>
-					</div>
-					<div>
-						<label>{{localize 'Hardboiled.Age'}}</label>
-						<input name="data.age" type="text" data-dtype="Number" value="{{data.age}}" placeholder="{{localize 'Hardboiled.Age'}}"/>
-						<label>{{localize 'Hardboiled.Height'}}</label>
-						<input name="data.height" type="text" data-dtype="Number" value="{{data.height}}" placeholder="{{localize 'Hardboiled.Height'}}"/>
-						<label>{{localize 'Hardboiled.Weight'}}</label>
-						<input name="data.weight" type="text" data-dtype="Number" value="{{data.weight}}" placeholder="{{localize 'Hardboiled.Weight'}}"/>
-						<label>{{localize 'Hardboiled.Genre'}}</label>
-						<input name="data.genre" type="text" data-dtype="String" value="{{data.genre}}" placeholder="{{localize 'Hardboiled.Genre'}}"/>
-						<label>{{localize 'Hardboiled.Level'}}</label>
-						<input name="data.level" type="text" data-dtype="Number" value="{{data.level}}" placeholder="{{localize 'Hardboiled.Level'}}"/>
-						<label>{{localize 'Hardboiled.Experience'}}</label>
-						<input name="data.experience" type="text" data-dtype="Number" value="{{data.experience}}" placeholder="{{localize 'Hardboiled.Experience'}}"/>
-					</div>
+				<div>
+					<label>{{localize 'Hardboiled.Name'}}</label>
+					<input name="name" type="text" data-dtype="String" value="{{actor.name}}" placeholder="{{localize 'Hardboiled.Name'}}"/>
+					<label>{{localize 'Hardboiled.Profession'}}</label>
+					<input name="data.profession" type="text" data-dtype="String" value="{{data.profession}}" placeholder="{{localize 'Hardboiled.Profession'}}"/>
+				</div>
+				<div>
+					<label>{{localize 'Hardboiled.Nationality'}}</label>
+					<input name="data.nationality" type="text" data-dtype="String" value="{{data.nationality}}" placeholder="{{localize 'Hardboiled.Nationality'}}"/>
+					<label>{{localize 'Hardboiled.HomeTown'}}</label>
+					<input name="data.homeTown" type="text" data-dtype="String" value="{{data.homeTown}}" placeholder="{{localize 'Hardboiled.HomeTown'}}"/>
+				</div>
+				<div>
+					<label>{{localize 'Hardboiled.Age'}}</label>
+					<input name="data.age" type="text" data-dtype="Number" value="{{data.age}}" placeholder="{{localize 'Hardboiled.Age'}}"/>
+					<label>{{localize 'Hardboiled.Height'}}</label>
+					<input name="data.height" type="text" data-dtype="Number" value="{{data.height}}" placeholder="{{localize 'Hardboiled.Height'}}"/>
+					<label>{{localize 'Hardboiled.Weight'}}</label>
+					<input name="data.weight" type="text" data-dtype="Number" value="{{data.weight}}" placeholder="{{localize 'Hardboiled.Weight'}}"/>
+					<label>{{localize 'Hardboiled.Genre'}}</label>
+					<input name="data.genre" type="text" data-dtype="String" value="{{data.genre}}" placeholder="{{localize 'Hardboiled.Genre'}}"/>
+					<label>{{localize 'Hardboiled.Level'}}</label>
+					<input name="data.level" type="text" data-dtype="Number" value="{{data.level}}" placeholder="{{localize 'Hardboiled.Level'}}"/>
+					<label>{{localize 'Hardboiled.Experience'}}</label>
+					<input name="data.experience" type="text" data-dtype="Number" value="{{data.experience}}" placeholder="{{localize 'Hardboiled.Experience'}}"/>
 				</div>
 			</div>
 		</div>
@@ -92,10 +90,10 @@
 				</li>
 				{{#each data.skills as |item id|}}
 				<li class="item skillrow" data-item-id="{{item._id}}">
-					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-					<div class="item-name">{{item.name}}</div>
+					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
+					<div class="item-name rollable">{{item.name}}</div>
 					<div class="item-value">
-						<input name="data.skills.{{id}}.value" type="text" dtype="Number" value="{{item.value}}" />%
+						<input class="skill-value" type="text" dtype="Number" value="{{item.data.value}}" />%
 					</div>
 					<div class="item-controls">
 						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
