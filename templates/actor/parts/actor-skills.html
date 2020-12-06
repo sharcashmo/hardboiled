@@ -1,0 +1,18 @@
+<ol class="items-list">
+	<li class="item skillrow item-header">
+		<a class="item-button item-create" title="{{localize "Hardboiled.AddSkill"}}" data-type="skill">{{localize "Hardboiled.AddSkill"}}</a>
+	</li>
+	{{#each data.skills as |item id|}}
+	<li class="item skillrow" data-item-id="{{item._id}}">
+		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
+		<div class="item-name rollable">{{item.name}}</div>
+		<div class="item-value">
+			<input class="skill-value" type="text" dtype="Number" value="{{item.data.value}}" />%
+		</div>
+		<div class="item-controls">
+			<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+			<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+		</div>
+	</li>
+	{{/each}}
+</ol>
