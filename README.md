@@ -8,6 +8,15 @@ This is a minimal system created to play some Hardboiled adventures at Horror CÃ
 
 Iâ€™ve just provided some basics skills that you can use.
 
+## License information
+
+This software is released under MIT license. See :
+<https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE>
+
+Hardboiled is a roleplaying game written by Pedro Gil and Jaime Conill Querol, and released
+under Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0). See
+<https://lamarcadeleste.com/hardboiled>
+
 ## Installation/usage
 
 Install in foundry VTT from the Game Systems tab using the following manifest :  
