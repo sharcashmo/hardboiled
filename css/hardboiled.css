@@ -320,9 +320,6 @@
 }
 
 .hardboiled.actor .window-content form .tab.skills ol.items-list {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 70%;
-  flex: 0 0 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -338,13 +335,9 @@
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  border-width: 0 2px 0 0;
-  border-color: darkred;
-  border-style: solid;
-  padding: 0 2px 0 0;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow {
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -365,13 +358,13 @@
   align-items: center;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-name {
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-name, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow .item-name {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-value input {
+.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-value input, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow .item-value input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
@@ -380,6 +373,23 @@
 
 .hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow + li.skillrow {
   margin: 0 5px;
+}
+
+.hardboiled.actor .window-content form .tab.skills ol.items-list:first-of-type {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 70%;
+  flex: 0 0 70%;
+  border-width: 0 2px 0 0;
+  border-color: darkred;
+  border-style: solid;
+  padding: 0 2px 0 0;
+}
+
+.hardboiled.actor .window-content form .tab.skills ol.items-list:last-of-type {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  padding: 0 0 0 6px;
 }
 
 .hardboiled.item {

@@ -178,10 +178,9 @@ export class HardboiledActorSheet extends ActorSheet {
 		if (dataset.attributecheck) {
 			const usage = await RollDialog.create();
 			let diceModifier = 0;
-			if( usage) {
+			if (usage) {
 				diceModifier = usage.get('modifier') * 10;
 			}
-			console.log("Checking "+ dataset.attributecheck);
 			const template = 'systems/hardboiled/templates/chat/basic-check.html';
 			const speaker = ChatMessage.getSpeaker(this.actor);
 			const roll = new Roll("1d100").roll();
@@ -200,9 +199,7 @@ export class HardboiledActorSheet extends ActorSheet {
 					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
 
-			console.log(this.actor);
-			let html = await renderTemplate(template, context);
-			console.log(html);
+			const html = await renderTemplate(template, context);
 			const chatMessage = await ChatMessage.create({
 				speaker,
 				type: CHAT_MESSAGE_TYPES.ROLL,
@@ -214,17 +211,13 @@ export class HardboiledActorSheet extends ActorSheet {
 		else if (dataset.skillcheck) {
 			const usage = await RollDialog.create();
 			let diceModifier = 0;
-			if( usage) {
+			if (usage) {
 				diceModifier = usage.get('modifier') * 10;
 			}
 			const template = 'systems/hardboiled/templates/chat/basic-check.html';
 			const speaker = ChatMessage.getSpeaker(this.actor);
 			const roll = new Roll("1d100").roll();
-			let skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
-			console.log(event.currentTarget.closest('.item').dataset.itemId);
-			console.log(skill.data);
-			console.log(skill.data.data.value);
-			console.log(skill.data.name);
+			const skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
 			const context = {
 					cssClass: "hardboiled",
 					actor: this.actor,
@@ -240,14 +233,37 @@ export class HardboiledActorSheet extends ActorSheet {
 					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
 
-			console.log(this.actor);
-			let html = await renderTemplate(template, context);
-			console.log(html);
+			const html = await renderTemplate(template, context);
 			const chatMessage = await ChatMessage.create({
 				speaker,
 				type: CHAT_MESSAGE_TYPES.ROLL,
 				roll: roll,
 				rollMode: game.settings.get("core", "rollMode"),
+				content: html
+			});
+		}
+		else if (dataset.talentcheck) {
+			const template = 'systems/hardboiled/templates/chat/basic-description.html';
+			const speaker = ChatMessage.getSpeaker(this.actor);
+			const talent = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
+			console.log(event.currentTarget.closest('.item').dataset.itemId);
+			console.log(talent.data);
+			console.log(talent.data.data.description);
+			console.log(talent.data.name);
+			const context = {
+					cssClass: "hardboiled",
+					actor: this.actor,
+					describe: {
+						name: talent.data.name,
+						description: talent.data.data.description
+					}
+			};
+
+			console.log(this.actor);
+			const html = await renderTemplate(template, context);
+			console.log(html);
+			const chatMessage = await ChatMessage.create({
+				speaker,
 				content: html
 			});
 		}

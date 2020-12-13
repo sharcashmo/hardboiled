@@ -15,7 +15,6 @@ export class HardboiledActor extends Actor {
 
 		// Make separate methods for each Actor type (character, npc, etc.) to keep
 		// things organized.
-		console.log("Aquí");
 		if (actorData.type === 'character') this._prepareCharacterData(actorData);
 	}
 
@@ -25,9 +24,6 @@ export class HardboiledActor extends Actor {
 	_prepareCharacterData(actorData) {
 		const data = actorData.data;
 		
-		console.log("Actor data is ");
-		console.log(actorData);
-
 		// List of skills
 		data.skills = [];
 		for (let [key, skill] of Object.entries(actorData.items)) {
@@ -35,6 +31,15 @@ export class HardboiledActor extends Actor {
 				data.skills.push(skill);
 			}
 		}
+		
+		// List of talents
+		data.talents = [];
+		for (let [key, talent] of Object.entries(actorData.items)) {
+			if (talent.type === 'talent') {
+				data.talents.push(talent);
+			}
+		}
+		
 
 		// Loop through ability scores, and add their modifiers to our sheet output.
 //		for (let [key, ability] of Object.entries(data.abilities)) {

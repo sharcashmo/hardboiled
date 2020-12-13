@@ -191,21 +191,14 @@
 				align-items: stretch;
 				
 				ol.items-list {
-					// Skills take 70% space
-					flex: 0 0 70%;
 					// Skills are shown in two columns (wrapped) 
 					display: flex;
 					flex-direction: column;
 					flex-wrap: wrap;
 					justify-content: flex-start;
 					align-items: stretch;
-					// Border to separate Talents from Skills
-					border-width: 0 2px 0 0;
-					border-color: darkred;
-					border-style: solid;
-					padding: 0 2px 0 0;
 					
-					li.skillrow {
+					li.skillrow, li.talentrow {
 						flex: 0 0 auto;
 						// Every row is a row of label, values and controls
 						display: flex;
@@ -228,6 +221,23 @@
 					li.skillrow + li.skillrow {
 						margin: 0 5px;
 					}
+				}
+				
+				ol.items-list:first-of-type {
+					// Skills take 70% space
+					flex: 0 0 70%;
+					// Border to separate Talents from Skills
+					border-width: 0 2px 0 0;
+					border-color: darkred;
+					border-style: solid;
+					padding: 0 2px 0 0;
+				}
+				
+				ol.items-list:last-of-type {
+					// Talents take 70% space
+					flex: 0 0 30%;
+					// Border to separate Talents from Skills
+					padding: 0 0 0 6px;
 				}
 			}
 		}
