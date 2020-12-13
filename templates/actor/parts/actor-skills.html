@@ -5,7 +5,7 @@
 	{{#each data.skills as |item id|}}
 	<li class="item skillrow" data-item-id="{{item._id}}">
 		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
-		<div class="item-name rollable">{{item.name}}</div>
+		<div class="item-name rollable" data-skillCheck="{{item._id}}">{{item.name}}</div>
 		<div class="item-value">
 			<input class="skill-value" type="text" dtype="Number" value="{{item.data.value}}" />%
 		</div>

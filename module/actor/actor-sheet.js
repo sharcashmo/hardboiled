@@ -193,7 +193,50 @@ export class HardboiledActorSheet extends ActorSheet {
 						success: (roll.results[0] <= (this.actor.data.data.characteristics[dataset.attributecheck].value + diceModifier) ?
 								true : false)
 					},
-					attribute: this.actor.data.data.characteristics[dataset.attributecheck],
+					checking: {
+						name: game.i18n.localize(this.actor.data.data.characteristics[dataset.attributecheck].label),
+						value: this.actor.data.data.characteristics[dataset.attributecheck].value,
+					},
+					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
+			};
+
+			console.log(this.actor);
+			let html = await renderTemplate(template, context);
+			console.log(html);
+			const chatMessage = await ChatMessage.create({
+				speaker,
+				type: CHAT_MESSAGE_TYPES.ROLL,
+				roll: roll,
+				rollMode: game.settings.get("core", "rollMode"),
+				content: html
+			});
+		}
+		else if (dataset.skillcheck) {
+			const usage = await RollDialog.create();
+			let diceModifier = 0;
+			if( usage) {
+				diceModifier = usage.get('modifier') * 10;
+			}
+			const template = 'systems/hardboiled/templates/chat/basic-check.html';
+			const speaker = ChatMessage.getSpeaker(this.actor);
+			const roll = new Roll("1d100").roll();
+			let skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
+			console.log(event.currentTarget.closest('.item').dataset.itemId);
+			console.log(skill.data);
+			console.log(skill.data.data.value);
+			console.log(skill.data.name);
+			const context = {
+					cssClass: "hardboiled",
+					actor: this.actor,
+					rollCheck: {
+						value: roll.results[0],
+						success: (roll.results[0] <= (skill.data.data.value + diceModifier) ?
+								true : false)
+					},
+					checking: {
+						name: skill.data.name,
+						value: skill.data.data.value
+					},
 					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
 
