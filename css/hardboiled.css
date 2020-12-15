@@ -9,6 +9,7 @@
 }
 
 .hardboiled input[type="text"],
+.hardboiled input[type="number"],
 .hardboiled select {
   height: calc(100% - 2px);
   border: 1px solid transparent;
@@ -17,6 +18,8 @@
   margin: 0 0.2em;
 }
 
+.hardboiled input[type="number"]:hover,
+.hardboiled input[type="number"]:focus,
 .hardboiled input[type="text"]:hover,
 .hardboiled input[type="text"]:focus {
   border: 1px solid #111;

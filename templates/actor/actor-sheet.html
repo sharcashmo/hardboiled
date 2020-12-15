@@ -39,24 +39,24 @@
 				<div>
 					<label class="char-label rollable"
 					       data-attributeCheck="{{key}}">{{localize char.label}}</label>
-					<input name="data.characteristics.{{key}}.value" type="text" data-dtype="Number" value="{{char.value}}" placeholder="{{localize char.short}}"/>
+					<input name="data.characteristics.{{key}}.value" type="number" data-dtype="Number" value="{{char.value}}" placeholder="{{localize char.short}}"/>
 				</div>
 				{{/each}}
 			</div>
 			<div class="attributes">
 				<div>
 					<label>{{localize data.attributes.punch.label}}</label>
-					<input name="data.attributes.punch.value" type="text" data-dtype="Number" value="{{data.attributes.punch.value}}" {{~#if data.attributes.punch.auto}}disabled readonly{{/if}}>
+					<input name="data.attributes.punch.value" type="number" data-dtype="Number" value="{{data.attributes.punch.value}}">
 				</div>
 				<div>
 					<label>{{localize data.attributes.movement.label}}</label>
-					<input name="data.attributes.movement.value" type="text" data-dtype="Number" value="{{data.attributes.movement.value}}" {{~#if data.attributes.movement.auto}}disabled readonly{{/if}}>
+					<input name="data.attributes.movement.value" type="number" data-dtype="Number" value="{{data.attributes.movement.value}}">
 				</div>
 				<div>
 					<label>{{localize data.attributes.hp.label}}</label>
-					<input name="data.attributes.hp.value" type="text" data-dtype="Number" value="{{data.attributes.hp.value}}" {{~#if data.attributes.hp.auto}}disabled readonly{{/if}}>
+					<input name="data.attributes.hp.value" type="number" data-dtype="Number" value="{{data.attributes.hp.value}}">
 					/
-					<input name="data.attributes.maxhp.value" type="text" data-dtype="Number" value="{{data.attributes.maxhp.value}}" {{~#if data.attributes.maxhp.auto}}disabled readonly{{/if}}>
+					<input name="data.attributes.maxhp.value" type="number" data-dtype="Number" value="{{data.attributes.maxhp.value}}">
 				</div>
 				<div>
 					<label>{{localize data.flags.injured.label}}</label>

@@ -15,6 +15,7 @@
 // Editable areas
 //
 input[type="text"],
+input[type="number"],
 select {
 	height: calc(100% - 2px);
 	border: 1px solid transparent;
@@ -23,6 +24,8 @@ select {
 	margin: 0 0.2em;
 }
 
+input[type="number"]:hover,
+input[type="number"]:focus,
 input[type="text"]:hover,
 input[type="text"]:focus {
 	border: 1px solid #111;
