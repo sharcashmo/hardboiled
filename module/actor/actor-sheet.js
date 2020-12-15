@@ -171,30 +171,30 @@ export class HardboiledActorSheet extends ActorSheet {
 		const element = event.currentTarget;
 		const dataset = element.dataset;
 
-		console.log("En onRoll");
-
-		console.log(dataset);
-
 		if (dataset.attributecheck) {
+			const template = 'systems/hardboiled/templates/chat/basic-check.html';
+			const speaker = ChatMessage.getSpeaker(this.actor);
+			const roll = new Roll("1d100").roll();
+			const attrValue = Number(this.actor.data.data.characteristics[dataset.attributecheck].value);
+			
+			// Modifier dialog
 			const usage = await RollDialog.create();
 			let diceModifier = 0;
 			if (usage) {
 				diceModifier = usage.get('modifier') * 10;
 			}
-			const template = 'systems/hardboiled/templates/chat/basic-check.html';
-			const speaker = ChatMessage.getSpeaker(this.actor);
-			const roll = new Roll("1d100").roll();
+			
+			// Values needed for the chat card
 			const context = {
 					cssClass: "hardboiled",
 					actor: this.actor,
 					rollCheck: {
 						value: roll.results[0],
-						success: (roll.results[0] <= (this.actor.data.data.characteristics[dataset.attributecheck].value + diceModifier) ?
-								true : false)
+						success: (roll.results[0] <= (attrValue + diceModifier) ? true : false)
 					},
 					checking: {
 						name: game.i18n.localize(this.actor.data.data.characteristics[dataset.attributecheck].label),
-						value: this.actor.data.data.characteristics[dataset.attributecheck].value,
+						value: attrValue,
 					},
 					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
@@ -209,26 +209,30 @@ export class HardboiledActorSheet extends ActorSheet {
 			});
 		}
 		else if (dataset.skillcheck) {
+			const template = 'systems/hardboiled/templates/chat/basic-check.html';
+			const speaker = ChatMessage.getSpeaker(this.actor);
+			const skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
+			const skillValue = Number(skill.data.data.value);
+			const roll = new Roll("1d100").roll();
+			
+			// Modifier dialog
 			const usage = await RollDialog.create();
 			let diceModifier = 0;
 			if (usage) {
 				diceModifier = usage.get('modifier') * 10;
 			}
-			const template = 'systems/hardboiled/templates/chat/basic-check.html';
-			const speaker = ChatMessage.getSpeaker(this.actor);
-			const roll = new Roll("1d100").roll();
-			const skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
+			
+			// Values needed for the chat card
 			const context = {
 					cssClass: "hardboiled",
 					actor: this.actor,
 					rollCheck: {
 						value: roll.results[0],
-						success: (roll.results[0] <= (skill.data.data.value + diceModifier) ?
-								true : false)
+						success: (roll.results[0] <= (skillValue + diceModifier) ? true : false)
 					},
 					checking: {
 						name: skill.data.name,
-						value: skill.data.data.value
+						value: skillValue
 					},
 					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 			};
@@ -246,10 +250,8 @@ export class HardboiledActorSheet extends ActorSheet {
 			const template = 'systems/hardboiled/templates/chat/basic-description.html';
 			const speaker = ChatMessage.getSpeaker(this.actor);
 			const talent = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
-			console.log(event.currentTarget.closest('.item').dataset.itemId);
-			console.log(talent.data);
-			console.log(talent.data.data.description);
-			console.log(talent.data.name);
+			
+			// Values needed for the chat card
 			const context = {
 					cssClass: "hardboiled",
 					actor: this.actor,
@@ -259,9 +261,7 @@ export class HardboiledActorSheet extends ActorSheet {
 					}
 			};
 
-			console.log(this.actor);
 			const html = await renderTemplate(template, context);
-			console.log(html);
 			const chatMessage = await ChatMessage.create({
 				speaker,
 				content: html
@@ -275,16 +275,13 @@ export class HardboiledActorSheet extends ActorSheet {
 	 * @private
 	 */
 	async _updateObject(event, formData) {
-		console.log("en updateObject");
-		console.log(event.currentTarget.classList);
 		if (event.currentTarget) {
 			if (event.currentTarget.classList) {
 				if (event.currentTarget.classList.contains('skill-value')) {
 					console.log(event.currentTarget.closest('.item').dataset);
 					let skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
-					console.log(skill);
 					if (skill) {
-						await skill.updateValue(event.currentTarget.value);
+						await skill.updateValue(Number(event.currentTarget.value));
 					}
 				}
 			}

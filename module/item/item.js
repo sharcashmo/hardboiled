@@ -23,7 +23,7 @@ export class HardboiledItem extends Item {
 	async updateValue (value){
 		if ('skill' != this.type)
 			return null;
-		await this.update({'data.value': value});
+		await this.update({'data.value': Number(value)});
 	}
 
 	/**
