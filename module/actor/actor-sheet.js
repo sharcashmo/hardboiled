@@ -1,4 +1,5 @@
 import { RollDialog } from '../apps/roll-dialog.js';
+import { HardboiledSheetHelper } from '../helper.js';
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -92,12 +93,8 @@ export class HardboiledActorSheet extends ActorSheet {
 	/** @override */
 	activateListeners(html) {
 		super.activateListeners(html);
-
-		// Owner events
-		if (this.actor.owner) {
-			// Rollable abilities.
-			html.find('.rollable').click(this._onRoll.bind(this));
-		}
+		
+		HardboiledSheetHelper.activateListeners(this.actor, html);
 
 		// Everything below here is only needed if the sheet is editable
 		if (!this.options.editable) return;
@@ -106,7 +103,9 @@ export class HardboiledActorSheet extends ActorSheet {
 		html.find('.item-create').click(this._onItemCreate.bind(this));
 
 		// Update skills
-		html.find('.skill')
+		html.find('.skill').click(ev => {
+			console.log('In skill');
+		})
 
 		// Update Inventory Item
 		html.find('.item-edit').click(ev => {
@@ -158,115 +157,6 @@ export class HardboiledActorSheet extends ActorSheet {
 
 		// Finally, create the item!
 		return this.actor.createOwnedItem(itemData);
-	}
-
-
-	/**
-	 * Handle clickable rolls.
-	 * @param {Event} event   The originating click event
-	 * @private
-	 */
-	async _onRoll(event) {
-		event.preventDefault();
-		const element = event.currentTarget;
-		const dataset = element.dataset;
-
-		if (dataset.attributecheck) {
-			const template = 'systems/hardboiled/templates/chat/basic-check.html';
-			const speaker = ChatMessage.getSpeaker(this.actor);
-			const roll = new Roll("1d100").roll();
-			const attrValue = Number(this.actor.data.data.characteristics[dataset.attributecheck].value);
-			
-			// Modifier dialog
-			const usage = await RollDialog.create();
-			let diceModifier = 0;
-			if (usage) {
-				diceModifier = usage.get('modifier') * 10;
-			}
-			
-			// Values needed for the chat card
-			const context = {
-					cssClass: "hardboiled",
-					actor: this.actor,
-					rollCheck: {
-						value: roll.results[0],
-						success: (roll.results[0] <= (attrValue + diceModifier) ? true : false)
-					},
-					checking: {
-						name: game.i18n.localize(this.actor.data.data.characteristics[dataset.attributecheck].label),
-						value: attrValue,
-					},
-					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
-			};
-
-			const html = await renderTemplate(template, context);
-			const chatMessage = await ChatMessage.create({
-				speaker,
-				type: CHAT_MESSAGE_TYPES.ROLL,
-				roll: roll,
-				rollMode: game.settings.get("core", "rollMode"),
-				content: html
-			});
-		}
-		else if (dataset.skillcheck) {
-			const template = 'systems/hardboiled/templates/chat/basic-check.html';
-			const speaker = ChatMessage.getSpeaker(this.actor);
-			const skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
-			const skillValue = Number(skill.data.data.value);
-			const roll = new Roll("1d100").roll();
-			
-			// Modifier dialog
-			const usage = await RollDialog.create();
-			let diceModifier = 0;
-			if (usage) {
-				diceModifier = usage.get('modifier') * 10;
-			}
-			
-			// Values needed for the chat card
-			const context = {
-					cssClass: "hardboiled",
-					actor: this.actor,
-					rollCheck: {
-						value: roll.results[0],
-						success: (roll.results[0] <= (skillValue + diceModifier) ? true : false)
-					},
-					checking: {
-						name: skill.data.name,
-						value: skillValue
-					},
-					diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
-			};
-
-			const html = await renderTemplate(template, context);
-			const chatMessage = await ChatMessage.create({
-				speaker,
-				type: CHAT_MESSAGE_TYPES.ROLL,
-				roll: roll,
-				rollMode: game.settings.get("core", "rollMode"),
-				content: html
-			});
-		}
-		else if (dataset.talentcheck) {
-			const template = 'systems/hardboiled/templates/chat/basic-description.html';
-			const speaker = ChatMessage.getSpeaker(this.actor);
-			const talent = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
-			
-			// Values needed for the chat card
-			const context = {
-					cssClass: "hardboiled",
-					actor: this.actor,
-					describe: {
-						name: talent.data.name,
-						description: talent.data.data.description
-					}
-			};
-
-			const html = await renderTemplate(template, context);
-			const chatMessage = await ChatMessage.create({
-				speaker,
-				content: html
-			});
-		}
 	}
 
 	/**

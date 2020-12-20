@@ -1,3 +1,5 @@
+import { HardboiledSheetHelper } from '../helper.js';
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -50,5 +52,6 @@ export class HardboiledItemSheet extends ItemSheet {
 		if (!this.options.editable) return;
 
 		// Roll handlers, click handlers, etc. would go here.
+		HardboiledSheetHelper.activateListeners(this.item, html);
 	}
 }
