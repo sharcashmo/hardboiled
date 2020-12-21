@@ -94,7 +94,7 @@ export class HardboiledActorSheet extends ActorSheet {
 	activateListeners(html) {
 		super.activateListeners(html);
 		
-		HardboiledSheetHelper.activateListeners(this.actor, html);
+		HardboiledSheetHelper.activateListeners(this, this.actor, html);
 
 		// Everything below here is only needed if the sheet is editable
 		if (!this.options.editable) return;

@@ -52,6 +52,6 @@ export class HardboiledItemSheet extends ItemSheet {
 		if (!this.options.editable) return;
 
 		// Roll handlers, click handlers, etc. would go here.
-		HardboiledSheetHelper.activateListeners(this.item, html);
+		HardboiledSheetHelper.activateListeners(this, this.item, html);
 	}
 }

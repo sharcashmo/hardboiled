@@ -1,3 +1,5 @@
+import { RollDialog } from '../apps/roll-dialog.js';
+
 /**
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -39,14 +41,120 @@ export class HardboiledActor extends Actor {
 				data.talents.push(talent);
 			}
 		}
-		
-
-		// Loop through ability scores, and add their modifiers to our sheet output.
-//		for (let [key, ability] of Object.entries(data.abilities)) {
-//		// Calculate the modifier using d20 rules.
-//		ability.mod = Math.floor((ability.value - 10) / 2);
-//		}
 	}
+	
+	/**
+	 * 
+	 */
+	async attributeCheck(attribute)
+	{
+		console.log('Attribute check ' + attribute);
+		const template = 'systems/hardboiled/templates/chat/basic-check.html';
+		const speaker = ChatMessage.getSpeaker(this);
+		const roll = new Roll("1d100").roll();
+		const attrValue = Number(this.data.data.characteristics[attribute].value);
+		
+		// Modifier dialog
+		const usage = await RollDialog.create();
+		let diceModifier = 0;
+		if (usage) {
+			diceModifier = usage.get('modifier') * 10;
+		}
+		
+		// Values needed for the chat card
+		const context = {
+			cssClass: "hardboiled",
+			actor: this,
+			rollCheck: {
+				value: roll.results[0],
+				success: (roll.results[0] <= (attrValue + diceModifier) ? true : false)
+			},
+			checking: {
+				name: game.i18n.localize(this.data.data.characteristics[attribute].label),
+				value: attrValue,
+			},
+			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
+		};
+
+		const html = await renderTemplate(template, context);
+		const chatMessage = await ChatMessage.create({
+			speaker,
+			type: CHAT_MESSAGE_TYPES.ROLL,
+			roll: roll,
+			rollMode: game.settings.get("core", "rollMode"),
+			content: html
+		});
+	}
+	
+	/**
+	 * 
+	 */
+	async skillCheck(skillId) {
+		console.log('Skill check ' + skillId);
+		const template = 'systems/hardboiled/templates/chat/basic-check.html';
+		const speaker = ChatMessage.getSpeaker(this);
+		const skill = this.getOwnedItem(skillId);
+		const skillValue = Number(skill.data.data.value);
+		const roll = new Roll("1d100").roll();
+		
+		// Modifier dialog
+		const usage = await RollDialog.create();
+		let diceModifier = 0;
+		if (usage) {
+			diceModifier = usage.get('modifier') * 10;
+		}
+		
+		// Values needed for the chat card
+		const context = {
+			cssClass: "hardboiled",
+			actor: this,
+			rollCheck: {
+				value: roll.results[0],
+				success: (roll.results[0] <= (skillValue + diceModifier) ? true : false)
+			},
+			checking: {
+				name: skill.data.name,
+				value: skillValue
+			},
+			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
+		};
+
+		const html = await renderTemplate(template, context);
+		const chatMessage = await ChatMessage.create({
+			speaker,
+			type: CHAT_MESSAGE_TYPES.ROLL,
+			roll: roll,
+			rollMode: game.settings.get("core", "rollMode"),
+			content: html
+		});
+	}
+	
+	/**
+	 * 
+	 */
+	async talentCheck(talentId) {
+		console.log('Talent check ' + talentId);
+		const template = 'systems/hardboiled/templates/chat/basic-description.html';
+		const speaker = ChatMessage.getSpeaker(this);
+		const talent = this.getOwnedItem(talentId);
+		
+		// Values needed for the chat card
+		const context = {
+			cssClass: "hardboiled",
+			actor: this,
+			describe: {
+				name: talent.data.name,
+				description: talent.data.data.description
+			}
+		};
+
+		const html = await renderTemplate(template, context);
+		const chatMessage = await ChatMessage.create({
+			speaker,
+			content: html
+		});
+	}
+	
 
 	/**
 	 * Special getters for actors
