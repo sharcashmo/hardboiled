@@ -32,7 +32,6 @@
 	"gridUnits": "ft",
 	"primaryTokenAttribute": "health",
 	"secondaryTokenAttribute": "power",
-	"url": "https://github.com/sharcashmo/hardboiled",
 	"manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
 	"license": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE",
 	"readme": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/README.md",
