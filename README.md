@@ -30,6 +30,8 @@ Version 0.0.4 :
 * Some cleanup: remove dead/commented code, unused fonts and console logs.
 * Refactoring: create HardboiledSheetHelper to hold common utility functions for entity sheet classes.
 * Checked compatibility with FoundryVTT 0.7.9.
+* Created weapon sheet.
+* Created equipment sheet.
 * Added catalan language.
 
 Version 0.0.3 :
