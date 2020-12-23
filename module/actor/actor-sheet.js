@@ -1,4 +1,3 @@
-import { RollDialog } from '../apps/roll-dialog.js';
 import { HardboiledSheetHelper } from '../helper.js';
 
 /**
@@ -22,10 +21,9 @@ export class HardboiledActorSheet extends ActorSheet {
 	/** @override */
 	getData() {
 		const data = super.getData();
-//		data.dtypes = ["String", "Number", "Boolean"];
-//		for (let attr of Object.values(data.data.attributes)) {
-//		attr.isCheckbox = attr.dtype === "Boolean";
-//		}
+		
+		// Get attributes data
+//		HardboiledSheetHelper.getAttributeData(data);
 
 //		// Prepare items.
 //		if (this.actor.data.type == 'character') {
@@ -102,11 +100,6 @@ export class HardboiledActorSheet extends ActorSheet {
 		// Add Inventory Item
 		html.find('.item-create').click(this._onItemCreate.bind(this));
 
-		// Update skills
-		html.find('.skill').click(ev => {
-			console.log('In skill');
-		})
-
 		// Update Inventory Item
 		html.find('.item-edit').click(ev => {
 			const li = $(ev.currentTarget).parents(".item");
@@ -167,8 +160,7 @@ export class HardboiledActorSheet extends ActorSheet {
 	async _updateObject(event, formData) {
 		if (event.currentTarget) {
 			if (event.currentTarget.classList) {
-				if (event.currentTarget.classList.contains('skill-value')) {
-					console.log(event.currentTarget.closest('.item').dataset);
+				if (event.currentTarget.classList.contains('item-value')) {
 					let skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
 					if (skill) {
 						await skill.updateValue(Number(event.currentTarget.value));
@@ -176,6 +168,6 @@ export class HardboiledActorSheet extends ActorSheet {
 				}
 			}
 		}
-		return this.object.update(formData);
+	    return this.object.update(formData);
 	}
 }

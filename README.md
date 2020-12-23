@@ -10,7 +10,7 @@ I’ve just provided some basics skills that you can use.
 
 ## License information
 
-This software is released under MIT license. See :
+This software developed by sharcashmo and released under MIT license. See :
 <https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE>
 
 Hardboiled is a roleplaying game written by Pedro Gil and Jaime Conill Querol, and released
@@ -22,18 +22,6 @@ under Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0). See
 Install in foundry VTT from the Game Systems tab using the following manifest :  
 <https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json>
 
-## Information for developers
-
-### Template classes
-
-Starting with version 0.0.4 a number of CSS classes have been created to manage common
-functionalities in entity sheets. This is managed by the `HardboiledSheetHelper` class:
-
-* **rollable**
-  CSS class for roll checks. Element dataset must have the following information:
-  
-    * For skill checks a `skillcheck` element with the `id` of the skill item to be checked 
-    
 ## What is working
 
 Version 0.0.4 :
@@ -42,6 +30,7 @@ Version 0.0.4 :
 * Some cleanup: remove dead/commented code, unused fonts and console logs.
 * Refactoring: create HardboiledSheetHelper to hold common utility functions for entity sheet classes.
 * Checked compatibility with FoundryVTT 0.7.9.
+* Added catalan language.
 
 Version 0.0.3 :
 
@@ -68,8 +57,11 @@ Version 0.0.1 :
 ## Future plans
 
 * [ ] Complete main attributes in character sheet.
+* [ ] Add combat section to character sheet.
+* [ ] Add inventory section to character sheet.
 * [ ] Add characteristic selection in roll modifier dialog, to allow use it instead of skill in a check.
 * [ ] Reorganize status flags and icons.
+* [ ] Sort character items, and avoid duplicates.
 
 ### Version 0.0.4
 
@@ -77,7 +69,9 @@ Version 0.0.1 :
 * [X] Cleanup: remove dead code, unused fonts and console logs.
 * [X] Refactoring: create a new helper class to manage common functionalities.
 * [X] Make main traits, characteristics and abilities editable.
-* [ ] Create weapon sheet.
+* [X] Create weapon sheet.
+* [X] Create equipment sheet.
+* [X] Add catalan language.
 
 ### Version 0.0.3
 

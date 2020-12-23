@@ -28,6 +28,10 @@ export class HardboiledItemSheet extends ItemSheet {
 	/** @override */
 	getData() {
 		const data = super.getData();
+		
+		// Get attributes data
+//		HardboiledSheetHelper.getAttributeData(data);
+		
 		return data;
 	}
 

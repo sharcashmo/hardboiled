@@ -75,48 +75,17 @@
 						flex-wrap: nowrap;
 						justify-content: flex-start;
 						align-items: stretch;
-						// Properties of the text box
-						border-width: 10px 1px;
-						border-color: $c-mustard;
-						border-style: solid;
-						border-radius: 5px;
-						box-shadow: 0 0 8px grey;
-						padding: .1em .3em;
-						background-color: white;
+						// Hardboiled frame
+						@include hardboiled-frame($c-mustard);
 						// Font size for this block
 						font-size: large;
 						
-						// Input fields size is set a bit smaller
-						input {
-							font-size: smaller;
-						}
-
 						// This is how every label/input pair is shown
-						div {
-							// Do stretch
-							flex: 1 0 auto;
-							// The pair is shown with a flexrow
-							display: flex;
-							flex-direction: row;
-							flex-wrap: nowrap;
-							justify-content: space-between;
-							align-items: center;
-							// A small vertical margin
-							margin: 0.1em 0;
-							
-							// Make the input field to stretch
-							label {
-								flex: 0 0 auto;
-							}
-							
-							input {
-								flex: 0 1 auto;
-							}
-								
-							input[data-dtype="Number"] {
-								flex: 0 0 auto;
-								width: 2.2em;
-							}
+						@include label-value-div;
+						// Add special size for number inputs
+						div input[data-dtype="Number"] {
+							flex: 0 0 auto;
+							width: 2.2em;
 						}
 					}
 				}
@@ -129,14 +98,8 @@
 					flex-direction: column;
 					justify-content: flex-start;
 					align-items: stretch;
-					// Properties of the text box
-					border-width: 10px 1px;
-					border-color: darkred;
-					border-style: solid;
-					border-radius: 5px;
-					box-shadow: 0 0 8px grey;
-					padding: .1em .3em;
-					background-color: white;
+					// Hardboiled frame
+					@include hardboiled-frame(darkred);
 					
 					.characteristics {
 						flex: 0 0 auto;
@@ -290,14 +253,8 @@
 					flex-wrap: nowrap;
 					justify-content: flex-start;
 					align-items: center;
-					// Header box properties
-					border-width: 10px 1px;
-					border-color: $c-mustard;
-					border-style: solid;
-					border-radius: 5px;
-					box-shadow: 0 0 8px grey;
-					padding: 0 .3em;
-					background-color: white;
+					// Hardboiled frame
+					@include hardboiled-frame($c-mustard);
 					// Header font size
 					font-size: xx-large;
 				
@@ -335,9 +292,108 @@
 				justify-content: flex-start;
 				align-items: stretch;
 				
-				div.editor {
+				.item-item-section {
+					// This block is fixed size
+					flex: 0 0 auto;
+					// This block is a row with weight, cost and notes
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: center;
+					// Font size for this block
+					font-size: large;
+					// Border to separate Item stats from other ones
+					border-width: 0 0 2px 0;
+					border-color: darkred;
+					border-style: solid;
+					padding: 0 0 2px 0;
+					margin: 0 0 2px 0;
+					
+					// This is how every label/input pair is shown
+					@include label-value-div;
+					// Add special size for number inputs
+					div input[data-dtype="Number"] {
+						flex: 0 0 auto;
+						width: 3em;
+					}
+				}
+				
+				.item-weapon-type-section {
+					// This block is fixed size
+					flex: 0 0 auto;
+					// This block is a row with three buttons
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: center;
+					// Font size for this block
+					font-size: large;
+					
+					a {
+						// Buttons stretch
+						flex: 1 0 auto;
+					}
+				}
+				
+				.item-weapon-stats-section {
+					// This block is fixed size
+					flex: 0 0 auto;
+					// This block is a row with weapon stats
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					align-items: center;
+					// Font size for this block
+					font-size: large;
+					// Border to separate Weapon stats from other ones
+					border-width: 0 0 2px 0;
+					border-color: darkred;
+					border-style: solid;
+					padding: 0 0 2px 0;
+					margin: 0 0 2px 0;
+					
+					// This is how every label/input pair is shown
+					@include label-value-div {
+						// Add special size for number inputs
+						input[data-dtype="Number"] {
+							flex: 0 0 auto;
+							width: 3em;
+						}
+						input[data-dtype="Formula"] {
+							flex: 0 0 auto;
+							width: 6em;
+						}
+						// Leave a margin to the left of the labels
+						input + label {
+							margin-left: 2px;
+						}
+					}
+				}
+				
+				.item-description-section {
 					// This block stretches
 					flex: 1 0 auto;
+					// This block is a column with label and editor
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: stretch;
+					// Font size for this block
+					
+					label {
+						font-size: large;
+						flex: 0 0 auto;
+					}
+				
+					div.editor {
+						// This block stretches
+						flex: 1 0 auto;
+						height: 0;
+					}
 				}
 			}
 		}
@@ -349,12 +405,6 @@
 //
 %label, label {
 	font-family: hardboiled-title;
-}
-
-// Outlined labels
-@mixin outlined($color: #000) {
-	@extend label;
-	text-shadow: -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color, 1px 1px 0 $color;
 }
 
 // Characteristics labels

@@ -1,6 +1,6 @@
 {
-	"I18N.LANGUAGE": "English",
-	"I18N.MAINTAINERS": "",
+	"I18N.LANGUAGE": "Spanish",
+	"I18N.MAINTAINERS": "sharcashmo",
 	
 	"Hardboiled.title": "Hardboiled",
 	
@@ -45,7 +45,28 @@
 	"Hardboiled.BonusSelectionWindow": "Seleccionar modificador",
 	"Hardboiled.Modifier": "Modificador",
 	"Hardboiled.RollDice": "¡Tirar dados!",
-		
+	
+	"Hardboiled.Cost": "Coste",
+	"Hardboiled.Notes": "Notas",
+	"Hardboiled.MeleeWeapon": "Cuerpo a cuerpo",
+	"Hardboiled.RangeWeapon": "A distancia",
+	"Hardboiled.AutomathicWeapon": "Automática",
+	"Hardboiled.Damage": "Daño",
+	"Hardboiled.Range": "Rango",
+	"Hardboiled.Short": "Corto",
+	"Hardboiled.Basic": "Básico",
+	"Hardboiled.Ammunition": "Munición",
+	"Hardboiled.FireRate": "Cadencia de fuego",
+	"Hardboiled.BurstShort": "Corta",
+	"Hardboiled.BurstMedium": "Media",
+	"Hardboiled.BurstComplete": "Completa",
 	"Hardboiled.Description": "Descripción",
-	"Hardboiled.Details": "Detalles"
+	
+	"Hardboiled.Tooltip.Damage": "Fórmula del daño (ej. 1D3)",
+	"Hardboiled.Tooltip.RangeShort": "Rango: corto",
+	"Hardboiled.Tooltip.RangeBasic": "Rango: básico",
+	"Hardboiled.Tooltip.Ammunition": "Capacidad del cargador",
+	"Hardboiled.Tooltip.BurstShort": "Proyectiles: ráfaga corta",
+	"Hardboiled.Tooltip.BurstMedium": "Proyectiles: ráfaga media",
+	"Hardboiled.Tooltip.BurstComplete": "Proyectiles: cargador completo"
 }

@@ -7,27 +7,27 @@
 					"vigour": {
 						"short": "Hardboiled.VIG",
 						"label": "Hardboiled.Vigour",
-						"value": 50
+						"value": 0
 					},
 					"dextery": {
 						"short": "Hardboiled.DEX",
 						"label": "Hardboiled.Dextery",
-						"value": 50
+						"value": 0
 					},
 					"insight": {
 						"short": "Hardboiled.INS",
 						"label": "Hardboiled.Insight",
-						"value": 50
+						"value": 0
 					},
 					"charisma": {
 						"short": "Hardboiled.CHR",
 						"label": "Hardboiled.Charisma",
-						"value": 50
+						"value": 0
 					},
 					"luck": {
 						"short": "Hardboiled.LCK",
 						"label": "Hardboiled.Luck",
-						"value": 25
+						"value": 0
 					}
 				}
 			},
@@ -35,22 +35,22 @@
 				"attributes": {
 					"hp": {
 						"label": "Hardboiled.HitPoints",
-						"value": 50,
+						"value": 0,
 						"auto": false
 					},
 					"maxhp": {
 						"label": "Hardboiled.TotalHitPoints",
-						"value": 50,
+						"value": 0,
 						"auto": true
 					},
 					"punch": {
 						"label": "Hardboiled.Punch",
-						"value": 50,
+						"value": 0,
 						"auto": true
 					},
 					"movement": {
 						"label": "Hardboiled.MovementRange",
-						"value": 50,
+						"value": 0,
 						"auto": true
 					}
 				}
@@ -130,11 +130,11 @@
 				"fireRate": {
 					"short": 0,
 					"medium": 0,
-					"comlete": 0
+					"complete": 0
 				},
 				"ammunition": {
 					"current": 0,
-					"max": 10
+					"max": 0
 				},
 				"year": 1900
 			},
@@ -180,7 +180,12 @@
 			"templates": ["base", "item"]
 		},
 		"weapon": {
-			"templates": ["base", "item", "weapon", "rangedWeapon"]
+			"templates": ["base", "item", "weapon", "rangedWeapon"],
+			"flags": {
+				"melee": true,
+				"range": false,
+				"automathic": false
+			}
 		},
 		"venom": {
 			"templates": ["base", "venom"]

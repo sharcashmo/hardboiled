@@ -1,22 +1,49 @@
-@mixin element-invisible {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-@mixin hide {
-  display: none;
-}
-
 @mixin unify-parent($child) {
 	@at-root #{selector-unify(&, $child)} {
 		@content;
 	}
+}
+
+@mixin hardboiled-frame($color) {
+	// Properties of the image box
+	border-width: 10px 1px;
+	border-color: $color;
+	border-style: solid;
+	border-radius: 5px;
+	box-shadow: 0 0 8px grey;
+	padding: .1em .3em;
+	background-color: white;
+}
+
+@mixin label-value-div {
+	div {
+		// Do stretch
+		flex: 1 0 auto;
+		// The pair is shown with a flexrow
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		// A small vertical margin
+		margin: 0.1em 0;
+		
+		// Make the input field to stretch
+		label {
+			flex: 0 0 auto;
+		}
+		
+		input {
+			flex: 0 1 auto;
+			font-size: smaller;
+		}
+		
+		// Add the content
+		@content;
+	}
+}
+
+@mixin outlined($color: #000) {
+	@extend label;
+	text-shadow: -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color, 1px 1px 0 $color;
 }

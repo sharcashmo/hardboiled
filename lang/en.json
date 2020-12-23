@@ -1,6 +1,6 @@
 {
 	"I18N.LANGUAGE": "English",
-	"I18N.MAINTAINERS": "",
+	"I18N.MAINTAINERS": "sharcashmo",
 	
 	"Hardboiled.title": "Hardboiled",
 	
@@ -45,7 +45,28 @@
 	"Hardboiled.BonusSelectionWindow": "Select modifier",
 	"Hardboiled.Modifier": "Modifier",
 	"Hardboiled.RollDice": "Roll dice!",
-		
+	
+	"Hardboiled.Cost": "Cost",
+	"Hardboiled.Notes": "Notes",
+	"Hardboiled.MeleeWeapon": "Melee",
+	"Hardboiled.RangeWeapon": "Ranged",
+	"Hardboiled.AutomathicWeapon": "Automathic",
+	"Hardboiled.Damage": "Damage",
+	"Hardboiled.Range": "Range",
+	"Hardboiled.Short": "Short",
+	"Hardboiled.Basic": "Basic",
+	"Hardboiled.Ammunition": "Ammunition",
+	"Hardboiled.FireRate": "Rate of fire",
+	"Hardboiled.BurstShort": "Short",
+	"Hardboiled.BurstMedium": "Medium",
+	"Hardboiled.BurstComplete": "Complete",
 	"Hardboiled.Description": "Description",
-	"Hardboiled.Details": "Details"
+
+	"Hardboiled.Tooltip.Damage": "Damage formula (ex. 1D3)",
+	"Hardboiled.Tooltip.RangeShort": "Range: short",
+	"Hardboiled.Tooltip.RangeBasic": "Range: basic",
+	"Hardboiled.Tooltip.Ammunition": "Magazine size",
+	"Hardboiled.Tooltip.BurstShort": "Bullets: short burst",
+	"Hardboiled.Tooltip.BurstMedium": "Bullets: medium burst",
+	"Hardboiled.Tooltip.BurstComplete": "Bullets: complete magazine"
 }

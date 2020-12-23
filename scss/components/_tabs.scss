@@ -47,14 +47,8 @@ nav.sheet-tabs.tabs {
 	// Sheet body is the block to stretch
 	flex: 1 0 auto;
 	height: 0;    // height is 0px so it's actual size is got from stretching
-	// Text box properties
-	border-width: 10px 1px;
-	border-color: darkred;
-	border-style: solid;
-	border-radius: 5px;
-	box-shadow: 0 0 8px grey;
-	padding: 0.5em;
-	background-color: white;
+	// Hardboiled frame
+	@include hardboiled-frame(darkred);
 	// Content will be in a row
 	display: flex;
 	flex-direction: column;

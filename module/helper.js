@@ -1,4 +1,5 @@
 import { RollDialog } from './apps/roll-dialog.js';
+import { ATTRIBUTE_TYPES } from "./constants.js";
 
 /**
  * Helper classes for Hardboiled entities and entity sheets
@@ -18,6 +19,22 @@ export class HardboiledHelper {
  *   - 
  */
 export class HardboiledSheetHelper {
+
+	/**
+	 * Get attributes data
+	 * 
+	 * @param {Object}	Sheet data
+	 */
+	static getAttributeData(data) {
+		data.dtypes = ATTRIBUTE_TYPES;
+		for (let attr of Object.values(data.data.attributes)) {
+			if (attr.dtype) {
+				attr.isCheckbox = attr.dtype === "Boolean";
+				attr.isResource = attr.dtype === "Resource";
+				attr.isFormula = attr.dtype === "Formula";
+			}
+		}
+	}
 	
 	/**
 	 * Bind roll checks
@@ -35,6 +52,7 @@ export class HardboiledSheetHelper {
 		
 		// Everything below here is only needed if the sheet is editable
 		if (!sheet.options.editable) return;
+		
 		html.find('.toggle-switch').click(HardboiledSheetHelper._onToggleSwitch.bind(sheet, entity));
 	}
 
@@ -70,10 +88,14 @@ export class HardboiledSheetHelper {
 	 * @param {Entity} entity	The entity wich the sheet belongs to
 	 * @private
 	 */
-	static async _onToggleSwitch(event) {
+	static async _onToggleSwitch(entity, event) {
 		event.preventDefault();
 		const element = event.currentTarget.closest('.toggle-switch');
 		const dataset = element.dataset;
 		const sheet = this;
+		
+		if (dataset.propertyId) {
+			entity.toggleProperty(dataset.propertyId);
+		}
 	}
 }

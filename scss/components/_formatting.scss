@@ -11,6 +11,29 @@
 	}
 }
 
+.toggle-switch {
+    display: inline-block;
+    margin: 2px 2px 0 0;
+    padding: 0 3px;
+    font-size: small;
+    line-height: 16px;
+    border: 1px solid whitesmoke;
+    border-radius: 3px;
+    background: transparent;
+    font-style: italic;
+    color: grey;
+	text-align: center;
+}
+
+.switched-on {
+	border: 1px solid red;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 4px red;
+    color: black;
+    font-style: normal;
+}
+
 //
 // Editable areas
 //
@@ -34,6 +57,7 @@ input[type="text"]:focus {
 
 input[data-dtype="Number"] {
 	width: 2em;
+	text-align: right;
 }
 
 input:disabled,

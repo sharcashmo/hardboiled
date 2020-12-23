@@ -44,11 +44,12 @@ export class HardboiledActor extends Actor {
 	}
 	
 	/**
+	 * Do an attribute check
 	 * 
+	 * @param {String}	attribute	Attribute name
 	 */
 	async attributeCheck(attribute)
 	{
-		console.log('Attribute check ' + attribute);
 		const template = 'systems/hardboiled/templates/chat/basic-check.html';
 		const speaker = ChatMessage.getSpeaker(this);
 		const roll = new Roll("1d100").roll();
@@ -87,72 +88,29 @@ export class HardboiledActor extends Actor {
 	}
 	
 	/**
+	 * Do a skill check
 	 * 
+	 * @param {String}	skillId		Id of the skill item to be checked
 	 */
 	async skillCheck(skillId) {
-		console.log('Skill check ' + skillId);
-		const template = 'systems/hardboiled/templates/chat/basic-check.html';
-		const speaker = ChatMessage.getSpeaker(this);
 		const skill = this.getOwnedItem(skillId);
-		const skillValue = Number(skill.data.data.value);
-		const roll = new Roll("1d100").roll();
 		
-		// Modifier dialog
-		const usage = await RollDialog.create();
-		let diceModifier = 0;
-		if (usage) {
-			diceModifier = usage.get('modifier') * 10;
+		if (skill) {
+			skill.roll();
 		}
-		
-		// Values needed for the chat card
-		const context = {
-			cssClass: "hardboiled",
-			actor: this,
-			rollCheck: {
-				value: roll.results[0],
-				success: (roll.results[0] <= (skillValue + diceModifier) ? true : false)
-			},
-			checking: {
-				name: skill.data.name,
-				value: skillValue
-			},
-			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
-		};
-
-		const html = await renderTemplate(template, context);
-		const chatMessage = await ChatMessage.create({
-			speaker,
-			type: CHAT_MESSAGE_TYPES.ROLL,
-			roll: roll,
-			rollMode: game.settings.get("core", "rollMode"),
-			content: html
-		});
 	}
 	
 	/**
+	 * Do a talent check
 	 * 
+	 * @param {String}	talentId	Id of the talent item to be checked
 	 */
 	async talentCheck(talentId) {
-		console.log('Talent check ' + talentId);
-		const template = 'systems/hardboiled/templates/chat/basic-description.html';
-		const speaker = ChatMessage.getSpeaker(this);
 		const talent = this.getOwnedItem(talentId);
 		
-		// Values needed for the chat card
-		const context = {
-			cssClass: "hardboiled",
-			actor: this,
-			describe: {
-				name: talent.data.name,
-				description: talent.data.data.description
-			}
-		};
-
-		const html = await renderTemplate(template, context);
-		const chatMessage = await ChatMessage.create({
-			speaker,
-			content: html
-		});
+		if (talent) {
+			talent.describe();
+		}
 	}
 	
 
