@@ -39,22 +39,22 @@ export class HardboiledItem extends Item {
 		if (propertyId === 'melee') {
 			this.data.data.flags.melee = true;
 			this.data.data.flags.range = false;
-			this.data.data.flags.automathic = false;
+			this.data.data.flags.automatic = false;
 		}
 		else if (propertyId === 'range') {
 			this.data.data.flags.range = true;
 			this.data.data.flags.melee = false;
-			this.data.data.flags.automathic = false;
+			this.data.data.flags.automatic = false;
 		}
-		else if (propertyId === 'automathic') {
-			this.data.data.flags.automathic = !this.data.data.flags.automathic &&
+		else if (propertyId === 'automatic') {
+			this.data.data.flags.automatic = !this.data.data.flags.automatic &&
 				this.data.data.flags.range;
 		}
 		
 		await this.update({
 			'data.flags.melee': this.data.data.flags.melee,
 			'data.flags.range': this.data.data.flags.range,
-			'data.flags.automathic': this.data.data.flags.automathic
+			'data.flags.automatic': this.data.data.flags.automatic
 		})
 	}
 

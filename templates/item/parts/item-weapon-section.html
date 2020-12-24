@@ -1,7 +1,7 @@
 <div class="item-weapon-type-section">
 	<a class="toggle-switch {{#if data.flags.melee}}switched-on{{/if}}" title="{{localize "Hardboiled.MeleeWeapon"}}" data-property-id="melee">{{localize "Hardboiled.MeleeWeapon"}}</a>
 	<a class="toggle-switch {{#if data.flags.range}}switched-on{{/if}}" title="{{localize "Hardboiled.RangeWeapon"}}" data-property-id="range">{{localize "Hardboiled.RangeWeapon"}}</a>
-	<a class="toggle-switch {{#if data.flags.automathic}}switched-on{{/if}}" title="{{localize "Hardboiled.AutomathicWeapon"}}" data-property-id="automathic">{{localize "Hardboiled.AutomathicWeapon"}}</a>
+	<a class="toggle-switch {{#if data.flags.automatic}}switched-on{{/if}}" title="{{localize "Hardboiled.AutomaticWeapon"}}" data-property-id="automatic">{{localize "Hardboiled.AutomaticWeapon"}}</a>
 </div>
 <div class="item-weapon-stats-section">
 	<div>
@@ -19,7 +19,7 @@
 		<label>{{localize "Hardboiled.Ammunition"}}</label>
 		<input name="data.ammunition.max" type="text" data-dtype="Number" value="{{data.ammunition.max}}"/>
 	</div>
-	{{#if data.flags.automathic}}
+	{{#if data.flags.automatic}}
 	<div>
 		<label>{{localize "Hardboiled.FireRate"}}</label>
 		<input name="data.fireRate.short" type="text" data-dtype="Number" value="{{data.fireRate.short}}" title="{{localize "Hardboiled.Tooltip.BurstShort"}}"/>
