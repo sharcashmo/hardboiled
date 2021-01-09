@@ -1,28 +1,27 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-	<div class="chat-card attribute-check">
-	
-		{{!-- Card Header --}}
-		<header class="card-header">
-			<div class="description">
-				<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-				<div class="description-fields">
-					<label>{{actor.name}}</label>
-					<div>
-						<label class="char-label">{{checking.name}}</label>
-						<label>({{checking.value}}){{#if diceModifier}} {{diceModifier}}%{{/if}}</label>
-					</div>
+<div class="{{cssClass}} chat-card attribute-check">
+
+	{{!-- Card Header --}}
+	<header class="card-header">
+		<div class="description">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+			<div class="description-fields">
+				<label>{{actor.name}}</label>
+				<div>
+					<label class="char-label">{{checking.name}}</label>
+					<label>({{checking.value}}){{#if diceModifier}} {{diceModifier}}%{{/if}}</label>
 				</div>
 			</div>
-		</header>
-		
-	    {{!-- Card Body --}}
-		<div class="card-body result">
-			<label class="roll-result" data-success="{{rollCheck.success}}">{{rollCheck.value}}</label>
-			{{#if rollCheck.success}}
-			<label class="roll-success success">{{localize "Hardboiled.Success"}}</label>
-			{{^}}
-			<label class="roll-success fail">{{localize "Hardboiled.Fail"}}</label>
-			{{/if}}
 		</div>
+	</header>
+	
+    {{!-- Card Body --}}
+	<div class="card-body result">
+		<label class="roll-result" data-success="{{rollCheck.success}}">{{rollCheck.value}}</label>
+		{{#if rollCheck.success}}
+		<label class="roll-success success">{{localize "Hardboiled.Success"}}</label>
+		{{^}}
+		<label class="roll-success fail">{{localize "Hardboiled.Fail"}}</label>
+		{{/if}}
 	</div>
-</form>
+	
+</div>

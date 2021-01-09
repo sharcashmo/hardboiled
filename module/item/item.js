@@ -124,4 +124,45 @@ export class HardboiledItem extends Item {
 			content: html
 		});
 	}
+
+	/**
+	 * Handle combat rolls
+	 * @private
+	 */
+	async startAttack() {
+		const speaker = ChatMessage.getSpeaker(this.actor);
+		const [fightingSkill, shootingSkill] = this.actor.combatSkills;
+		const isMelee = this.data.data.flags.melee;
+		const template = isMelee ? 'systems/hardboiled/templates/chat/combat/melee-combat.html' :
+			'systems/hardboiled/templates/chat/combat/ranged-combat.html';
+		const combatSkill = isMelee ? fightingSkill : shootingSkill;
+		const skillValue = Number(combatSkill.data.value);
+		
+		console.log(this.actor);
+		console.log(this.data);
+		console.log(fightingSkill);
+		console.log(shootingSkill);
+		console.log(combatSkill);
+		console.log(skillValue);
+		
+		// Values needed for the chat card
+		const context = {
+			cssClass: "hardboiled",
+			actor: this.actor.data,
+			skill: combatSkill,
+			weapon: this.data,
+			modifiedValues: {
+				skill: skillValue
+			}
+		};
+		
+		// Generate combat card
+		const html = await renderTemplate(template, context);
+		
+		// and show it
+		const chatMessage = await ChatMessage.create({
+			speaker,
+			content: html
+		});
+	}
 }

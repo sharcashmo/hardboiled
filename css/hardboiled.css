@@ -3,9 +3,20 @@
   src: url("fonts/DecoturaICG.ttf");
 }
 
-.hardboiled .rollable:hover, .hardboiled .rollable:focus {
+.hardboiled .rollable:hover, .hardboiled .rollable:focus, .hardboiled .card-button:hover[data-action], .hardboiled .card-button:focus[data-action] {
   text-shadow: 0 0 10px red;
   cursor: pointer;
+}
+
+.hardboiled .card-button, .hardboiled .card-result {
+  display: inline-block;
+  margin: 2px 2px 0 0;
+  padding: 0 3px;
+  font-size: small;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-style: normal;
+  text-align: center;
 }
 
 .hardboiled .toggle-switch {
@@ -30,6 +41,39 @@
   box-shadow: 0 0 4px red;
   color: black;
   font-style: normal;
+}
+
+.hardboiled .card-button {
+  color: black;
+  background: lightgray;
+}
+
+.hardboiled .card-button[data-action] {
+  background: whitesmoke;
+}
+
+.hardboiled .card-result {
+  font-family: hardboiled-title;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d0a72e;
+  background: whitesmoke;
+  font-size: large;
+}
+
+.hardboiled .card-result.success {
+  background: green;
+}
+
+.hardboiled .card-result.failure {
+  background: darkred;
+}
+
+.hardboiled .card-result.critical {
+  background: blueviolet;
+}
+
+.hardboiled .card-result.fumble {
+  background: darkorange;
 }
 
 .hardboiled input[type="text"],
@@ -215,7 +259,7 @@
   margin: 0.1em 0;
 }
 
-.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div label, .hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div .tabs, .hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div .tabs .item.active, .hardboiled.actor .tabs .window-content form header.sheet-header .traits .trait-fields div .item.active {
+.hardboiled.actor .window-content form header.sheet-header .traits .trait-fields div label {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -322,7 +366,30 @@
   font-size: smaller;
 }
 
-.hardboiled.actor .window-content form .tab.skills {
+.hardboiled.actor .window-content form .tab.skills.active {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  margin: 0 -.3em;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -342,9 +409,14 @@
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+  border-width: 0 0 10px 0;
+  border-color: darkred;
+  border-style: solid;
+  padding: 0 .3em 2px .3em;
+  margin: 0 0 2px 0;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -362,7 +434,7 @@
   align-items: stretch;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.skillrow, .hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.talentrow {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -383,24 +455,24 @@
   align-items: center;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-name, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow .item-name {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.skillrow .item-name, .hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.talentrow .item-name {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow .item-value input, .hardboiled.actor .window-content form .tab.skills ol.items-list li.talentrow .item-value input {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.skillrow .item-value input, .hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.talentrow .item-value input {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
   width: 2em;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list li.skillrow + li.skillrow {
-  margin: 0 5px;
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list li.skillrow {
+  margin: 0 5px 0 0;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list:first-of-type {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list:first-of-type {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 70%;
   flex: 0 0 70%;
@@ -410,11 +482,163 @@
   padding: 0 2px 0 0;
 }
 
-.hardboiled.actor .window-content form .tab.skills ol.items-list:last-of-type {
+.hardboiled.actor .window-content form .tab.skills.active .actor-skills-section ol.items-list:last-of-type {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 30%;
   flex: 0 0 30%;
   padding: 0 0 0 6px;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  padding: 0 .3em;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list li.weaponrow {
+  margin: 0 5px 0 0;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list li.weaponrow, .hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list li.equipmentrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 20px;
+  flex: 0 0 20px;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list .item-name, .hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list .item-skill {
+  -webkit-box-flex: 2;
+  -ms-flex: 2 0 0px;
+  flex: 2 0 0;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list .item-damage {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list .item-controls {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list:first-of-type {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 60%;
+  flex: 0 0 60%;
+  border-width: 0 2px 0 0;
+  border-color: darkred;
+  border-style: solid;
+  padding: 0 2px 0 0;
+}
+
+.hardboiled.actor .window-content form .tab.skills.active .actor-combat-section ol.items-list:last-of-type {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 40%;
+  flex: 0 0 40%;
+  padding: 0 0 0 6px;
+}
+
+.hardboiled.actor .window-content form .tab.background.active {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.hardboiled.actor .window-content form .tab.background.active .actor-notes-section {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.hardboiled.actor .window-content form .tab.background.active .actor-notes-section div.editor {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  height: 0;
 }
 
 .hardboiled.item {
@@ -591,7 +815,7 @@
   margin: 0.1em 0;
 }
 
-.hardboiled.item .window-content form .sheet-body .item-item-section div label, .hardboiled.item .window-content form .sheet-body .item-item-section div .tabs, .hardboiled.item .window-content form .sheet-body .item-item-section div .tabs .item.active, .hardboiled.item .tabs .window-content form .sheet-body .item-item-section div .item.active {
+.hardboiled.item .window-content form .sheet-body .item-item-section div label {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -688,7 +912,7 @@
   margin: 0.1em 0;
 }
 
-.hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div label, .hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div .tabs, .hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div .tabs .item.active, .hardboiled.item .tabs .window-content form .sheet-body .item-weapon-stats-section div .item.active {
+.hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div label {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
@@ -715,7 +939,7 @@
   width: 6em;
 }
 
-.hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div input + label, .hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div input + .tabs, .hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div .tabs input + .item.active, .hardboiled.item .tabs .window-content form .sheet-body .item-weapon-stats-section div input + .item.active {
+.hardboiled.item .window-content form .sheet-body .item-weapon-stats-section div input + label {
   margin-left: 2px;
 }
 
@@ -740,7 +964,7 @@
   align-items: stretch;
 }
 
-.hardboiled.item .window-content form .sheet-body .item-description-section label, .hardboiled.item .window-content form .sheet-body .item-description-section .tabs, .hardboiled.item .window-content form .sheet-body .item-description-section .tabs .item.active, .hardboiled.item .tabs .window-content form .sheet-body .item-description-section .item.active {
+.hardboiled.item .window-content form .sheet-body .item-description-section label {
   font-size: large;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
@@ -754,21 +978,23 @@
   height: 0;
 }
 
-.hardboiled label, .hardboiled label.char-label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success, .hardboiled .tabs, .hardboiled .tabs .item.active {
+.hardboiled label {
   font-family: hardboiled-title;
 }
 
-.hardboiled label.char-label, .hardboiled div.result label.char-label.roll-result, .hardboiled div.result label.char-label.roll-success, .hardboiled .char-label.tabs, .hardboiled .tabs .char-label.item.active {
+.hardboiled label.char-label {
+  font-family: hardboiled-title;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: #d0a72e;
 }
 
-.hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover, .hardboiled label.char-label.rollable:hover, .hardboiled .char-label.rollable.tabs:hover, .hardboiled .tabs .char-label.rollable.item.active:hover {
+.hardboiled label.char-label.rollable:hover,
+.hardboiled label.char-label.rollable:hover {
   color: darkred;
   text-shadow: 0 0 10px black;
 }
 
-.hardboiled .chat-card {
+.hardboiled.chat-card {
   background: no-repeat top/100% url(images/background-top.png), no-repeat bottom left/100% url(images/background-bottom.png), repeat-y left/2.7% url(images/background-bg.png), #f5e1bf;
 }
 
@@ -864,7 +1090,7 @@
   font-size: 150%;
 }
 
-.hardboiled div.result {
+.hardboiled .card-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -883,7 +1109,7 @@
   padding: 0 5px 10px 10px;
 }
 
-.hardboiled div.result label, .hardboiled div.result label.roll-result, .hardboiled div.result label.roll-success, .hardboiled div.result .tabs, .hardboiled div.result .tabs .item.active, .hardboiled .tabs div.result .item.active {
+.hardboiled .card-body label {
   text-align: center;
   border: 1px solid black;
   border-radius: 3px;
@@ -894,24 +1120,50 @@
   margin: 2px;
 }
 
-.hardboiled div.result label.roll-result, .hardboiled div.result .roll-result.tabs, .hardboiled div.result .tabs .roll-result.item.active, .hardboiled .tabs div.result .roll-result.item.active {
+.hardboiled .card-body label.roll-result {
+  font-family: hardboiled-title;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.hardboiled div.result label.roll-result[data-success="true"], .hardboiled div.result .roll-result.tabs[data-success="true"], .hardboiled div.result .tabs .roll-result.item.active[data-success="true"], .hardboiled .tabs div.result .roll-result.item.active[data-success="true"] {
+.hardboiled .card-body label.roll-result[data-success="true"] {
   color: green;
 }
 
-.hardboiled div.result label.roll-result[data-success="false"], .hardboiled div.result .roll-result.tabs[data-success="false"], .hardboiled div.result .tabs .roll-result.item.active[data-success="false"], .hardboiled .tabs div.result .roll-result.item.active[data-success="false"] {
+.hardboiled .card-body label.roll-result[data-success="false"] {
   color: darkred;
 }
 
-.hardboiled div.result label.roll-success, .hardboiled div.result .roll-success.tabs, .hardboiled div.result .tabs .roll-success.item.active, .hardboiled .tabs div.result .roll-success.item.active {
+.hardboiled .card-body label.roll-success {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 100%;
   flex: 1 0 100%;
+  font-family: hardboiled-title;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: #d0a72e;
+}
+
+.hardboiled .card-body .combat-flags-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: stretch;
+  -ms-flex-pack: stretch;
+  justify-content: stretch;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.hardboiled .card-body .combat-flags-section a {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 .hardboiled .resource-label {
@@ -920,6 +1172,7 @@
 }
 
 .hardboiled .tabs {
+  font-family: hardboiled-title;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   color: #d0a72e;
   height: 40px;
@@ -946,6 +1199,7 @@
 }
 
 .hardboiled .tabs .item.active {
+  font-family: hardboiled-title;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   border-width: 10px 1px 0 1px;
   border-color: darkred;
@@ -1051,17 +1305,107 @@
   display: block;
 }
 
-.dialog .hardboiled label, .dialog .hardboiled div.result label.roll-result, .dialog .hardboiled div.result label.roll-success, .dialog .hardboiled .tabs, .dialog .hardboiled .tabs .item.active {
-  font: large hardboiled-text;
-}
-
 #modifier-roll-form {
   margin: 10px 0;
 }
 
-#modifier-roll-form label, #modifier-roll-form .hardboiled .tabs, .hardboiled #modifier-roll-form .tabs, #modifier-roll-form .hardboiled .tabs .item.active, .hardboiled .tabs #modifier-roll-form .item.active {
+#modifier-roll-form .dialog-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value label {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   margin: 0 10px 0 0;
+  font-family: inherit;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value .slider {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value .slider .slider-labels {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value .slider .slider-labels span {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+#modifier-roll-form .dialog-wrapper .label-value .slider input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }

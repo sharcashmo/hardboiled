@@ -1,4 +1,4 @@
-.chat-card {
+@include unify-parent(".chat-card") {
 	background: no-repeat top/100% url(images/background-top.png),
 	no-repeat bottom left/100% url(images/background-bottom.png),
 	repeat-y left/2.7% url(images/background-bg.png),
@@ -55,7 +55,7 @@ header.card-header {
 	}
 }
 
-div.result {
+.card-body {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -89,5 +89,17 @@ div.result {
 		flex: 1 0 100%;
 		@include outlined;
 		color: $c-mustard;
+	}
+	
+	.combat-flags-section {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: stretch;
+		align-items: flex-start;
+		
+		a {
+			flex: 1 0 auto;
+		}
 	}
 }

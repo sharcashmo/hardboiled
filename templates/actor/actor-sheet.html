@@ -45,7 +45,7 @@
 			</div>
 			<div class="attributes">
 				<div>
-					<label>{{localize data.attributes.punch.label}}</label>
+					<label class="rollable" data-combatCheck="none">{{localize data.attributes.punch.label}}</label>
 					<input name="data.attributes.punch.value" type="number" data-dtype="Number" value="{{data.attributes.punch.value}}">
 				</div>
 				<div>
@@ -74,9 +74,7 @@
 	{{!-- Sheet Tab Navigation --}}
 	<nav class="sheet-tabs tabs" data-group="primary">
 		<a class="item" data-tab="skills">{{localize "Hardboiled.Skills"}}</a>
-		<a class="item" data-tab="description">Description</a>
-		<a class="item" data-tab="items">Items</a>
-		<a class="item" data-tab="features">Features</a>
+		<a class="item" data-tab="background">{{localize "Hardboiled.Background"}}</a>
 	</nav>
 	
 	{{!-- Sheet Body --}}
@@ -84,60 +82,20 @@
 	
 		{{!-- Owned Skills Tab --}}
 		<div class="tab skills" data-group="primary" data-tab="skills">
-			{{> "systems/hardboiled/templates/actor/parts/actor-skills.html"}}
+			<div class="actor-skills-section">
+				{{> "systems/hardboiled/templates/actor/parts/actor-skills.html"}}
+				{{> "systems/hardboiled/templates/actor/parts/actor-talents.html"}}
+			</div>
+			<div class="actor-combat-section">
+				{{> "systems/hardboiled/templates/actor/parts/actor-combat.html"}}
+				{{> "systems/hardboiled/templates/actor/parts/actor-equipment.html"}}
+			</div>
 		</div>
 
-		{{!-- Biography Tab --}}
-		<div class="tab biography" data-group="primary" data-tab="description">
-			{{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+		{{!-- Inventory Tab --}}
+		<div class="tab background" data-group="primary" data-tab="background">
+			{{> "systems/hardboiled/templates/actor/parts/actor-notes.html"}}
 		</div>
-
-		{{!-- Owned Items Tab --}}
-		<div class="tab items" data-group="primary" data-tab="items">
-			<ol class="items-list">
-				<li class="item flexrow item-header">
-					<div class="item-image"></div>
-					<div class="item-name">Name</div>
-					<div class="item-controls">
-						<a class="item-control item-create" title="Create item" data-type="item"><i class="fas fa-plus"></i> Add item</a>
-					</div>
-				</li>
-				{{#each actor.gear as |item id|}}
-				<li class="item flexrow" data-item-id="{{item._id}}">
-					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-					<h4 class="item-name">{{item.name}}</h4>
-					<div class="item-controls">
-						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-						<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-					</div>
-				</li>
-				{{/each}}
-			</ol>
-		</div>
-		
-		{{!-- Owned Features Tab --}}
-		<div class="tab features" data-group="primary" data-tab="features">
-			<ol class="items-list">
-				<li class="item flexrow item-header">
-					<div class="item-image"></div>
-					<div class="item-name">Name</div>
-					<div class="item-controls">
-						<a class="item-control item-create" title="Create item" data-type="feature"><i class="fas fa-plus"></i> Add item</a>
-					</div>
-				</li>
-				{{#each actor.features as |item id|}}
-				<li class="item flexrow" data-item-id="{{item._id}}">
-					<div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
-					<h4 class="item-name">{{item.name}}</h4>
-					<div class="item-controls">
-						<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-						<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-					</div>
-				</li>
-				{{/each}}
-			</ol>
-		</div>
-
 	</section>
 </form>
 

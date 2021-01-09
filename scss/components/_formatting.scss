@@ -3,7 +3,7 @@
 //
 // Clickable content
 //
-.rollable {
+.rollable, %clickable {
 	&:hover,
 	&:focus {
 		text-shadow: 0 0 10px red;
@@ -11,27 +11,73 @@
 	}
 }
 
+%card-field {
+	display: inline-block;
+	margin: 2px 2px 0 0;
+	padding: 0 3px;
+	font-size: small;
+	border: 1px solid black;
+	border-radius: 3px;
+	font-style: normal;
+	text-align: center;
+}
+
 .toggle-switch {
-    display: inline-block;
-    margin: 2px 2px 0 0;
-    padding: 0 3px;
-    font-size: small;
-    line-height: 16px;
-    border: 1px solid whitesmoke;
-    border-radius: 3px;
-    background: transparent;
-    font-style: italic;
-    color: grey;
+	display: inline-block;
+	margin: 2px 2px 0 0;
+	padding: 0 3px;
+	font-size: small;
+	line-height: 16px;
+	border: 1px solid whitesmoke;
+	border-radius: 3px;
+	background: transparent;
+	font-style: italic;
+	color: grey;
 	text-align: center;
 }
 
 .switched-on {
 	border: 1px solid red;
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 0 4px red;
-    color: black;
-    font-style: normal;
+	border-radius: 3px;
+	background: rgba(0, 0, 0, 0.05);
+	box-shadow: 0 0 4px red;
+	color: black;
+	font-style: normal;
+}
+
+.card-button {
+	@extend %card-field;
+	color: black;
+	background: lightgray;
+	
+	&[data-action] {
+		background: whitesmoke;
+		@extend %clickable;
+	}
+}
+
+.card-result {
+	@extend %card-field;
+	@include outlined;
+	color: $c-mustard;
+	background: whitesmoke;
+	font-size: large;
+	
+	@include unify-parent(".success") {
+		background: green	;
+	}
+	
+	@include unify-parent(".failure") {
+		background: darkred;
+	}
+	
+	@include unify-parent(".critical") {
+		background: blueviolet;
+	}
+	
+	@include unify-parent(".fumble") {
+		background: darkorange;
+	}
 }
 
 //

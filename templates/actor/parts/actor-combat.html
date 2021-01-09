@@ -1,0 +1,23 @@
+<ol class="items-list">
+	<li class="item weaponrow item-header">
+		<a class="item-button item-create" title="{{localize "Hardboiled.AddWeapon"}}" data-type="weapon">{{localize "Hardboiled.AddWeapon"}}</a>
+	</li>
+	{{#each data.weapons as |item id|}}
+	<li class="item weaponrow" data-item-id="{{item._id}}">
+		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
+		<div class="item-name rollable" data-combatCheck="{{item._id}}">{{item.name}}</div>
+		<div class="item-skill rollable" data-combatCheck="{{item._id}}">
+			{{~#if item.data.flags.melee~}}
+				{{../data.fightingSkill.name}} ({{../data.fightingSkill.data.value}}%)
+			{{~else~}}
+				{{../data.shootingSkill.name}} ({{../data.shootingSkill.data.value}}%)
+			{{~/if~}}
+		</div>
+		<div class="item-damage rollable" data-combatCheck="{{item._id}}">{{item.data.damage}}</div>
+		<div class="item-controls">
+			<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+			<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+		</div>
+	</li>
+	{{/each}}
+</ol>
