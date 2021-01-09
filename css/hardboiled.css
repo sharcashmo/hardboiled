@@ -33,6 +33,11 @@
   text-align: center;
 }
 
+.hardboiled .toggle-switch[data-flag-id="group"] {
+  color: black;
+  font-style: normal;
+}
+
 .hardboiled .switched-on {
   border: 1px solid red;
   border-radius: 3px;
@@ -73,7 +78,7 @@
 }
 
 .hardboiled .card-result.fumble {
-  background: darkorange;
+  background: black;
 }
 
 .hardboiled input[type="text"],

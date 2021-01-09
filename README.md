@@ -26,9 +26,11 @@ Install in foundry VTT from the Game Systems tab using the following manifest :
 
 Version 0.0.5 :
 
-* Add combat section to character sheet.
-* Add melee combat functionality.
-* Add inventory section to character sheet.
+* Added combat section to character sheet.
+* Added melee combat functionality.
+* Added range combat functionality.
+* Added inventory section to character sheet.
+* Created complex (automated) combat chat cards.
 
 Version 0.0.4 :
 
@@ -43,16 +45,16 @@ Version 0.0.4 :
 Version 0.0.3 :
 
 * Created a Spanish compendium module. See <https://github.com/sharcashmo/hardboiled-es/>
-* Add skill tabs to character sheet.
-* Move all style and presentation logic from html templates to CSS files. Including "flexrow" and similar classes.
-* Add license information to README.md file.
-* Add talents to character sheet.
+* Added skill tabs to character sheet.
+* Moved all style and presentation logic from html templates to CSS files. Including "flexrow" and similar classes.
+* Added license information to README.md file.
+* Added talents to character sheet.
 
 Version 0.0.2 :  
 
 * No longer apply Decotura font to every text in Foundry. Only sheets, dialogs and cards will use it.
-* Reorganize and clean SCSS files.
-* Add attributes (Hit Points, Punch, etc) to character sheet.
+* Reorganized and clean SCSS files.
+* Added attributes (Hit Points, Punch, etc) to character sheet.
 * Implemented Skill sheet.
 
 Version 0.0.1 :
@@ -68,15 +70,17 @@ Version 0.0.1 :
 * [ ] Sort character items, and avoid duplicates.
 * [ ] Add automation and checks in character sheet attributes (hit points below max hit points, automatic statuses, etc).
 * [ ] Add automatic validation of input fields according to their data types.
-* [ ] Create complex (automated) combat chat cards.
+* [ ] Add ammunition management.
 
 ### Version 0.0.5
 
 * [X] Add combat section to character sheet.
 * [X] Add melee combat functionality.
+* [X] Add range combat functionality.
 * [X] Add inventory section to character sheet.
 * [ ] Reorganize status flags and icons.
 * [ ] Complete status flags in character sheet.
+* [X] Create complex (automated) combat chat cards.
 
 ### Version 0.0.4
 

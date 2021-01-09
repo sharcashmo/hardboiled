@@ -145,14 +145,22 @@ export class HardboiledCardHelper extends HardboiledHelper {
 		const element = event.currentTarget.closest('.toggle-switch.enabled');
 		const card = event.currentTarget.closest('.chat-card');
 		const message = event.currentTarget.closest('.message');
+		const combat = card.classList.contains('melee-combat') ?
+			new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset) :
+			new HardboiledRangeCombat(message.dataset, card.dataset, element.dataset);
 		
 		console.log("onToggleSwitch");
 		console.log(element.dataset);
 		console.log(card);
+		console.log(card.classList);
 		
 		if (element.dataset.flagId) {
-			const combat = new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset);
-			combat.toggleFlag(element.dataset.flagId);
+			if (element.dataset.flagGroup) {
+				combat.toggleFlag(element.dataset.flagId, element.dataset.flagGroup);
+			}
+			else {
+				combat.toggleFlag(element.dataset.flagId);
+			}
 		}
 		
 		return;
@@ -185,12 +193,16 @@ export class HardboiledCardHelper extends HardboiledHelper {
 				combat = new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset);
 				combat.skillRoll();
 				break;
+			case 'range-skill-roll':
+				combat = new HardboiledRangeCombat(message.dataset, card.dataset, element.dataset);
+				combat.skillRoll();
+				break;
 			case 'melee-damage-roll':
 				combat = new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset);
 				combat.damageRoll();
 				break;
-			case 'melee-damage-roll':
-				combat = new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset);
+			case 'range-damage-roll':
+				combat = new HardboiledRangeCombat(message.dataset, card.dataset, element.dataset);
 				combat.damageRoll();
 				break;
 			default:

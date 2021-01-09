@@ -1,0 +1,152 @@
+<div class="{{cssClass}} chat-card ranged-combat" autocomplete="off"
+	data-actor-id="{{actor._id}}"
+	data-weapon-id="{{weapon._id}}"
+	data-flags-range-value="{{#if flags.range.value}}{{flags.range.value}}{{else}}basic{{/if}}"
+	data-flags-range-group="{{flags.range.group}}"
+	data-flags-range-close="{{flags.range.close}}"
+	data-flags-range-basic="{{#if flags.range.value}}{{flags.range.basic}}{{else}}true{{/if}}"
+	data-flags-range-medium="{{flags.range.medium}}"
+	data-flags-range-long="{{flags.range.long}}"
+	data-flags-range-extreme="{{flags.range.extreme}}"
+	data-flags-target-value="{{#if flags.target.value}}{{flags.target.value}}{{else}}normal{{/if}}"
+	data-flags-target-group="{{flags.target.group}}"
+	data-flags-target-inmobilized="{{flags.target.inmobilized}}"
+	data-flags-target-running="{{flags.target.running}}"
+	data-flags-target-kneeled="{{flags.target.kneeled}}"
+	data-flags-target-crawling="{{flags.target.crawling}}"
+	data-flags-target-melee-engaged="{{flags.target.meleeEngaged}}"
+	data-flags-targetcoverage-value="{{#if flags.targetCoverage.value}}{{flags.targetCoverage.value}}{{else}}none{{/if}}"
+	data-flags-targetcoverage-group="{{flags.targetCoverage.group}}"
+	data-flags-targetcoverage-small="{{flags.targetCoverage.small}}"
+	data-flags-targetcoverage-medium="{{flags.targetCoverage.medium}}"
+	data-flags-targetcoverage-total="{{flags.targetCoverage.total}}"
+	data-flags-targetvehicle-value="{{#if flags.targetVehicle.value}}{{flags.targetVehicle.value}}{{else}}no{{/if}}"
+	data-flags-targetvehicle-group="{{flags.targetVehicle.group}}"
+	data-flags-targetvehicle-slow="{{flags.targetVehicle.slow}}"
+	data-flags-targetvehicle-medium="{{flags.targetVehicle.medium}}"
+	data-flags-targetvehicle-fast="{{flags.targetVehicle.fast}}"
+	data-flags-multipletargets-value="{{#if flags.multipleTargets.value}}{{flags.multipleTargets.value}}{{else}}no{{/if}}"
+	data-flags-multipletargets-group="{{flags.multipleTargets.group}}"
+	data-flags-multipletargets-two="{{flags.multipleTargets.two}}"
+	data-flags-multipletargets-three="{{flags.multipleTargets.three}}"
+	data-flags-multipletargets-four="{{flags.multipleTargets.four}}"
+	data-flags-attacker-telescopicsight="{{flags.attacker.telescopicSight}}"
+	data-flags-attacker-aimed="{{flags.attacker.aimed}}"
+	data-flags-attacker-twoweapons="{{flags.attacker.twoWeapons}}"
+	data-flags-attacker-specifictarget="{{flags.attacker.specificTarget}}"
+	data-flags-attackervehicle-value="{{#if flags.attackerVehicle.value}}{{flags.attackerVehicle.value}}{{else}}no{{/if}}"
+	data-flags-attackervehicle-group="{{flags.attackerVehicle.group}}"
+	data-flags-attackervehicle-slow="{{flags.attackerVehicle.slow}}"
+	data-flags-attackervehicle-medium="{{flags.attackerVehicle.medium}}"
+	data-flags-attackervehicle-fast="{{flags.attackerVehicle.fast}}"
+	data-flags-attackerburst-value="{{#if flags.attackerBurst.value}}{{flags.attackerBurst.value}}{{else}}no{{/if}}"
+	data-flags-attackerburst-group="{{flags.attackerBurst.group}}"
+	data-flags-attackerburst-short="{{flags.attackerBurst.short}}"
+	data-flags-attackerburst-medium="{{flags.attackerBurst.medium}}"
+	data-flags-attackerburst-complete="{{flags.attackerBurst.complete}}"
+	data-toHit-success="{{toHit.success}}"
+	data-toHit-result="{{toHit.result}}"
+	data-damage-formula="{{damage.formula}}"
+	data-damage-result="{{damage.result}}"
+>
+	
+	{{!-- Card Header --}}
+	<header class="card-header">
+		<div class="description">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+			<div class="description-fields">
+				<label>{{actor.name}}</label>
+				<div>
+					<label class="char-label">{{weapon.name}}</label>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+    {{!-- Card Body --}}
+	<div class="card-body">
+		<div class="combat-flags-section">
+			<a class="toggle-switch {{#if flags.range.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeValue"}}" data-flag-group="range" data-flag-id="group">{{localize "Hardboiled.FlagRangeValue"}}: {{localize (camelConcat 'Hardboiled.FlagRange' flags.range.value)}}</a>
+			{{#if flags.range.group}}
+			<a class="toggle-switch {{#if flags.range.close}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeClose"}}" data-flag-group="range" data-flag-id="close">{{localize "Hardboiled.FlagRangeClose"}}</a>
+			<a class="toggle-switch {{#if flags.range.basic}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeBasic"}}" data-flag-group="range" data-flag-id="basic">{{localize "Hardboiled.FlagRangeBasic"}}</a>
+			<a class="toggle-switch {{#if flags.range.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeMedium"}}" data-flag-group="range" data-flag-id="medium">{{localize "Hardboiled.FlagRangeMedium"}}</a>
+			<a class="toggle-switch {{#if flags.range.long}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeLong"}}" data-flag-group="range" data-flag-id="long">{{localize "Hardboiled.FlagRangeLong"}}</a>
+			<a class="toggle-switch {{#if flags.range.extreme}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagRangeExtreme"}}" data-flag-group="range" data-flag-id="extreme">{{localize "Hardboiled.FlagRangeExtreme"}}</a>
+			{{/if}}
+			<a class="toggle-switch {{#if flags.target.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetValue"}}" data-flag-group="target" data-flag-id="group">{{localize "Hardboiled.FlagTargetValue"}}: {{#if flags.target.value}}{{localize (camelConcat 'Hardboiled.FlagTarget' flags.target.value)}}{{else}}{{localize 'Hardboiled.FlagTargetNormal'}}{{/if}}</a>
+			{{#if flags.target.group}}
+			<a class="toggle-switch {{#if flags.target.inmobilized}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetInmobilized"}}" data-flag-group="target" data-flag-id="inmobilized">{{localize "Hardboiled.FlagTargetInmobilized"}}</a>
+			<a class="toggle-switch {{#if flags.target.running}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetRunning"}}" data-flag-group="target" data-flag-id="running">{{localize "Hardboiled.FlagTargetRunning"}}</a>
+			<a class="toggle-switch {{#if flags.target.kneeled}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetKneeled"}}" data-flag-group="target" data-flag-id="kneeled">{{localize "Hardboiled.FlagTargetKneeled"}}</a>
+			<a class="toggle-switch {{#if flags.target.crawling}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetCrawling"}}" data-flag-group="target" data-flag-id="crawling">{{localize "Hardboiled.FlagTargetCrawling"}}</a>
+			<a class="toggle-switch {{#if flags.target.meleeEngaged}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetMeleeEngaged"}}" data-flag-group="target" data-flag-id="meleeEngaged">{{localize "Hardboiled.FlagTargetMeleeEngaged"}}</a>
+			{{/if}}
+			<a class="toggle-switch {{#if flags.targetCoverage.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetCoverageValue"}}" data-flag-group="targetCoverage" data-flag-id="group">{{localize "Hardboiled.FlagTargetCoverageValue"}}: {{#if flags.targetCoverage.value}}{{localize (camelConcat 'Hardboiled.FlagTargetCoverage' flags.targetCoverage.value)}}{{else}}{{localize 'Hardboiled.FlagTargetCoverageNone'}}{{/if}}</a>
+			{{#if flags.targetCoverage.group}}
+			<a class="toggle-switch {{#if flags.targetCoverage.small}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetCoverageSmall"}}" data-flag-group="targetCoverage" data-flag-id="small">{{localize "Hardboiled.FlagTargetCoverageSmall"}}</a>
+			<a class="toggle-switch {{#if flags.targetCoverage.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetCoverageMedium"}}" data-flag-group="targetCoverage" data-flag-id="medium">{{localize "Hardboiled.FlagTargetCoverageMedium"}}</a>
+			<a class="toggle-switch {{#if flags.targetCoverage.total}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetCoverageTotal"}}" data-flag-group="targetCoverage" data-flag-id="total">{{localize "Hardboiled.FlagTargetCoverageTotal"}}</a>
+			{{/if}}
+			<a class="toggle-switch {{#if flags.targetVehicle.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleValue"}}" data-flag-group="targetVehicle" data-flag-id="group">{{localize "Hardboiled.FlagTargetVehicleValue"}}: {{#if flags.targetVehicle.value}}{{localize (camelConcat 'Hardboiled.FlagTargetVehicle' flags.targetVehicle.value)}}{{else}}{{localize 'Hardboiled.FlagTargetVehicleNo'}}{{/if}}</a>
+			{{#if flags.targetVehicle.group}}
+			<a class="toggle-switch {{#if flags.targetVehicle.slow}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleSlow"}}" data-flag-group="targetVehicle" data-flag-id="slow">{{localize "Hardboiled.FlagTargetVehicleSlow"}}</a>
+			<a class="toggle-switch {{#if flags.targetVehicle.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleMedium"}}" data-flag-group="targetVehicle" data-flag-id="medium">{{localize "Hardboiled.FlagTargetVehicleMedium"}}</a>
+			<a class="toggle-switch {{#if flags.targetVehicle.fast}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleFast"}}" data-flag-group="targetVehicle" data-flag-id="fast">{{localize "Hardboiled.FlagTargetVehicleFast"}}</a>
+			{{/if}}
+			{{#if weapon.data.flags.automatic}}
+			<a class="toggle-switch {{#if flags.multipleTargets.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsValue"}}" data-flag-group="multipleTargets" data-flag-id="group">{{localize "Hardboiled.FlagMultipleTargetsValue"}}: {{#if flags.multipleTargets.value}}{{localize (camelConcat 'Hardboiled.FlagMultipleTargets' flags.multipleTargets.value)}}{{else}}{{localize 'Hardboiled.FlagMultipleTargetsNo'}}{{/if}}</a>
+			{{#if flags.multipleTargets.group}}
+			<a class="toggle-switch {{#if flags.multipleTargets.two}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsTwo"}}" data-flag-group="multipleTargets" data-flag-id="two">{{localize "Hardboiled.FlagMultipleTargetsTwo"}}</a>
+			<a class="toggle-switch {{#if flags.multipleTargets.three}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsThree"}}" data-flag-group="multipleTargets" data-flag-id="three">{{localize "Hardboiled.FlagMultipleTargetsThree"}}</a>
+			<a class="toggle-switch {{#if flags.multipleTargets.four}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsFour"}}" data-flag-group="multipleTargets" data-flag-id="four">{{localize "Hardboiled.FlagMultipleTargetsFour"}}</a>
+			{{/if}}
+			{{/if}}
+			<a class="toggle-switch {{#if flags.attacker.telescopicSight}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerTelescopicSight"}}" data-flag-group="attacker" data-flag-id="telescopicSight">{{localize "Hardboiled.FlagAttackerTelescopicSight"}}</a>
+			<a class="toggle-switch {{#if flags.attacker.aimed}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerAimed"}}" data-flag-group="attacker" data-flag-id="aimed">{{localize "Hardboiled.FlagAttackerAimed"}}</a>
+			<a class="toggle-switch {{#if flags.attacker.twoWeapons}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerTwoWeapons"}}" data-flag-group="attacker" data-flag-id="twoWeapons">{{localize "Hardboiled.FlagAttackerTwoWeapons"}}</a>
+			<a class="toggle-switch {{#if flags.attacker.specificTarget}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerSpecificTarget"}}" data-flag-group="attacker" data-flag-id="specificTarget">{{localize "Hardboiled.FlagAttackerSpecificTarget"}}</a>
+			<a class="toggle-switch {{#if flags.attackerVehicle.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleValue"}}" data-flag-group="attackerVehicle" data-flag-id="group">{{localize "Hardboiled.FlagAttackerVehicleValue"}}: {{#if flags.attackerVehicle.value}}{{localize (camelConcat 'Hardboiled.FlagAttackerVehicle' flags.attackerVehicle.value)}}{{else}}{{localize 'Hardboiled.FlagAttackerVehicleNo'}}{{/if}}</a>
+			{{#if flags.attackerVehicle.group}}
+			<a class="toggle-switch {{#if flags.attackerVehicle.slow}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleSlow"}}" data-flag-group="attackerVehicle" data-flag-id="slow">{{localize "Hardboiled.FlagAttackerVehicleSlow"}}</a>
+			<a class="toggle-switch {{#if flags.attackerVehicle.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleMedium"}}" data-flag-group="attackerVehicle" data-flag-id="medium">{{localize "Hardboiled.FlagAttackerVehicleMedium"}}</a>
+			<a class="toggle-switch {{#if flags.attackerVehicle.fast}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleFast"}}" data-flag-group="attackerVehicle" data-flag-id="fast">{{localize "Hardboiled.FlagAttackerVehicleFast"}}</a>
+			{{/if}}
+			{{#if weapon.data.flags.automatic}}
+			<a class="toggle-switch {{#if flags.attackerBurst.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstValue"}}" data-flag-group="attackerBurst" data-flag-id="group">{{localize "Hardboiled.FlagAttackerBurstValue"}}: {{#if flags.attackerBurst.value}}{{localize (camelConcat 'Hardboiled.FlagAttackerBurst' flags.attackerBurst.value)}}{{else}}{{localize 'Hardboiled.FlagAttackerBurstNo'}}{{/if}}</a>
+			{{#if flags.attackerBurst.group}}
+			<a class="toggle-switch {{#if flags.attackerBurst.short}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstShort"}}" data-flag-group="attackerBurst" data-flag-id="short">{{localize "Hardboiled.FlagAttackerBurstShort"}}</a>
+			<a class="toggle-switch {{#if flags.attackerBurst.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstMedium"}}" data-flag-group="attackerBurst" data-flag-id="medium">{{localize "Hardboiled.FlagAttackerBurstMedium"}}</a>
+			<a class="toggle-switch {{#if flags.attackerBurst.complete}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstComplete"}}" data-flag-group="attackerBurst" data-flag-id="complete">{{localize "Hardboiled.FlagAttackerBurstComplete"}}</a>
+			{{/if}}
+			{{/if}}
+		</div>
+	
+		{{#if toHit}}
+		<div class="card-button">
+			{{skill.name}} ({{modifiedValues.skill}}%)
+		</div>
+		<div class="card-result {{toHit.success}}">
+			{{localize (concat 'Hardboiled.' toHit.success)}} : {{toHit.result}}
+		</div>
+			{{#if damage.formula}}
+				{{#if damage.result}}
+				<div class="card-button">
+					{{localize "Hardboiled.RollDamage"}}: {{damage.formula}}
+				</div>
+				<div class="card-result {{toHit.success}}">
+					{{localize "Hardboiled.Damage"}}: {{damage.result}}
+				</div>
+				{{else}}
+				<div class="card-button owner-only" data-action="range-damage-roll" data-damage-formula="{{damage.formula}}">
+					{{localize "Hardboiled.RollDamage"}}: {{damage.formula}}
+				</div>
+				{{/if}}
+			{{/if}}
+		{{else}}
+		<div class="card-button owner-only" data-action="range-skill-roll" data-skill-value="{{modifiedValues.skill}}" data-skill="{{skill._id}}">
+			{{skill.name}} ({{modifiedValues.skill}}%)
+		</div>
+		{{/if}}
+	</div>
+</div>

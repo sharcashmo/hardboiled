@@ -60,7 +60,6 @@ Hooks.once('init', async function() {
 
 	preloadHandlebarsTemplates();
 
-	// If you need to add Handlebars helpers, here are a few useful examples:
 	Handlebars.registerHelper('concat', function() {
 		var outStr = '';
 		for (var arg in arguments) {
@@ -70,6 +69,17 @@ Hooks.once('init', async function() {
 		}
 		return outStr;
 	});
+	
+	Handlebars.registerHelper('camelConcat', function() {
+		var outStr = '';
+		for (var arg in arguments) {
+			if (typeof arguments[arg] != 'object' && arguments[arg]) {
+				let tmpStr = String(arguments[arg]);
+				outStr += tmpStr.charAt(0).toUpperCase() + tmpStr.slice(1);;
+			}
+		}
+		return outStr;
+	})
 
 	Handlebars.registerHelper('toLowerCase', function(str) {
 		return str.toLowerCase();

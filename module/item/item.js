@@ -153,6 +153,12 @@ export class HardboiledItem extends Item {
 			weapon: this.data,
 			modifiedValues: {
 				skill: skillValue
+			},
+			flags: {
+				range: {
+					value: 'basic',
+					basic: true
+				}
 			}
 		};
 		
