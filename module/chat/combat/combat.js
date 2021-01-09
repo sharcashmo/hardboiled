@@ -142,6 +142,8 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 				this.context.damage = {
 					formula: punch + '+2*(' + weapon.data.damage + ')'
 				};
+				const roll = new Roll(this.context.damage.formula);
+				this.context.damage.result = roll.evaluate({maximize: true}).total;
 				break;
 			default:
 				console.log('This should not happen');
