@@ -34,9 +34,12 @@
 	"Hardboiled.Critical": "Critical",
 	"Hardboiled.Dead": "Dead",
 	"Hardboiled.Unconscious": "Unconscious",
-	"Hardboiled.Skills": "Sklls",
+	"Hardboiled.Skills": "Sklls & Combat",
 	"Hardboiled.AddSkill": "Add skill",
 	"Hardboiled.AddTalent": "Add talent",
+	"Hardboiled.AddWeapon": "Add weapon",
+	"Hardboiled.AddEquipment": "Add objet",
+	"Hardboiled.Background": "Background & Notes",
 	
 	"Hardboiled.Roll": "Roll",
 	"Hardboiled.Success": "Success",
@@ -61,6 +64,17 @@
 	"Hardboiled.BurstMedium": "Medium",
 	"Hardboiled.BurstComplete": "Complete",
 	"Hardboiled.Description": "Description",
+	
+	"Hardboiled.Unarmed": "Unarmed",
+	"Hardboiled.OpportunityAttack": "Opportunity attack",
+	"Hardboiled.KnockOut": "Knock out",
+	"Hardboiled.Tired": "Tired",
+	"Hardboiled.RollDamage": "Roll damage",
+	
+	"Hardboiled.success": "success",
+	"Hardboiled.failure": "failure",
+	"Hardboiled.critical": "critical",
+	"Hardboiled.fumble": "fumble",
 
 	"Hardboiled.Tooltip.Damage": "Damage formula (ex. 1D3)",
 	"Hardboiled.Tooltip.RangeShort": "Range: short",
@@ -68,5 +82,12 @@
 	"Hardboiled.Tooltip.Ammunition": "Magazine size",
 	"Hardboiled.Tooltip.BurstShort": "Bullets: short burst",
 	"Hardboiled.Tooltip.BurstMedium": "Bullets: medium burst",
-	"Hardboiled.Tooltip.BurstComplete": "Bullets: complete magazine"
+	"Hardboiled.Tooltip.BurstComplete": "Bullets: complete magazine",
+	
+	"Hardboiled.Settings.FightingSkill.label": "Combat: melee",
+	"Hardboiled.Settings.FightingSkill.hint": "Skill to be used for melee combat",
+	"Hardboiled.Settings.FightingSkill.default": "Fighting",
+	"Hardboiled.Settings.ShootingSkill.label": "Combat: firearms",
+	"Hardboiled.Settings.ShootingSkill.hint": "Skill to be used for distance combat",
+	"Hardboiled.Settings.ShootingSkill.default": "Shooting"
 }

@@ -1,0 +1,67 @@
+<div class="{{cssClass}} chat-card melee-combat" autocomplete="off"
+	data-actor-id="{{actor._id}}"
+	data-weapon-id="{{weapon._id}}"
+	data-flags-opportunity="{{flags.opportunity}}"
+	data-flags-knockout="{{flags.knockOut}}"
+	data-flags-tired="{{flags.tired}}"
+	data-toHit-success="{{toHit.success}}"
+	data-toHit-result="{{toHit.result}}"
+	data-damage-formula="{{damage.formula}}"
+	data-damage-result="{{damage.result}}"
+>
+	
+	{{!-- Card Header --}}
+	<header class="card-header">
+		<div class="description">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+			<div class="description-fields">
+				<label>{{actor.name}}</label>
+				<div>
+					<label class="char-label">
+						{{#if weapon}}
+							{{weapon.name}}
+						{{else}}
+							{{localize 'Hardboiled.Unarmed'}}
+						{{/if}}
+					</label>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+    {{!-- Card Body --}}
+	<div class="card-body">
+		<div class="combat-flags-section">
+			<a class="toggle-switch {{#if flags.opportunity}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.OpportunityAttack"}}" data-flag-id="opportunity">{{localize "Hardboiled.OpportunityAttack"}}</a>
+			<a class="toggle-switch {{#if flags.knockOut}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.KnockOut"}}" data-flag-id="knockOut">{{localize "Hardboiled.KnockOut"}}</a>
+			<a class="toggle-switch {{#if flags.tired}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.Tired"}}" data-flag-id="tired">{{localize "Hardboiled.Tired"}}</a>
+		</div>
+	
+		{{#if toHit}}
+		<div class="card-button">
+			{{skill.name}} ({{modifiedValues.skill}}%)
+		</div>
+		<div class="card-result {{toHit.success}}">
+			{{localize (concat 'Hardboiled.' toHit.success)}} : {{toHit.result}}
+		</div>
+			{{#if damage.formula}}
+				{{#if damage.result}}
+				<div class="card-button">
+					{{localize "Hardboiled.RollDamage"}}: {{damage.formula}}
+				</div>
+				<div class="card-result {{toHit.success}}">
+					{{localize "Hardboiled.Damage"}}: {{damage.result}}
+				</div>
+				{{else}}
+				<div class="card-button owner-only" data-action="melee-damage-roll" data-damage-formula="{{damage.formula}}">
+					{{localize "Hardboiled.RollDamage"}}: {{damage.formula}}
+				</div>
+				{{/if}}
+			{{/if}}
+		{{else}}
+		<div class="card-button owner-only" data-action="melee-skill-roll" data-skill-value="{{modifiedValues.skill}}" data-skill="{{skill._id}}">
+			{{skill.name}} ({{modifiedValues.skill}}%)
+		</div>
+		{{/if}}
+	</div>
+</div>

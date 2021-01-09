@@ -1,22 +1,21 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-	<div class="chat-card attribute-description">
-	
-		{{!-- Card Header --}}
-		<header class="card-header">
-			<div class="description">
-				<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-				<div class="description-fields">
-					<label>{{actor.name}}</label>
-					<div>
-						<label class="char-label">{{describe.name}}</label>
-					</div>
+<div class="{{cssClass}} chat-card attribute-description">
+
+	{{!-- Card Header --}}
+	<header class="card-header">
+		<div class="description">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+			<div class="description-fields">
+				<label>{{actor.name}}</label>
+				<div>
+					<label class="char-label">{{describe.name}}</label>
 				</div>
 			</div>
-		</header>
-		
-	    {{!-- Card Body --}}
-		<div class="card-body result">
-			{{{describe.description}}}
 		</div>
+	</header>
+	
+    {{!-- Card Body --}}
+	<div class="card-body result">
+		{{{describe.description}}}
 	</div>
-</form>
+	
+</div>

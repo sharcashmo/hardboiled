@@ -29,9 +29,6 @@ export class HardboiledItemSheet extends ItemSheet {
 	getData() {
 		const data = super.getData();
 		
-		// Get attributes data
-//		HardboiledSheetHelper.getAttributeData(data);
-		
 		return data;
 	}
 

@@ -24,6 +24,12 @@ Install in foundry VTT from the Game Systems tab using the following manifest :
 
 ## What is working
 
+Version 0.0.5 :
+
+* Add combat section to character sheet.
+* Add melee combat functionality.
+* Add inventory section to character sheet.
+
 Version 0.0.4 :
 
 * Bug solved: Skill check always results to Success.
@@ -58,12 +64,19 @@ Version 0.0.1 :
 
 ## Future plans
 
-* [ ] Complete main attributes in character sheet.
-* [ ] Add combat section to character sheet.
-* [ ] Add inventory section to character sheet.
 * [ ] Add characteristic selection in roll modifier dialog, to allow use it instead of skill in a check.
-* [ ] Reorganize status flags and icons.
 * [ ] Sort character items, and avoid duplicates.
+* [ ] Add automation and checks in character sheet attributes (hit points below max hit points, automatic statuses, etc).
+* [ ] Add automatic validation of input fields according to their data types.
+* [ ] Create complex (automated) combat chat cards.
+
+### Version 0.0.5
+
+* [X] Add combat section to character sheet.
+* [X] Add melee combat functionality.
+* [X] Add inventory section to character sheet.
+* [ ] Reorganize status flags and icons.
+* [ ] Complete status flags in character sheet.
 
 ### Version 0.0.4
 

@@ -16,18 +16,3 @@
 	</li>
 	{{/each}}
 </ol>
-<ol class="items-list">
-	<li class="item talentrow item-header">
-		<a class="item-button item-create" title="{{localize "Hardboiled.AddTalent"}}" data-type="talent">{{localize "Hardboiled.AddTalent"}}</a>
-	</li>
-	{{#each data.talents as |item id|}}
-	<li class="item talentrow" data-item-id="{{item._id}}">
-		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
-		<div class="item-name rollable" data-talentCheck="{{item._id}}">{{item.name}}</div>
-		<div class="item-controls">
-			<a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-			<a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-		</div>
-	</li>
-	{{/each}}
-</ol>

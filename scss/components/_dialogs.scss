@@ -1,14 +1,54 @@
-label {
-	font: large hardboiled-text;
-}
-
 @at-root {
 	#modifier-roll-form {
 		margin: 10px 0;
 		
-		label {
-			flex: 0 0 auto;
-			margin: 0 10px 0 0;
+		.dialog-wrapper {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: stretch;
+			justify-content: flex-start;
+			
+			.label-value {
+				flex: 1 0 auto;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: flex-start;
+				
+				label {
+					flex: 0 0 auto;
+					margin: 0 10px 0 0;
+					font-family: inherit;
+				}
+				
+				.slider {
+					flex: 1 0 auto;
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					align-items: stretch;
+					justify-content: flex-start;
+					
+					.slider-labels {
+						flex: 1 0 auto;
+						display: flex;
+						flex-direction: row;
+						flex-wrap: nowrap;
+						align-items: center;
+						justify-content: flex-start;
+						
+						span {
+							flex: 1 0 auto;
+						}
+					}
+					
+					input {
+						flex: 1 0 auto;
+					}
+				}
+			}
 		}
 	}
 }

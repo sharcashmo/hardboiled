@@ -101,11 +101,15 @@
 			"templates": ["characteristics", "attributes", "flags"],
 			"profession": "",
 			"nationality": "",
-			"homeTown": ""
+			"homeTown": "",
+			"notes": ""
 		},
 		"npc": {
 			"templates": ["characteristics", "attributes", "flags"],
-			"profession": ""
+			"profession": "",
+			"nationality": "",
+			"homeTown": "",
+			"notes": ""
 		}
 	},
 	"Item": {

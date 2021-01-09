@@ -3,6 +3,7 @@ import { HardboiledActor } from "./actor/actor.js";
 import { HardboiledActorSheet } from "./actor/actor-sheet.js";
 import { HardboiledItem } from "./item/item.js";
 import { HardboiledItemSheet } from "./item/item-sheet.js";
+import { HardboiledCardHelper } from './helper.js';
 import { preloadHandlebarsTemplates } from "./templates.js";
 
 Hooks.once('init', async function() {
@@ -29,10 +30,34 @@ Hooks.once('init', async function() {
 	// Register sheet application classes
 	Actors.unregisterSheet("core", ActorSheet);
 	Actors.registerSheet("hardboiled", HardboiledActorSheet, { makeDefault: true });
-	
+
 	Items.unregisterSheet("core", ItemSheet);
 	Items.registerSheet("hardboiled", HardboiledItemSheet, { makeDefault: true });
 	
+	console.log(game.i18n.localize("Hardboiled.Settings.FightingSkill.default"));
+	console.log(game.system.data.title);
+	console.log(game.system);
+	console.log(game);
+
+	// Register system settings
+	game.settings.register("hardboiled", "fightingSkill", {
+		name: "Hardboiled.Settings.FightingSkill.label",
+		hint: "Hardboiled.Settings.FightingSkill.hint",
+		scope: "world",
+		type: String,
+		default: "Hardboiled.Settings.FightingSkill.default",
+		config: true
+	});
+
+	game.settings.register("hardboiled", "shootingSkill", {
+		name: "Hardboiled.Settings.ShootingSkill.label",
+		hint: "Hardboiled.Settings.ShootingSkill.hint",
+		scope: "world",
+		type: String,
+		default: "Hardboiled.Settings.ShootingSkill.default",
+		config: true
+	});
+
 	preloadHandlebarsTemplates();
 
 	// If you need to add Handlebars helpers, here are a few useful examples:
@@ -51,10 +76,40 @@ Hooks.once('init', async function() {
 	});
 });
 
+Hooks.once('setup', async function() {
+	const fightingSkill = game.i18n.localize(game.settings.get("hardboiled", "fightingSkill"));
+	const shootingSkill = game.i18n.localize(game.settings.get("hardboiled", "shootingSkill"));
+	
+	// Register system settings again, to set their default value
+	// It cannot be done at init time because i18n doesn't work by then
+	game.settings.register("hardboiled", "fightingSkill", {
+		name: "Hardboiled.Settings.FightingSkill.label",
+		hint: "Hardboiled.Settings.FightingSkill.hint",
+		scope: "world",
+		type: String,
+		default: fightingSkill,
+		config: true
+	});
+
+	game.settings.register("hardboiled", "shootingSkill", {
+		name: "Hardboiled.Settings.ShootingSkill.label",
+		hint: "Hardboiled.Settings.ShootingSkill.hint",
+		scope: "world",
+		type: String,
+		default: shootingSkill,
+		config: true
+	});
+	
+	game.settings.set("hardboiled", "fightingSkill", fightingSkill);
+	game.settings.set("hardboiled", "shootingSkill", shootingSkill);
+});
+
 Hooks.once("ready", async function() {
 	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
 	Hooks.on("hotbarDrop", (bar, data, slot) => createHardboiledMacro(data, slot));
 });
+
+Hooks.on('renderChatLog', (app, html, data) => HardboiledCardHelper.activateListeners(app, html, data));
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

@@ -26,21 +26,35 @@ export class HardboiledActor extends Actor {
 	_prepareCharacterData(actorData) {
 		const data = actorData.data;
 		
-		// List of skills
+		// Organize items by type
 		data.skills = [];
-		for (let [key, skill] of Object.entries(actorData.items)) {
-			if (skill.type === 'skill') {
-				data.skills.push(skill);
+		data.talents = [];
+		data.weapons = [];
+		data.equipment = [];
+		for (let [key, item] of Object.entries(actorData.items)) {
+			let listname = item.type;
+			switch (item.type) {
+			case 'skill':
+			case 'talent':
+			case 'weapon':
+				listname += 's';
+			case 'equipment':
+				data[listname].push(item);
+				break;
 			}
 		}
 		
-		// List of talents
-		data.talents = [];
-		for (let [key, talent] of Object.entries(actorData.items)) {
-			if (talent.type === 'talent') {
-				data.talents.push(talent);
-			}
-		}
+		// Get additional values for weapons
+		this._getCombatValues(actorData);
+	}
+	
+	/**
+	 * Get combat values
+	 */
+	_getCombatValues(actorData)	{
+		const data = actorData.data;
+		
+		[data.fightingSkill, data.shootingSkill] = this.combatSkills;
 	}
 	
 	/**
@@ -113,10 +127,94 @@ export class HardboiledActor extends Actor {
 		}
 	}
 	
+	/**
+	 * Do a combat check. If weaponId is *none*, treat it as an unarmed attack
+	 * 
+	 * @param {String}	weaponId	Id of the weapon item to be checked
+	 */
+	async combatCheck(weaponId) {
+		if (weaponId === 'none') {
+			this.startUnarmedAttack();
+		}
+		else {
+			const weapon = this.getOwnedItem(weaponId);
+			
+			if (weapon) {
+				weapon.startAttack();
+			}
+		}
+	}
+
+	/**
+	 * Handle combat rolls
+	 * @private
+	 */
+	async startUnarmedAttack() {
+		const speaker = ChatMessage.getSpeaker(this);
+		const [fightingSkill, shootingSkill] = this.combatSkills;
+		const template = 'systems/hardboiled/templates/chat/combat/melee-combat.html';
+		const combatSkill = fightingSkill;
+		const skillValue = Number(combatSkill.data.value);
+		
+		console.log(this);
+		console.log(fightingSkill);
+		console.log(shootingSkill);
+		console.log(combatSkill);
+		console.log(skillValue);
+		
+		// Values needed for the chat card
+		const context = {
+			cssClass: "hardboiled",
+			actor: this.data,
+			skill: combatSkill,
+			weapon: null
+		};
+		
+		// Generate combat card
+		const html = await renderTemplate(template, context);
+		
+		// and show it
+		const chatMessage = await ChatMessage.create({
+			speaker,
+			content: html
+		});
+	}
 
 	/**
 	 * Special getters for actors
 	 */
+	get combatSkills() {
+		const fightingSkillStr = game.settings.get("hardboiled", "fightingSkill");
+		const shootingSkillStr = game.settings.get("hardboiled", "shootingSkill");
+		const data = this.data.data;
+		
+		let fightingSkill = {
+				name: game.i18n.localize(data.characteristics.vigour.label),
+				data: {
+					value: Math.floor(data.characteristics.vigour.value / 10)
+				}
+		};
+		
+		let shootingSkill = {
+				name: game.i18n.localize(data.characteristics.dextery.label),
+				data: {
+					value: Math.floor(data.characteristics.dextery.value / 10)
+				}
+		};
+		
+		// Get combat skills
+		for (let [key, skill] of Object.entries(data.skills)) {
+			if (skill.name.toLowerCase() == fightingSkillStr.toLowerCase()) {
+				fightingSkill = skill;
+			}
+			if (skill.name.toLowerCase() == shootingSkillStr.toLowerCase()) {
+				shootingSkill = skill;
+			}
+		}
+		
+		return [fightingSkill, shootingSkill];
+	}
+	
 	get maxHP() {
 		if( this.data.data.attributes.maxhp.auto) {
 			if (this.data.data.characteristics.vigour.value != null) {

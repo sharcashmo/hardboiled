@@ -23,7 +23,7 @@
 	"Hardboiled.DEX": "DES",
 	"Hardboiled.INS": "PER",
 	"Hardboiled.CHR": "CAR",
-	"Hardboiled.LCK": "SUE",
+	"Hardboiled.LCK": "SOR",
 	"Hardboiled.HitPoints": "PV",
 	"Hardboiled.TotalHitPoints": "PV Totals",
 	"Hardboiled.Punch": "Pegada",
@@ -34,9 +34,12 @@
 	"Hardboiled.Critical": "Crític",
 	"Hardboiled.Dead": "Mort",
 	"Hardboiled.Unconscious": "Inconscient",
-	"Hardboiled.Skills": "Habilitats",
+	"Hardboiled.Skills": "Habilitats i Combat",
 	"Hardboiled.AddSkill": "Nova habilitat",
 	"Hardboiled.AddTalent": "Nova dot",
+	"Hardboiled.AddWeapon": "Nova arma",
+	"Hardboiled.AddEquipment": "Nou item",
+	"Hardboiled.Background": "Trasfons i Notes",
 	
 	"Hardboiled.Roll": "Tirada",
 	"Hardboiled.Success": "Èxit",
@@ -62,11 +65,29 @@
 	"Hardboiled.BurstComplete": "Completa",
 	"Hardboiled.Description": "Descripció",
 	
+	"Hardboiled.Unarmed": "Desarmat",
+	"Hardboiled.OpportunityAttack": "Atac d'oportunitat",
+	"Hardboiled.KnockOut": "Deixar incoscient",
+	"Hardboiled.Tired": "Cansat",
+	"Hardboiled.RollDamage": "Tirar dany",
+	
+	"Hardboiled.success": "èxit",
+	"Hardboiled.failure": "fracàs",
+	"Hardboiled.critical": "crític",
+	"Hardboiled.fumble": "pífia",
+	
 	"Hardboiled.Tooltip.Damage": "Fòrmula del dany (ex. 1D3)",
 	"Hardboiled.Tooltip.RangeShort": "Rang: curt",
 	"Hardboiled.Tooltip.RangeBasic": "Rang: bàsic",
 	"Hardboiled.Tooltip.Ammunition": "Capacitat del carregador",
 	"Hardboiled.Tooltip.BurstShort": "Projectils: ràfega curta",
 	"Hardboiled.Tooltip.BurstMedium": "Projectils: ràfega mitja",
-	"Hardboiled.Tooltip.BurstComplete": "Projectils: carregador complet"
+	"Hardboiled.Tooltip.BurstComplete": "Projectils: carregador complet",
+	
+	"Hardboiled.Settings.FightingSkill.label": "Combat: cos a cos",
+	"Hardboiled.Settings.FightingSkill.hint": "Habilitat a utilitzar al combat cos a cos",
+	"Hardboiled.Settings.FightingSkill.default": "Pelear",
+	"Hardboiled.Settings.ShootingSkill.label": "Combat: armes de foc",
+	"Hardboiled.Settings.ShootingSkill.hint": "Habilitat a utilitzar al combat a distància",
+	"Hardboiled.Settings.ShootingSkill.default": "Disparar"
 }

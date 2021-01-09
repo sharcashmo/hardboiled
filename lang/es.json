@@ -34,9 +34,12 @@
 	"Hardboiled.Critical": "Crítico",
 	"Hardboiled.Dead": "Muerto",
 	"Hardboiled.Unconscious": "Inconsciente",
-	"Hardboiled.Skills": "Habilidades",
+	"Hardboiled.Skills": "Habilidades y Combate",
 	"Hardboiled.AddSkill": "Nueva habilidad",
 	"Hardboiled.AddTalent": "Nueva dote",
+	"Hardboiled.AddWeapon": "Nueva arma",
+	"Hardboiled.AddEquipment": "Nuevo objeto",
+	"Hardboiled.Background": "Trasfondo y Notas",
 	
 	"Hardboiled.Roll": "Tirada",
 	"Hardboiled.Success": "Éxito",
@@ -62,11 +65,29 @@
 	"Hardboiled.BurstComplete": "Completa",
 	"Hardboiled.Description": "Descripción",
 	
+	"Hardboiled.Unarmed": "Desarmado",
+	"Hardboiled.OpportunityAttack": "Ataque de oportunidad",
+	"Hardboiled.KnockOut": "Dejar inconsciente",
+	"Hardboiled.Tired": "Cansado",
+	"Hardboiled.RollDamage": "Tirar daño",
+	
+	"Hardboiled.success": "éxito",
+	"Hardboiled.failure": "fracaso",
+	"Hardboiled.critical": "crítico",
+	"Hardboiled.fumble": "pifia",
+	
 	"Hardboiled.Tooltip.Damage": "Fórmula del daño (ej. 1D3)",
 	"Hardboiled.Tooltip.RangeShort": "Rango: corto",
 	"Hardboiled.Tooltip.RangeBasic": "Rango: básico",
 	"Hardboiled.Tooltip.Ammunition": "Capacidad del cargador",
 	"Hardboiled.Tooltip.BurstShort": "Proyectiles: ráfaga corta",
 	"Hardboiled.Tooltip.BurstMedium": "Proyectiles: ráfaga media",
-	"Hardboiled.Tooltip.BurstComplete": "Proyectiles: cargador completo"
+	"Hardboiled.Tooltip.BurstComplete": "Proyectiles: cargador completo",
+	
+	"Hardboiled.Settings.FightingSkill.label": "Combate: cuerpo a cuerpo",
+	"Hardboiled.Settings.FightingSkill.hint": "Habilidad a utilizar para el combate cuerpo a cuerpo",
+	"Hardboiled.Settings.FightingSkill.default": "Pelear",
+	"Hardboiled.Settings.ShootingSkill.label": "Combate: armas de fuego",
+	"Hardboiled.Settings.ShootingSkill.hint": "Habilidad a utilizar para el combate a distancia",
+	"Hardboiled.Settings.ShootingSkill.default": "Disparar"
 }

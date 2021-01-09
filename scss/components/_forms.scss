@@ -142,65 +142,182 @@
 			}
 			
 			// Skills tab
-			.tab.skills {
+			.tab.skills.active {
 				// This is the one to stretch
 				flex: 1 0 auto;
 				height: 0;
-				// We'll have a row with skills and talents
+				// We'll have a column with skills&talents, and combat section
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				flex-wrap: nowrap;
 				justify-content: flex-start;
 				align-items: stretch;
+				// To allow a border separator between skills and weapons up to section border
+				margin: 0 -.3em;
 				
-				ol.items-list {
-					// Skills are shown in two columns (wrapped) 
+				.actor-skills-section {
+					// This is the one to stretch
+					flex: 1 0 auto;
+					height: 0;
+					// We'll have a row with skills and talents
 					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
+					flex-direction: row;
+					flex-wrap: nowrap;
 					justify-content: flex-start;
 					align-items: stretch;
-					
-					li.skillrow, li.talentrow {
-						flex: 0 0 auto;
-						// Every row is a row of label, values and controls
-						display: flex;
-						flex-direction: row;
-						flex-wrap: nowrap;
-						justify-content: flex-start;
-						align-items: center;
-				
-						.item-name {
-							flex: 1 0 auto;
-						}
-						
-						.item-value input {
-							flex: 0 1 auto;
-							width: 2em;
-						}
-					}
-					
-					// Leave some space between columns
-					li.skillrow + li.skillrow {
-						margin: 0 5px;
-					}
-				}
-				
-				ol.items-list:first-of-type {
-					// Skills take 70% space
-					flex: 0 0 70%;
-					// Border to separate Talents from Skills
-					border-width: 0 2px 0 0;
+					// Border to separate Skills from Combat sections
+					border-width: 0 0 10px 0;
 					border-color: darkred;
 					border-style: solid;
-					padding: 0 2px 0 0;
+					padding: 0 .3em 2px .3em;
+					margin: 0 0 2px 0;
+					
+					ol.items-list {
+						// Skills are shown in two columns (wrapped) 
+						display: flex;
+						flex-direction: column;
+						flex-wrap: wrap;
+						justify-content: flex-start;
+						align-items: stretch;
+						
+						li.skillrow, li.talentrow {
+							flex: 0 0 auto;
+							// Every row is a row of label, values and controls
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							justify-content: flex-start;
+							align-items: center;
+					
+							.item-name {
+								flex: 1 0 auto;
+							}
+							
+							.item-value input {
+								flex: 0 1 auto;
+								width: 2em;
+							}
+						}
+						
+						// Leave some space between columns
+						li.skillrow {
+							margin: 0 5px 0 0;
+						}
+					}
+					
+					ol.items-list:first-of-type {
+						// Skills take 70% space
+						flex: 0 0 70%;
+						// Border to separate Talents from Skills
+						border-width: 0 2px 0 0;
+						border-color: darkred;
+						border-style: solid;
+						padding: 0 2px 0 0;
+					}
+					
+					ol.items-list:last-of-type {
+						// Talents take 30% space
+						flex: 0 0 30%;
+						// Border to separate Talents from Skills
+						padding: 0 0 0 6px;
+					}
 				}
 				
-				ol.items-list:last-of-type {
-					// Talents take 70% space
-					flex: 0 0 30%;
-					// Border to separate Talents from Skills
-					padding: 0 0 0 6px;
+				.actor-combat-section {
+					// This one won't stretch
+					flex: 0 0 auto;
+					// We'll have a row with skills and talents
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: stretch;
+					padding: 0 .3em;
+					
+					ol.items-list {
+						// We'll have a column with weapons
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						justify-content: flex-start;
+						align-items: stretch;
+						
+						// Leave some space between columns
+						li.weaponrow {
+							margin: 0 5px 0 0;
+						}
+						
+						li.weaponrow, li.equipmentrow {
+							// Every row is a row of image, description, etc
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							justify-content: flex-start;
+							align-items: center;
+						}
+						
+						.item-image {
+							flex: 0 0 20px;
+						}
+						
+						.item-name, .item-skill {
+							flex: 2 0 0;
+						}
+						
+						.item-damage {
+							flex: 1 0 0;
+						}
+						
+						.item-controls {
+							flex: 0 0 auto;
+						}
+					}
+					
+					ol.items-list:first-of-type {
+						// Weapons take 60% space
+						flex: 0 0 60%;
+						// Border to separate Weapons from Items
+						border-width: 0 2px 0 0;
+						border-color: darkred;
+						border-style: solid;
+						padding: 0 2px 0 0;
+					}
+					
+					ol.items-list:last-of-type {
+						// Items take 40% space
+						flex: 0 0 40%;
+						// Border to separate Weapons from Items
+						padding: 0 0 0 6px;
+					}
+				}
+			}
+			
+			// Background tab
+			.tab.background.active {
+				// This block stretches
+				flex: 1 0 auto;
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				align-items: stretch;
+				// Font size for this block
+				
+				.actor-notes-section {
+					// This block stretches
+					flex: 1 0 auto;
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					justify-content: flex-start;
+					align-items: stretch;
+					// Font size for this block
+				
+					div.editor {
+						// This block stretches
+						flex: 1 0 auto;
+						height: 0;
+					}
 				}
 			}
 		}
@@ -403,7 +520,7 @@
 //
 // Fonts for titles and labels
 //
-%label, label {
+label {
 	font-family: hardboiled-title;
 }
 
