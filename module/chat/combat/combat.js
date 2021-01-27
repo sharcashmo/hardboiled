@@ -580,8 +580,26 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		
 		let skillModifiers = 0;
 		
+		skillModifiers += HardboiledRangeCombat.rangeModifiers[this.context.flags.range.value];
+		
+		if (this.context.flags.target?.value) skillModifiers += HardboiledRangeCombat.targetModifiers[this.context.flags.target.value];
+		
+		if (this.context.flags.targetCoverage?.value) skillModifiers += HardboiledRangeCombat.targetCoverageModifiers[this.context.flags.targetCoverage.value];
+		
+		if (this.context.flags.targetVehicle?.value) skillModifiers += HardboiledRangeCombat.targetVehicleModifiers[this.context.flags.targetVehicle.value];
+		
+		if (this.context.flags.multipleTargets?.value) skillModifiers += HardboiledRangeCombat.multipleTargetsModifiers[this.context.flags.multipleTargets.value];
+		
+		if (this.context.flags.attackerVehicle?.value) skillModifiers += HardboiledRangeCombat.attackerVehicleModifiers[this.context.flags.attackerVehicle.value];
+		
+		if (this.context.flags.attackerBurst?.value) skillModifiers += HardboiledRangeCombat.attackerBurstModifiers[this.context.flags.attackerBurst.value];
+		
+		for (let [key, item] of Object.entries(this.context.flags.attacker)) {
+			if (this.context.flags.attacker[key]) skillModifiers += HardboiledRangeCombat.attackerModifiers[key];
+		}
+		
 		this.context.modifiedValues = {
-			skill: Math.max(0, shootingSkill.data.value + skillModifiers)
+			skill: Math.max(0, this.context.skill.data.value + skillModifiers)
 		};
 		
 		console.log(this.context);
