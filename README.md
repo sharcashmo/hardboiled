@@ -68,7 +68,6 @@ Version 0.0.1 :
 
 * [ ] Add characteristic selection in roll modifier dialog, to allow use it instead of skill in a check.
 * [ ] Sort character items, and avoid duplicates.
-* [ ] Add automation and checks in character sheet attributes (hit points below max hit points, automatic statuses, etc).
 * [ ] Add automatic validation of input fields according to their data types.
 * [ ] Add ammunition management.
 
@@ -78,9 +77,10 @@ Version 0.0.1 :
 * [X] Add melee combat functionality.
 * [X] Add range combat functionality.
 * [X] Add inventory section to character sheet.
-* [ ] Reorganize status flags and icons.
-* [ ] Complete status flags in character sheet.
+* [X] Reorganize status flags and icons.
+* [X] Complete status flags in character sheet.
 * [X] Create complex (automated) combat chat cards.
+* [X] Add automation and checks in character sheet attributes (hit points below max hit points, automatic statuses, etc).
 
 ### Version 0.0.4
 

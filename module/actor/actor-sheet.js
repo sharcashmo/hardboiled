@@ -166,8 +166,38 @@ export class HardboiledActorSheet extends ActorSheet {
 						await skill.updateValue(Number(event.currentTarget.value));
 					}
 				}
+				else if (event.currentTarget.classList.contains('hp-value')) {
+					// Check injuries
+					const currentHP = formData['data.attributes.hp.value'];
+					const maxHP = formData['data.attributes.maxhp.value'];
+					
+					if (currentHP > maxHP) {
+						formData['data.attributes.hp.value'] = maxHP;
+					}
+
+					if (currentHP > maxHP / 2) {
+						formData['data.flags.injured'] = false;
+						formData['data.flags.critical'] = false;
+						formData['data.flags.dying'] = false;
+					}
+					else if (currentHP > 0) {
+						formData['data.flags.injured'] = true;
+						formData['data.flags.critical'] = false;
+						formData['data.flags.dying'] = false;
+					}
+					else if (currentHP > -11) {
+						formData['data.flags.injured'] = true;
+						formData['data.flags.critical'] = true;
+						formData['data.flags.dying'] = false;
+					}
+					else {
+						formData['data.flags.injured'] = true;
+						formData['data.flags.critical'] = true;
+						formData['data.flags.dying'] = true;
+					}
+				}
 			}
 		}
-	    return this.object.update(formData);
+	    return await this.object.update(formData);
 	}
 }

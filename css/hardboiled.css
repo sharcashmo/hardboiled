@@ -3,7 +3,7 @@
   src: url("fonts/DecoturaICG.ttf");
 }
 
-.hardboiled .rollable:hover, .hardboiled .rollable:focus, .hardboiled .card-button:hover[data-action], .hardboiled .card-button:focus[data-action] {
+.hardboiled .rollable:hover, .hardboiled .rollable:focus, .hardboiled .toggle-icon:hover, .hardboiled .card-button:hover[data-action], .hardboiled .toggle-icon:focus, .hardboiled .card-button:focus[data-action] {
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
@@ -17,6 +17,14 @@
   border-radius: 3px;
   font-style: normal;
   text-align: center;
+}
+
+.hardboiled .toggle-icon {
+  color: lightgray;
+}
+
+.hardboiled .toggle-icon.icon-on {
+  color: darkred;
 }
 
 .hardboiled .toggle-switch {

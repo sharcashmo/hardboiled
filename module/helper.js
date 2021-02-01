@@ -39,6 +39,7 @@ export class HardboiledSheetHelper extends HardboiledHelper {
 		if (!sheet.options.editable) return;
 		
 		html.find('.toggle-switch').click(HardboiledSheetHelper._onToggleSwitch.bind(sheet, entity));
+		html.find('.toggle-icon').click(HardboiledSheetHelper._onToggleIcon.bind(sheet, entity));
 	}
 
 	/**
@@ -68,7 +69,7 @@ export class HardboiledSheetHelper extends HardboiledHelper {
 	}
 
 	/**
-	 * Handle rolls checks
+	 * Handle property toggles
 	 * 
 	 * The this variable is set to the Sheet using this SheetHelper
 	 * 
@@ -79,6 +80,26 @@ export class HardboiledSheetHelper extends HardboiledHelper {
 	static async _onToggleSwitch(entity, event) {
 		event.preventDefault();
 		const element = event.currentTarget.closest('.toggle-switch');
+		const dataset = element.dataset;
+		const sheet = this;
+		
+		if (dataset.propertyId) {
+			entity.toggleProperty(dataset.propertyId);
+		}
+	}
+
+	/**
+	 * Handle icon toggles
+	 * 
+	 * The this variable is set to the Sheet using this SheetHelper
+	 * 
+	 * @param {Event}  event	The originating click event
+	 * @param {Entity} entity	The entity wich the sheet belongs to
+	 * @private
+	 */
+	static async _onToggleIcon(entity, event) {
+		event.preventDefault();
+		const element = event.currentTarget.closest('.toggle-icon');
 		const dataset = element.dataset;
 		const sheet = this;
 		

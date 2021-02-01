@@ -19,6 +19,51 @@ export class HardboiledActor extends Actor {
 		// things organized.
 		if (actorData.type === 'character') this._prepareCharacterData(actorData);
 	}
+	
+	/**
+	 * Handle toggle values
+	 * 
+	 * @param {String} propertyId	The name of the property to be toggled
+	 */
+	async toggleProperty(propertyId) {
+		switch (propertyId) {
+		case 'unconscious':
+			this.data.data.flags.unconscious = !Boolean(this.data.data.flags.unconscious);
+			break;
+		case 'injured':
+			this.data.data.flags.injured = !Boolean(this.data.data.flags.injured);
+			this.data.data.flags.critical = false;
+			this.data.data.flags.dying = false;
+			this.data.data.flags.dead = false;
+			break;
+		case 'critical':
+			this.data.data.flags.critical = !Boolean(this.data.data.flags.critical);
+			this.data.data.flags.injured = this.data.data.flags.critical || this.data.data.flags.injured;
+			this.data.data.flags.dying = false;
+			this.data.data.flags.dead = false;
+			break;
+		case 'dying':
+			this.data.data.flags.dying = !Boolean(this.data.data.flags.dying);
+			this.data.data.flags.injured = this.data.data.flags.dying || this.data.data.flags.injured;
+			this.data.data.flags.critical = this.data.data.flags.dying || this.data.data.flags.critical;
+			this.data.data.flags.dead = false;
+			break;
+		case 'dead':
+			this.data.data.flags.dead = !Boolean(this.data.data.flags.dead);
+			this.data.data.flags.injured = this.data.data.flags.dead || this.data.data.flags.injured;
+			this.data.data.flags.critical = this.data.data.flags.dead || this.data.data.flags.critical;
+			this.data.data.flags.dying = this.data.data.flags.dead || this.data.data.flags.dying;
+			break;
+		}
+		
+		await this.update({
+			'data.flags.unconscious': this.data.data.flags.unconscious,
+			'data.flags.injured': this.data.data.flags.injured,
+			'data.flags.critical': this.data.data.flags.critical,
+			'data.flags.dying': this.data.data.flags.dying,
+			'data.flags.dead': this.data.data.flags.dead
+		})
+	}
 
 	/**
 	 * Prepare Character type specific data
@@ -76,6 +121,8 @@ export class HardboiledActor extends Actor {
 			diceModifier = usage.get('modifier') * 10;
 		}
 		
+		if (this.data.data.flags.injured && (attribute === 'vigour' || (attribute === 'dextery'))) diceModifier -= 20;
+		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
@@ -86,7 +133,7 @@ export class HardboiledActor extends Actor {
 			},
 			checking: {
 				name: game.i18n.localize(this.data.data.characteristics[attribute].label),
-				value: attrValue,
+				value: Math.max(0, attrValue + diceModifier),
 			},
 			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 		};

@@ -75,6 +75,8 @@ export class HardboiledItem extends Item {
 			diceModifier = usage.get('modifier') * 10;
 		}
 		
+		if (this.actor.data.data.flags.injured) diceModifier -= 20;
+		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
@@ -85,7 +87,7 @@ export class HardboiledItem extends Item {
 			},
 			checking: {
 				name: this.data.name,
-				value: skillValue
+				value: Math.max(0, skillValue + diceModifier)
 			},
 			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
 		};
@@ -136,7 +138,8 @@ export class HardboiledItem extends Item {
 		const template = isMelee ? 'systems/hardboiled/templates/chat/combat/melee-combat.html' :
 			'systems/hardboiled/templates/chat/combat/ranged-combat.html';
 		const combatSkill = isMelee ? fightingSkill : shootingSkill;
-		const skillValue = Number(combatSkill.data.value);
+		let skillValue = Number(combatSkill.data.value);
+		if (this.actor.data.data.flags.injured) skillValue = Math.max(0, skillValue - 20);
 		
 		console.log(this.actor);
 		console.log(this.data);

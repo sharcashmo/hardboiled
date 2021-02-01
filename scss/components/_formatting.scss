@@ -22,6 +22,14 @@
 	text-align: center;
 }
 
+.toggle-icon {
+	@extend %clickable;
+	color: lightgray;
+	@include unify-parent(".icon-on") {
+		color: darkred;
+	}
+}
+
 .toggle-switch {
 	display: inline-block;
 	margin: 2px 2px 0 0;

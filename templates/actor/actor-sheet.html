@@ -54,18 +54,22 @@
 				</div>
 				<div>
 					<label>{{localize data.attributes.hp.label}}</label>
-					<input name="data.attributes.hp.value" type="number" data-dtype="Number" value="{{data.attributes.hp.value}}">
+					<input name="data.attributes.hp.value" class="hp-value" type="number" data-dtype="Number" value="{{data.attributes.hp.value}}">
 					/
 					<input name="data.attributes.maxhp.value" type="number" data-dtype="Number" value="{{data.attributes.maxhp.value}}">
 				</div>
 				<div>
-					<label>{{localize data.flags.injured.label}}</label>
-					<i class="{{data.flags.unconscious.icon}}" style="color:{{data.flags.unconscious.color}};" title="{{localize data.flags.unconscious.label}}"></i>
-					{{#each data.flags.injured.values as |injury key|}}
-					{{#if injury.icon}}
-					<i class="{{injury.icon}}" style="color:{{injury.color}};" title="{{localize injury.label}}"></i>
-					{{/if}}
-					{{/each}}
+					<label>{{localize 'Hardboiled.Injuries'}}</label>
+					<i class="fas fa-dizzy toggle-icon {{#if data.flags.unconscious}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusUnconscious'}}" data-property-id="unconscious"
+					   data-value="{{#if data.flags.unconscious}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-user-injured toggle-icon {{#if data.flags.injured}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusInjured'}}" data-property-id="injured"
+					   data-value="{{#if data.flags.injured}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-heartbeat toggle-icon {{#if data.flags.critical}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusCritical'}}" data-property-id="critical"
+					   data-value="{{#if data.flags.critical}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-heart-broken toggle-icon {{#if data.flags.dying}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDying'}}" data-property-id="dying"
+					   data-value="{{#if data.flags.dying}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-skull toggle-icon {{#if data.flags.dead}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDead'}}" data-property-id="dead"
+					   data-value="{{#if data.flags.dead}}true{{else}}false{{/if}}"></i>
 				</div>
 			</div>
 		</div>
