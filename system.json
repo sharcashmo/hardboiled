@@ -2,7 +2,7 @@
 	"name": "hardboiled",
 	"title": "Hardboiled system",
 	"description": "The Hardboiled system for FoundryVTT",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"minimumCoreVersion": "0.7.5",
 	"compatibleCoreVersion": "0.7.9",
 	"templateVersion": 2,
@@ -33,6 +33,6 @@
 	"manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
 	"license": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE",
 	"readme": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/README.md",
-	"download": "https://github.com/sharcashmo/hardboiled/archive/V0.1.0.zip",
+	"download": "https://github.com/sharcashmo/hardboiled/archive/V1.0.0.zip",
 	"url": "https://github.com/sharcashmo/hardboiled/"
 }

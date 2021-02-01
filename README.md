@@ -24,7 +24,7 @@ Install in foundry VTT from the Game Systems tab using the following manifest :
 
 ## What is working
 
-Version 0.1.0 :
+Version 1.0.0 :
 
 * Added combat section to character sheet.
 * Added melee combat functionality.
@@ -71,7 +71,7 @@ Version 0.0.1 :
 * [ ] Add automatic validation of input fields according to their data types.
 * [ ] Add ammunition management.
 
-### Version 0.1.0
+### Version 1.0.0
 
 * [X] Add combat section to character sheet.
 * [X] Add melee combat functionality.
