@@ -34,11 +34,6 @@ Hooks.once('init', async function() {
 	Items.unregisterSheet("core", ItemSheet);
 	Items.registerSheet("hardboiled", HardboiledItemSheet, { makeDefault: true });
 	
-	console.log(game.i18n.localize("Hardboiled.Settings.FightingSkill.default"));
-	console.log(game.system.data.title);
-	console.log(game.system);
-	console.log(game);
-
 	// Register system settings
 	game.settings.register("hardboiled", "fightingSkill", {
 		name: "Hardboiled.Settings.FightingSkill.label",

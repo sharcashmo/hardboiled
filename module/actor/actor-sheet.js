@@ -22,14 +22,6 @@ export class HardboiledActorSheet extends ActorSheet {
 	getData() {
 		const data = super.getData();
 		
-//		// Prepare items.
-//		if (this.actor.data.type == 'character') {
-//		this._prepareCharacterItems(data);
-//		}
-		
-		console.log('Actor data');
-		console.log(data);
-
 		return data;
 	}
 

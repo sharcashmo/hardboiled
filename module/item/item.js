@@ -141,13 +141,6 @@ export class HardboiledItem extends Item {
 		let skillValue = Number(combatSkill.data.value);
 		if (this.actor.data.data.flags.injured) skillValue = Math.max(0, skillValue - 20);
 		
-		console.log(this.actor);
-		console.log(this.data);
-		console.log(fightingSkill);
-		console.log(shootingSkill);
-		console.log(combatSkill);
-		console.log(skillValue);
-		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",

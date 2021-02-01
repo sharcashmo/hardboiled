@@ -42,17 +42,12 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		super(message, card, element);
 		
 		this._contextFromDatasets();
-		
-		console.log('HardboiledCombat');
-		console.log(this);
 	}
 	
 	static template = 'systems/hardboiled/templates/chat/combat/melee-combat.html';
 	
 	async skillRoll() {
 		let toHit = await this._checkSkill(this.element.skillValue);
-		console.log('In skillRoll');
-		console.log(this);
 		
 		this.context = {
 			...this.context,
@@ -61,8 +56,6 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		
 		this._prepareDamageRoll();
 		
-		console.log(HardboiledMeleeCombat.template);
-		console.log(this.context);
 		await HardboiledCardHelper.updateCard(this.message.messageId, HardboiledMeleeCombat.template, this.context);
 		
 		return;
@@ -126,10 +119,6 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		const successType = this.context.toHit.success;
 		const punch = Number(this.context.actor.data.attributes.punch.value);
 		const weapon = this.context.weapon;
-		console.log('_checkSkill');
-		console.log(successType);
-		console.log(punch);
-		console.log(weapon);
 		
 		if (weapon) {
 			switch (successType) {
@@ -146,7 +135,7 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 				this.context.damage.result = roll.evaluate({maximize: true}).total;
 				break;
 			default:
-				console.log('This should not happen');
+				console.log('[DEBUG.Hardboiled] This should not happen');
 			}
 		}
 		else {
@@ -166,7 +155,7 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 			case 'failure':
 				break;
 			default:
-				console.log('This should not happen');
+				console.log('[DEBUG.Hardboiled] This should not happen');
 			}
 		}
 		
@@ -226,8 +215,6 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		this.context.modifiedValues = {
 			skill: Math.max(0, fightingSkill.data.value + skillModifiers)
 		};
-		
-		console.log(this.context);
 	}
 }
 
@@ -240,9 +227,6 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		super(message, card, element);
 		
 		this._contextFromDatasets();
-		
-		console.log('HardboiledRangeCombat');
-		console.log(this);
 	}
 	
 	static template = 'systems/hardboiled/templates/chat/combat/ranged-combat.html';
@@ -308,8 +292,6 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 	
 	async skillRoll() {
 		let toHit = await this._checkSkill(this.element.skillValue);
-		console.log('In skillRoll');
-		console.log(this);
 		
 		this.context = {
 			...this.context,
@@ -318,8 +300,6 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		
 		this._prepareDamageRoll();
 		
-		console.log(HardboiledRangeCombat.template);
-		console.log(this.context);
 		await HardboiledCardHelper.updateCard(this.message.messageId, HardboiledRangeCombat.template, this.context);
 		
 		return;
@@ -447,10 +427,6 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		else if (this.context.flags.attackerBurst.value === 'complete') burstDamage = weapon.data.fireRate.complete * 3;
 		else burstDamage = 0;
 		
-		console.log('_prepareDamageRoll');
-		console.log(successType);
-		console.log(weapon);
-		
 		switch (successType) {
 		case 'success':
 			this.context.damage = {
@@ -468,7 +444,7 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		case 'fumble':
 			break;
 		default:
-			console.log('This should not happen');
+			console.log('[DEBUG.Hardboiled] This should not happen');
 		}
 		
 		if (this.context.damage) {
@@ -601,7 +577,5 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		this.context.modifiedValues = {
 			skill: Math.max(0, this.context.skill.data.value + skillModifiers)
 		};
-		
-		console.log(this.context);
 	}
 }

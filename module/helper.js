@@ -122,12 +122,6 @@ export class HardboiledCardHelper extends HardboiledHelper {
 	 * @param {Object}		data	html string of the sheet
 	 */
 	static activateListeners(app, html, data) {
-//		html.find('.rollable').click(HardboiledCardHelper._onRoll.bind(this));
-//		html.find('.card-button').click(HardboiledCardHelper._onCardButton.bind(this));
-		
-		console.log(app);
-		console.log(data);
-		
 		html.on('click', '.card-button', HardboiledCardHelper._onCardButton.bind(this));
 		html.on('click', '.toggle-switch.enabled', HardboiledCardHelper._onToggleSwitch.bind(this));
 	}
@@ -144,11 +138,6 @@ export class HardboiledCardHelper extends HardboiledHelper {
 		const message = game.messages.get(messageId);
 		const msg = await message.update({ content: html });
 		
-		console.log(context);
-		console.log(html);
-		console.log(message);
-		console.log(msg);
-
 		await ui.chat.updateMessage(msg, false);
 	}
 
@@ -169,11 +158,6 @@ export class HardboiledCardHelper extends HardboiledHelper {
 		const combat = card.classList.contains('melee-combat') ?
 			new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset) :
 			new HardboiledRangeCombat(message.dataset, card.dataset, element.dataset);
-		
-		console.log("onToggleSwitch");
-		console.log(element.dataset);
-		console.log(card);
-		console.log(card.classList);
 		
 		if (element.dataset.flagId) {
 			if (element.dataset.flagGroup) {
@@ -202,13 +186,8 @@ export class HardboiledCardHelper extends HardboiledHelper {
 		const card = event.currentTarget.closest('.chat-card');
 		const message = event.currentTarget.closest('.message');
 		
-		console.log("onCardButton");
-		console.log(element.dataset);
-		console.log(card);
-		
 		if (element.dataset.action) {
 			let combat;
-			console.log(element.dataset.action);
 			switch (element.dataset.action) {
 			case 'melee-skill-roll':
 				combat = new HardboiledMeleeCombat(message.dataset, card.dataset, element.dataset);

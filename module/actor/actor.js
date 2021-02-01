@@ -203,12 +203,6 @@ export class HardboiledActor extends Actor {
 		const combatSkill = fightingSkill;
 		const skillValue = Number(combatSkill.data.value);
 		
-		console.log(this);
-		console.log(fightingSkill);
-		console.log(shootingSkill);
-		console.log(combatSkill);
-		console.log(skillValue);
-		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
