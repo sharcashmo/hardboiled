@@ -26,6 +26,11 @@
 			"lang": "en",
 			"name": "English",
 			"path": "lang/en.json"
+		},
+		{
+			"lang": "eu",
+			"name": "Euskera",
+			"path": "lang/eu.json"
 		}
 	],
 	"gridDistance": 5,
