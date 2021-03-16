@@ -24,7 +24,7 @@ Install in foundry VTT from the Game Systems tab using the following manifest :
 
 ## What is working
 
-Version 1.0.1 :
+Version 1.1.0 :
 * Added euskera language (by Mikel Ocejo <https://github.com/mikel-ocejo>)
 
 Version 1.0.0 :
@@ -74,7 +74,7 @@ Version 0.0.1 :
 * [ ] Add automatic validation of input fields according to their data types.
 * [ ] Add ammunition management.
 
-### Version 1.0.1
+### Version 1.1.0
 
 * [X] Add euskera language.
 
