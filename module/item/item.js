@@ -66,7 +66,8 @@ export class HardboiledItem extends Item {
 		const template = 'systems/hardboiled/templates/chat/basic-check.html';
 		const speaker = ChatMessage.getSpeaker(this.actor);
 		const skillValue = Number(this.data.data.value);
-		const roll = new Roll("1d100").roll();
+		const roll = new Roll("1d100")
+		await roll.evaluate({async:true});
 		
 		// Modifier dialog
 		const usage = await RollDialog.create();
@@ -82,8 +83,8 @@ export class HardboiledItem extends Item {
 			cssClass: "hardboiled",
 			actor: this.actor,
 			rollCheck: {
-				value: roll.results[0],
-				success: (roll.results[0] <= (skillValue + diceModifier) ? true : false)
+				value: roll.result,
+				success: (roll.result <= (skillValue + diceModifier) ? true : false)
 			},
 			checking: {
 				name: this.data.name,
@@ -95,7 +96,7 @@ export class HardboiledItem extends Item {
 		const html = await renderTemplate(template, context);
 		const chatMessage = await ChatMessage.create({
 			speaker,
-			type: CHAT_MESSAGE_TYPES.ROLL,
+			type: CONST.CHAT_MESSAGE_TYPES.ROLL,
 			roll: roll,
 			rollMode: game.settings.get("core", "rollMode"),
 			content: html

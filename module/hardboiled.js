@@ -23,9 +23,9 @@ Hooks.once('init', async function() {
 			decimals: 4
 	};
 
-	// Define custom Entity classes
-	CONFIG.Actor.entityClass = HardboiledActor;
-	CONFIG.Item.entityClass = HardboiledItem;
+	// Define custom Document classes
+	CONFIG.Actor.documentClass = HardboiledActor;
+	CONFIG.Item.documentClass = HardboiledItem;
 
 	// Register sheet application classes
 	Actors.unregisterSheet("core", ActorSheet);
@@ -105,11 +105,14 @@ Hooks.once('setup', async function() {
 		config: true
 	});
 	
-	game.settings.set("hardboiled", "fightingSkill", fightingSkill);
-	game.settings.set("hardboiled", "shootingSkill", shootingSkill);
 });
 
 Hooks.once("ready", async function() {
+	const fightingSkill = game.i18n.localize(game.settings.get("hardboiled", "fightingSkill"));
+	const shootingSkill = game.i18n.localize(game.settings.get("hardboiled", "shootingSkill"));
+
+	game.settings.set("hardboiled", "fightingSkill", fightingSkill);
+	game.settings.set("hardboiled", "shootingSkill", shootingSkill);
 	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
 	Hooks.on("hotbarDrop", (bar, data, slot) => createHardboiledMacro(data, slot));
 });

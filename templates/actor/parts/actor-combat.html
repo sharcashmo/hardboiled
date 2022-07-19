@@ -2,7 +2,7 @@
 	<li class="item weaponrow item-header">
 		<a class="item-button item-create" title="{{localize "Hardboiled.AddWeapon"}}" data-type="weapon">{{localize "Hardboiled.AddWeapon"}}</a>
 	</li>
-	{{#each data.weapons as |item id|}}
+	{{#each weapons as |item id|}}
 	<li class="item weaponrow" data-item-id="{{item._id}}">
 		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
 		<div class="item-name rollable" data-combatCheck="{{item._id}}">{{item.name}}</div>

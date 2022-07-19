@@ -25,7 +25,8 @@ export class HardboiledCombat {
 	 * @param {String}  formula		Roll formula
 	 */
 	async roll(formula) {
-		const roll = new Roll(formula).roll();
+		const roll = new Roll(formula)
+		await roll.evaluate({async:true});
 		if (game.modules.get('dice-so-nice')?.active) {
 			await game.dice3d.showForRoll(roll);
 		}
@@ -175,7 +176,7 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 	_contextFromDatasets() {
 		const actor = game.actors.get(this.card.actorId);
 		const [fightingSkill, shootingSkill] = actor.combatSkills;
-		const weapon = this.card.weaponId ? actor.getOwnedItem(this.card.weaponId) : null;
+		const weapon = this.card.weaponId ? actor.items.get(this.card.weaponId) : null;
 		
 		this.context = {
 			cssClass: 'hardboiled',
@@ -438,7 +439,7 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 				formula: burstDamage ? burstDamage + '+2*(' + weapon.data.damage + ')' : '2*(' + weapon.data.damage + ')'
 			};
 			const roll = new Roll(this.context.damage.formula);
-			this.context.damage.result = roll.evaluate({maximize: true}).total;
+			this.context.damage.result = roll.evaluate({maximize: true, async: true}).total;
 			break;
 		case 'failure':
 		case 'fumble':
@@ -463,7 +464,7 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 	_contextFromDatasets() {
 		const actor = game.actors.get(this.card.actorId);
 		const [fightingSkill, shootingSkill] = actor.combatSkills;
-		const weapon = actor.getOwnedItem(this.card.weaponId);
+		const weapon = actor.items.get(this.card.weaponId);
 		
 		this.context = {
 			cssClass: 'hardboiled',

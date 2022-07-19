@@ -28,7 +28,7 @@ export class HardboiledItemSheet extends ItemSheet {
 	/** @override */
 	getData() {
 		const data = super.getData();
-		
+		//console.log("Item Sheet data:", data);
 		return data;
 	}
 
