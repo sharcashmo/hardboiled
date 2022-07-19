@@ -2,7 +2,7 @@
 	<li class="item talentrow item-header">
 		<a class="item-button item-create" title="{{localize "Hardboiled.AddTalent"}}" data-type="talent">{{localize "Hardboiled.AddTalent"}}</a>
 	</li>
-	{{#each data.talents as |item id|}}
+	{{#each talents as |item id|}}
 	<li class="item talentrow" data-item-id="{{item._id}}">
 		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
 		<div class="item-name rollable" data-talentCheck="{{item._id}}">{{item.name}}</div>

@@ -20,9 +20,27 @@ export class HardboiledActorSheet extends ActorSheet {
 
 	/** @override */
 	getData() {
-		const data = super.getData();
-		
-		return data;
+		// Retrieve the data structure from the base sheet. You can inspect or log
+		// the context variable to see the structure, but some key properties for
+		// sheets are the actor object, the data object, whether or not it's
+		// editable, the items array, and the effects array.
+		const context = super.getData();
+
+		// Use a safe clone of the actor data for further operations.
+		const actorData = this.actor.data.toObject(false);
+
+		// Add the actor's data to context.data for easier access, as well as flags.
+		context.data = actorData.data;
+		context.flags = actorData.flags;
+
+		// Prepare character data and items.
+		if (actorData.type == 'character') {
+			this._prepareCharacterItems(context);
+			//this._prepareCharacterData(context);
+		}
+		//console.log("context: ", context);
+		return context;
+
 	}
 
 	/**
@@ -33,49 +51,39 @@ export class HardboiledActorSheet extends ActorSheet {
 	 * @return {undefined}
 	 */
 	_prepareCharacterItems(sheetData) {
-		const actorData = sheetData.actor;
+		//const actorData = sheetData.actor;
 
-		// Initialize containers.
-//		const gear = [];
-//		const features = [];
-//		const spells = {
-//		0: [],
-//		1: [],
-//		2: [],
-//		3: [],
-//		4: [],
-//		5: [],
-//		6: [],
-//		7: [],
-//		8: [],
-//		9: []
-//		};
+		//console.log ("Items:", sheetData.items)
+		const skills = [];
+		const talents = [];
+		const weapons = [];
+		const equipment = []
 
-//		// Iterate through items, allocating to containers
-//		// let totalWeight = 0;
-//		for (let i of sheetData.items) {
-//		let item = i.data;
-//		i.img = i.img || DEFAULT_TOKEN;
-//		// Append to gear.
-//		if (i.type === 'item') {
-//		gear.push(i);
-//		}
-//		// Append to features.
-//		else if (i.type === 'feature') {
-//		features.push(i);
-//		}
-//		// Append to spells.
-//		else if (i.type === 'spell') {
-//		if (i.data.spellLevel != undefined) {
-//		spells[i.data.spellLevel].push(i);
-//		}
-//		}
-//		}
+		for (let item of sheetData.items) {
+			//console.log("Item", item);
+			switch (item.type) {
+				case 'skill':
+					skills.push(item);
+					break;
+				case 'talent':
+					talents.push(item);
+					break;
+				case 'weapon':
+					weapons.push(item);
+					break;
+				case 'equipment':
+					equipment.push(item);
+					break;
+				default:
+					console.log("Unknown item type!!")
+			}
+		}
 
-//		// Assign and return
-//		actorData.gear = gear;
-//		actorData.features = features;
-//		actorData.spells = spells;
+		sheetData.skills = skills;
+		sheetData.talents = talents;
+		sheetData.weapons = weapons;
+		sheetData.equipment = equipment;
+		//console.log("Sheet Data", sheetData);
 	}
 
 	/* -------------------------------------------- */
@@ -83,7 +91,7 @@ export class HardboiledActorSheet extends ActorSheet {
 	/** @override */
 	activateListeners(html) {
 		super.activateListeners(html);
-		
+
 		HardboiledSheetHelper.activateListeners(this, this.actor, html);
 
 		// Everything below here is only needed if the sheet is editable
@@ -95,19 +103,19 @@ export class HardboiledActorSheet extends ActorSheet {
 		// Update Inventory Item
 		html.find('.item-edit').click(ev => {
 			const li = $(ev.currentTarget).parents(".item");
-			const item = this.actor.getOwnedItem(li.data("itemId"));
+			const item = this.actor.items.get(li.data("itemId"));
 			item.sheet.render(true);
 		});
 
 		// Delete Inventory Item
 		html.find('.item-delete').click(ev => {
 			const li = $(ev.currentTarget).parents(".item");
-			this.actor.deleteOwnedItem(li.data("itemId"));
+			this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
 			li.slideUp(200, () => this.render(false));
 		});
 
 		// Drag events for macros.
-		if (this.actor.owner) {
+		if (this.actor.isOwner) {
 			let handler = ev => this._onDragItemStart(ev);
 			html.find('li.item').each((i, li) => {
 				if (li.classList.contains("inventory-header")) return;
@@ -133,15 +141,17 @@ export class HardboiledActorSheet extends ActorSheet {
 		const name = `New ${type.capitalize()}`;
 		// Prepare the item object.
 		const itemData = {
-				name: name,
-				type: type,
-				data: data
+			name: name,
+			type: type,
+			data: data
 		};
 		// Remove the type from the dataset since it's in the itemData.type prop.
 		delete itemData.data["type"];
 
 		// Finally, create the item!
-		return this.actor.createOwnedItem(itemData);
+		return this.actor.createEmbeddedDocuments("Item", [itemData], {
+			renderSheet: true
+		});
 	}
 
 	/**
@@ -153,7 +163,7 @@ export class HardboiledActorSheet extends ActorSheet {
 		if (event.currentTarget) {
 			if (event.currentTarget.classList) {
 				if (event.currentTarget.classList.contains('item-value')) {
-					let skill = this.actor.getOwnedItem(event.currentTarget.closest('.item').dataset.itemId);
+					let skill = this.actor.items.get(event.currentTarget.closest('.item').dataset.itemId);
 					if (skill) {
 						await skill.updateValue(Number(event.currentTarget.value));
 					}
@@ -162,7 +172,7 @@ export class HardboiledActorSheet extends ActorSheet {
 					// Check injuries
 					const currentHP = formData['data.attributes.hp.value'];
 					const maxHP = formData['data.attributes.maxhp.value'];
-					
+
 					if (currentHP > maxHP) {
 						formData['data.attributes.hp.value'] = maxHP;
 					}
@@ -190,6 +200,6 @@ export class HardboiledActorSheet extends ActorSheet {
 				}
 			}
 		}
-	    return await this.object.update(formData);
+		return await this.object.update(formData);
 	}
 }

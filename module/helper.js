@@ -24,14 +24,14 @@ export class HardboiledSheetHelper extends HardboiledHelper {
 	/**
 	 * Bind roll checks
 	 * 
-	 * @param {BaseEntitySheet} sheet	The sheet invoking this helper
+	 * @param {DocumentSheet} sheet	The sheet invoking this helper
 	 * @param {Entity}          entity	The entity represented by the sheet
 	 * @param {String}          html	html string of the sheet
 	 */
 	static activateListeners(sheet, entity, html) {
 		
-		// Owner events
-		if (entity.owner) {
+		// isOwner events
+		if (entity.isOwner) {
 			html.find('.rollable').click(HardboiledSheetHelper._onRoll.bind(sheet, entity));
 		}
 		
