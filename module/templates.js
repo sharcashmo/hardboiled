@@ -13,7 +13,11 @@ export const preloadHandlebarsTemplates = async function() {
 		'systems/hardboiled/templates/actor/parts/actor-equipment.html',
 		'systems/hardboiled/templates/actor/parts/actor-notes.html',
 		'systems/hardboiled/templates/item/parts/item-item-section.html',
+		'systems/hardboiled/templates/item/parts/item-venom-section.html',
 		'systems/hardboiled/templates/item/parts/item-weapon-section.html',
+		'systems/hardboiled/templates/item/parts/item-profession-skills-section.html',
+		'systems/hardboiled/templates/item/parts/item-profession-main-skills-section.html',
+		'systems/hardboiled/templates/item/parts/item-profession-secondary-skills-section.html',
 		'systems/hardboiled/templates/item/parts/item-description-section.html'
 	];
   

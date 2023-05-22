@@ -94,7 +94,7 @@
 			<a class="toggle-switch {{#if flags.targetVehicle.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleMedium"}}" data-flag-group="targetVehicle" data-flag-id="medium">{{localize "Hardboiled.FlagTargetVehicleMedium"}}</a>
 			<a class="toggle-switch {{#if flags.targetVehicle.fast}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagTargetVehicleFast"}}" data-flag-group="targetVehicle" data-flag-id="fast">{{localize "Hardboiled.FlagTargetVehicleFast"}}</a>
 			{{/if}}
-			{{#if weapon.data.flags.automatic}}
+			{{#if weapon.system.flags.automatic}}
 			<a class="toggle-switch {{#if flags.multipleTargets.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsValue"}}" data-flag-group="multipleTargets" data-flag-id="group">{{localize "Hardboiled.FlagMultipleTargetsValue"}}: {{#if flags.multipleTargets.value}}{{localize (camelConcat 'Hardboiled.FlagMultipleTargets' flags.multipleTargets.value)}}{{else}}{{localize 'Hardboiled.FlagMultipleTargetsNo'}}{{/if}}</a>
 			{{#if flags.multipleTargets.group}}
 			<a class="toggle-switch {{#if flags.multipleTargets.two}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagMultipleTargetsTwo"}}" data-flag-group="multipleTargets" data-flag-id="two">{{localize "Hardboiled.FlagMultipleTargetsTwo"}}</a>
@@ -112,7 +112,7 @@
 			<a class="toggle-switch {{#if flags.attackerVehicle.medium}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleMedium"}}" data-flag-group="attackerVehicle" data-flag-id="medium">{{localize "Hardboiled.FlagAttackerVehicleMedium"}}</a>
 			<a class="toggle-switch {{#if flags.attackerVehicle.fast}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerVehicleFast"}}" data-flag-group="attackerVehicle" data-flag-id="fast">{{localize "Hardboiled.FlagAttackerVehicleFast"}}</a>
 			{{/if}}
-			{{#if weapon.data.flags.automatic}}
+			{{#if weapon.system.flags.automatic}}
 			<a class="toggle-switch {{#if flags.attackerBurst.group}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstValue"}}" data-flag-group="attackerBurst" data-flag-id="group">{{localize "Hardboiled.FlagAttackerBurstValue"}}: {{#if flags.attackerBurst.value}}{{localize (camelConcat 'Hardboiled.FlagAttackerBurst' flags.attackerBurst.value)}}{{else}}{{localize 'Hardboiled.FlagAttackerBurstNo'}}{{/if}}</a>
 			{{#if flags.attackerBurst.group}}
 			<a class="toggle-switch {{#if flags.attackerBurst.short}}switched-on{{/if}} {{#unless toHit}}enabled{{/unless}}" title="{{localize "Hardboiled.FlagAttackerBurstShort"}}" data-flag-group="attackerBurst" data-flag-id="short">{{localize "Hardboiled.FlagAttackerBurstShort"}}</a>

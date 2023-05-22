@@ -12,9 +12,11 @@ export class HardboiledItem extends Item {
 		super.prepareData();
 
 		// Get the Item's data
-		const itemData = this.data;
-		const actorData = this.actor ? this.actor.data : {};
-		const data = itemData.data;
+		/* Unused code ??
+		const itemData = this.system
+		const actorData = this.actor ? this.actor.system: {};
+		const data = itemData.system
+		*/
 	}
 
 	/**
@@ -26,7 +28,7 @@ export class HardboiledItem extends Item {
 	async updateValue(value) {
 		if ('skill' != this.type)
 			return null;
-		await this.update({'data.value': Number(value)});
+		await this.update({'system.value': Number(value)});
 	}
 	
 	/**
@@ -37,24 +39,23 @@ export class HardboiledItem extends Item {
 	async toggleProperty(propertyId) {
 		// Melee and range are not toggled, but activated
 		if (propertyId === 'melee') {
-			this.data.data.flags.melee = true;
-			this.data.data.flags.range = false;
-			this.data.data.flags.automatic = false;
+			this.system.flags.melee = true;
+			this.system.flags.range = false;
+			this.system.flags.automatic = false;
 		}
 		else if (propertyId === 'range') {
-			this.data.data.flags.range = true;
-			this.data.data.flags.melee = false;
-			this.data.data.flags.automatic = false;
+			this.system.flags.range = true;
+			this.system.flags.melee = false;
+			this.system.flags.automatic = false;
 		}
 		else if (propertyId === 'automatic') {
-			this.data.data.flags.automatic = !this.data.data.flags.automatic &&
-				this.data.data.flags.range;
+			this.system.flags.automatic = !this.system.flags.automatic &&
+				this.system.flags.range;
 		}
-		
-		await this.update({
-			'data.flags.melee': this.data.data.flags.melee,
-			'data.flags.range': this.data.data.flags.range,
-			'data.flags.automatic': this.data.data.flags.automatic
+		await console.log ("flags", this.system.flags);this.update({
+			'system.flags.melee': this.system.flags.melee,
+			'system.flags.range': this.system.flags.range,
+			'system.flags.automatic': this.system.flags.automatic
 		})
 	}
 
@@ -65,7 +66,7 @@ export class HardboiledItem extends Item {
 	async roll() {
 		const template = 'systems/hardboiled/templates/chat/basic-check.html';
 		const speaker = ChatMessage.getSpeaker(this.actor);
-		const skillValue = Number(this.data.data.value);
+		const skillValue = Number(this.system.value);
 		const roll = new Roll("1d100")
 		await roll.evaluate({async:true});
 		
@@ -76,7 +77,7 @@ export class HardboiledItem extends Item {
 			diceModifier = usage.get('modifier') * 10;
 		}
 		
-		if (this.actor.data.data.flags.injured) diceModifier -= 20;
+		if (this.actor.system.flags.injured) diceModifier -= 20;
 		
 		// Values needed for the chat card
 		const context = {
@@ -87,7 +88,7 @@ export class HardboiledItem extends Item {
 				success: (roll.result <= (skillValue + diceModifier) ? true : false)
 			},
 			checking: {
-				name: this.data.name,
+				name: this.name,
 				value: Math.max(0, skillValue + diceModifier)
 			},
 			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
@@ -110,14 +111,13 @@ export class HardboiledItem extends Item {
 	async describe() {
 		const template = 'systems/hardboiled/templates/chat/basic-description.html';
 		const speaker = ChatMessage.getSpeaker(this.actor);
-		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
 			actor: this.actor,
 			describe: {
-				name: this.data.name,
-				description: this.data.data.description
+				name: this.name,
+				description: this.system.description
 			}
 		};
 
@@ -135,19 +135,19 @@ export class HardboiledItem extends Item {
 	async startAttack() {
 		const speaker = ChatMessage.getSpeaker(this.actor);
 		const [fightingSkill, shootingSkill] = this.actor.combatSkills;
-		const isMelee = this.data.data.flags.melee;
+		const isMelee = this.system.flags.melee;
 		const template = isMelee ? 'systems/hardboiled/templates/chat/combat/melee-combat.html' :
 			'systems/hardboiled/templates/chat/combat/ranged-combat.html';
 		const combatSkill = isMelee ? fightingSkill : shootingSkill;
-		let skillValue = Number(combatSkill.data.value);
-		if (this.actor.data.data.flags.injured) skillValue = Math.max(0, skillValue - 20);
+		let skillValue = Number(combatSkill.system.value);
+		if (this.actor.system.flags.injured) skillValue = Math.max(0, skillValue - 20);
 		
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
-			actor: this.actor.data,
+			actor: this.actor,
 			skill: combatSkill,
-			weapon: this.data,
+			weapon: this,
 			modifiedValues: {
 				skill: skillValue
 			},

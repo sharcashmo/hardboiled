@@ -1,4 +1,4 @@
-<form class="{{cssClass}} talent-sheet" autocomplete="off">
+<form class="{{cssClass}} venom-sheet" autocomplete="off">
 
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
@@ -10,6 +10,8 @@
 	
 	{{!-- Sheet Body --}}
 	<section class="sheet-body">
+		{{> "systems/hardboiled/templates/item/parts/item-venom-section.html"}}
 		{{> "systems/hardboiled/templates/item/parts/item-description-section.html"}}
+
 	</section>
 </form>

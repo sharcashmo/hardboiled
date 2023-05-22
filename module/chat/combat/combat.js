@@ -72,10 +72,10 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 	
 	async toggleFlag(flagId) {
 		this.context.flags[flagId] = !Boolean(this.context.flags[flagId]);
-		
+		console.log("toggleFlag this", this)	
 		let skillModifiers = 0 + (this.context.flags.opportunity ? -20 : 0) + (this.context.flags.tired ? -20 : 0);
 		this.context.modifiedValues = {
-			skill: Math.max(0, this.context.skill.data.value + skillModifiers)
+			skill: Math.max(0, this.context.skill.system.value + skillModifiers)
 		};
 		
 		await HardboiledCardHelper.updateCard(this.message.messageId, HardboiledMeleeCombat.template, this.context);
@@ -118,19 +118,19 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 	 */
 	_prepareDamageRoll(skillValue) {
 		const successType = this.context.toHit.success;
-		const punch = Number(this.context.actor.data.attributes.punch.value);
+		const punch = Number(this.context.actor.system.attributes.punch.value);
 		const weapon = this.context.weapon;
 		
 		if (weapon) {
 			switch (successType) {
 			case 'success':
 				this.context.damage = {
-					formula: punch + '+' + weapon.data.damage
+					formula: punch + '+' + weapon.system.damage
 				};
 				break;
 			case 'critical':
 				this.context.damage = {
-					formula: punch + '+2*(' + weapon.data.damage + ')'
+					formula: punch + '+2*(' + weapon.system.damage + ')'
 				};
 				const roll = new Roll(this.context.damage.formula);
 				this.context.damage.result = roll.evaluate({maximize: true}).total;
@@ -177,12 +177,11 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		const actor = game.actors.get(this.card.actorId);
 		const [fightingSkill, shootingSkill] = actor.combatSkills;
 		const weapon = this.card.weaponId ? actor.items.get(this.card.weaponId) : null;
-		
 		this.context = {
 			cssClass: 'hardboiled',
-			actor: actor.data,
+			actor: actor,
 			skill: fightingSkill,
-			weapon: weapon?.data
+			weapon: weapon
 		}
 		
 		if (this.card.tohitSuccess) {
@@ -214,7 +213,7 @@ export class HardboiledMeleeCombat extends HardboiledCombat {
 		let skillModifiers = 0 + (this.context.flags.opportunity ? -20 : 0) + (this.context.flags.tired ? -20 : 0);
 		
 		this.context.modifiedValues = {
-			skill: Math.max(0, fightingSkill.data.value + skillModifiers)
+			skill: Math.max(0, fightingSkill.system.value + skillModifiers)
 		};
 	}
 }
@@ -372,7 +371,7 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		}
 		
 		this.context.modifiedValues = {
-			skill: Math.max(0, this.context.skill.data.value + skillModifiers)
+			skill: Math.max(0, this.context.skill.system.value + skillModifiers)
 		};
 		
 		await HardboiledCardHelper.updateCard(this.message.messageId, HardboiledRangeCombat.template, this.context);
@@ -424,19 +423,19 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		const weapon = this.context.weapon;
 		let burstDamage = 0;
 		
-		if (this.context.flags.attackerBurst.value === 'medium') burstDamage = weapon.data.fireRate.medium * 2;
-		else if (this.context.flags.attackerBurst.value === 'complete') burstDamage = weapon.data.fireRate.complete * 3;
+		if (this.context.flags.attackerBurst.value === 'medium') burstDamage = weapon.system.fireRate.medium * 2;
+		else if (this.context.flags.attackerBurst.value === 'complete') burstDamage = weapon.system.fireRate.complete * 3;
 		else burstDamage = 0;
 		
 		switch (successType) {
 		case 'success':
 			this.context.damage = {
-				formula: burstDamage ? burstDamage + '+' + weapon.data.damage : weapon.data.damage 
+				formula: burstDamage ? burstDamage + '+' + weapon.system.damage : weapon.system.damage 
 			};
 			break;
 		case 'critical':
 			this.context.damage = {
-				formula: burstDamage ? burstDamage + '+2*(' + weapon.data.damage + ')' : '2*(' + weapon.data.damage + ')'
+				formula: burstDamage ? burstDamage + '+2*(' + weapon.system.damage + ')' : '2*(' + weapon.system.damage + ')'
 			};
 			const roll = new Roll(this.context.damage.formula);
 			this.context.damage.result = roll.evaluate({maximize: true, async: true}).total;
@@ -465,12 +464,11 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		const actor = game.actors.get(this.card.actorId);
 		const [fightingSkill, shootingSkill] = actor.combatSkills;
 		const weapon = actor.items.get(this.card.weaponId);
-		
 		this.context = {
 			cssClass: 'hardboiled',
-			actor: actor.data,
+			actor: actor,
 			skill: shootingSkill,
-			weapon: weapon.data
+			weapon: weapon
 		}
 		
 		if (this.card.tohitSuccess) {
@@ -576,7 +574,7 @@ export class HardboiledRangeCombat extends HardboiledCombat {
 		}
 		
 		this.context.modifiedValues = {
-			skill: Math.max(0, this.context.skill.data.value + skillModifiers)
+			skill: Math.max(0, this.context.skill.system.value + skillModifiers)
 		};
 	}
 }

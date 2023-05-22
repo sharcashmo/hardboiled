@@ -27,11 +27,12 @@ export class HardboiledActorSheet extends ActorSheet {
 		const context = super.getData();
 
 		// Use a safe clone of the actor data for further operations.
-		const actorData = this.actor.data.toObject(false);
+		const actorData = this.actor.toObject(false);
 
 		// Add the actor's data to context.data for easier access, as well as flags.
-		context.data = actorData.data;
+		context.data = actorData;
 		context.flags = actorData.flags;
+		context.notes = TextEditor.enrichHTML(actorData.system.notes, {async: false})
 
 		// Prepare character data and items.
 		if (actorData.type == 'character') {
@@ -116,7 +117,7 @@ export class HardboiledActorSheet extends ActorSheet {
 
 		// Drag events for macros.
 		if (this.actor.isOwner) {
-			let handler = ev => this._onDragItemStart(ev);
+			let handler = ev => this._onDragStart(ev);
 			html.find('li.item').each((i, li) => {
 				if (li.classList.contains("inventory-header")) return;
 				li.setAttribute("draggable", true);
@@ -170,32 +171,32 @@ export class HardboiledActorSheet extends ActorSheet {
 				}
 				else if (event.currentTarget.classList.contains('hp-value')) {
 					// Check injuries
-					const currentHP = formData['data.attributes.hp.value'];
-					const maxHP = formData['data.attributes.maxhp.value'];
+					const currentHP = formData['system.attributes.hp.value'];
+					const maxHP = formData['system.attributes.maxhp.value'];
 
 					if (currentHP > maxHP) {
-						formData['data.attributes.hp.value'] = maxHP;
+						formData['system.attributes.hp.value'] = maxHP;
 					}
 
 					if (currentHP > maxHP / 2) {
-						formData['data.flags.injured'] = false;
-						formData['data.flags.critical'] = false;
-						formData['data.flags.dying'] = false;
+						formData['system.flags.injured'] = false;
+						formData['system.flags.critical'] = false;
+						formData['system.flags.dying'] = false;
 					}
 					else if (currentHP > 0) {
-						formData['data.flags.injured'] = true;
-						formData['data.flags.critical'] = false;
-						formData['data.flags.dying'] = false;
+						formData['system.flags.injured'] = true;
+						formData['system.flags.critical'] = false;
+						formData['system.flags.dying'] = false;
 					}
 					else if (currentHP > -11) {
-						formData['data.flags.injured'] = true;
-						formData['data.flags.critical'] = true;
-						formData['data.flags.dying'] = false;
+						formData['system.flags.injured'] = true;
+						formData['system.flags.critical'] = true;
+						formData['system.flags.dying'] = false;
 					}
 					else {
-						formData['data.flags.injured'] = true;
-						formData['data.flags.critical'] = true;
-						formData['data.flags.dying'] = true;
+						formData['system.flags.injured'] = true;
+						formData['system.flags.critical'] = true;
+						formData['system.flags.dying'] = true;
 					}
 				}
 			}
