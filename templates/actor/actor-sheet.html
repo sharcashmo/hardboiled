@@ -1,5 +1,4 @@
 <form class="{{cssClass}} {{actor.type}}" autocomplete="off">
-
 	{{!-- Sheet Header --}}
 	<header class="sheet-header">
 		<div class="traits">
@@ -9,67 +8,67 @@
 					<label>{{localize 'Hardboiled.Name'}}</label>
 					<input name="name" type="text" data-dtype="String" value="{{actor.name}}" placeholder="{{localize 'Hardboiled.Name'}}"/>
 					<label>{{localize 'Hardboiled.Profession'}}</label>
-					<input name="data.profession" type="text" data-dtype="String" value="{{data.profession}}" placeholder="{{localize 'Hardboiled.Profession'}}"/>
+					<input name="system.profession" type="text" data-dtype="String" value="{{actor.system.profession}}" placeholder="{{localize 'Hardboiled.Profession'}}"/>
 				</div>
 				<div>
 					<label>{{localize 'Hardboiled.Nationality'}}</label>
-					<input name="data.nationality" type="text" data-dtype="String" value="{{data.nationality}}" placeholder="{{localize 'Hardboiled.Nationality'}}"/>
+					<input name="system.nationality" type="text" data-dtype="String" value="{{actor.system.nationality}}" placeholder="{{localize 'Hardboiled.Nationality'}}"/>
 					<label>{{localize 'Hardboiled.HomeTown'}}</label>
-					<input name="data.homeTown" type="text" data-dtype="String" value="{{data.homeTown}}" placeholder="{{localize 'Hardboiled.HomeTown'}}"/>
+					<input name="system.homeTown" type="text" data-dtype="String" value="{{actor.system.homeTown}}" placeholder="{{localize 'Hardboiled.HomeTown'}}"/>
 				</div>
 				<div>
 					<label>{{localize 'Hardboiled.Age'}}</label>
-					<input name="data.age" type="text" data-dtype="Number" value="{{data.age}}" placeholder="{{localize 'Hardboiled.Age'}}"/>
+					<input name="system.age" type="text" data-dtype="Number" value="{{actor.system.age}}" placeholder="{{localize 'Hardboiled.Age'}}"/>
 					<label>{{localize 'Hardboiled.Height'}}</label>
-					<input name="data.height" type="text" data-dtype="Number" value="{{data.height}}" placeholder="{{localize 'Hardboiled.Height'}}"/>
+					<input name="system.height" type="text" data-dtype="Number" value="{{actor.system.height}}" placeholder="{{localize 'Hardboiled.Height'}}"/>
 					<label>{{localize 'Hardboiled.Weight'}}</label>
-					<input name="data.weight" type="text" data-dtype="Number" value="{{data.weight}}" placeholder="{{localize 'Hardboiled.Weight'}}"/>
+					<input name="system.weight" type="text" data-dtype="Number" value="{{actor.system.weight}}" placeholder="{{localize 'Hardboiled.Weight'}}"/>
 					<label>{{localize 'Hardboiled.Genre'}}</label>
-					<input name="data.genre" type="text" data-dtype="String" value="{{data.genre}}" placeholder="{{localize 'Hardboiled.Genre'}}"/>
+					<input name="system.genre" type="text" data-dtype="String" value="{{actor.system.genre}}" placeholder="{{localize 'Hardboiled.Genre'}}"/>
 					<label>{{localize 'Hardboiled.Level'}}</label>
-					<input name="data.level" type="text" data-dtype="Number" value="{{data.level}}" placeholder="{{localize 'Hardboiled.Level'}}"/>
+					<input name="system.level" type="text" data-dtype="Number" value="{{actor.system.level}}" placeholder="{{localize 'Hardboiled.Level'}}"/>
 					<label>{{localize 'Hardboiled.Experience'}}</label>
-					<input name="data.experience" type="text" data-dtype="Number" value="{{data.experience}}" placeholder="{{localize 'Hardboiled.Experience'}}"/>
+					<input name="system.experience" type="text" data-dtype="Number" value="{{actor.system.experience}}" placeholder="{{localize 'Hardboiled.Experience'}}"/>
 				</div>
 			</div>
 		</div>
 		<div class="chars-attribs">
 			<div class="characteristics">
-				{{#each data.characteristics as |char key|}}
+				{{#each actor.system.characteristics as |char key|}}
 				<div>
 					<label class="char-label rollable"
 					       data-attributeCheck="{{key}}">{{localize char.label}}</label>
-					<input name="data.characteristics.{{key}}.value" type="number" data-dtype="Number" value="{{char.value}}" placeholder="{{localize char.short}}"/>
+					<input name="system.characteristics.{{key}}.value" type="number" data-dtype="Number" value="{{char.value}}" placeholder="{{localize char.short}}"/>
 				</div>
 				{{/each}}
 			</div>
 			<div class="attributes">
 				<div>
-					<label class="rollable" data-combatCheck="none">{{localize data.attributes.punch.label}}</label>
-					<input name="data.attributes.punch.value" type="number" data-dtype="Number" value="{{data.attributes.punch.value}}">
+					<label class="rollable" data-combatCheck="none">{{localize system.attributes.punch.label}}</label>
+					<input name="system.attributes.punch.value" type="number" data-dtype="Number" value="{{actor.system.attributes.punch.value}}">
 				</div>
 				<div>
-					<label>{{localize data.attributes.movement.label}}</label>
-					<input name="data.attributes.movement.value" type="number" data-dtype="Number" value="{{data.attributes.movement.value}}">
+					<label>{{localize system.attributes.movement.label}}</label>
+					<input name="system.attributes.movement.value" type="number" data-dtype="Number" value="{{actor.system.attributes.movement.value}}">
 				</div>
 				<div>
-					<label>{{localize data.attributes.hp.label}}</label>
-					<input name="data.attributes.hp.value" class="hp-value" type="number" data-dtype="Number" value="{{data.attributes.hp.value}}">
+					<label>{{localize system.attributes.hp.label}}</label>
+					<input name="system.attributes.hp.value" class="hp-value" type="number" data-dtype="Number" value="{{actor.system.attributes.hp.value}}">
 					/
-					<input name="data.attributes.maxhp.value" type="number" data-dtype="Number" value="{{data.attributes.maxhp.value}}">
+					<input name="system.attributes.maxhp.value" type="number" data-dtype="Number" value="{{actor.system.attributes.maxhp.value}}">
 				</div>
 				<div>
 					<label>{{localize 'Hardboiled.Injuries'}}</label>
-					<i class="fas fa-dizzy toggle-icon {{#if data.flags.unconscious}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusUnconscious'}}" data-property-id="unconscious"
-					   data-value="{{#if data.flags.unconscious}}true{{else}}false{{/if}}"></i>
-					<i class="fas fa-user-injured toggle-icon {{#if data.flags.injured}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusInjured'}}" data-property-id="injured"
-					   data-value="{{#if data.flags.injured}}true{{else}}false{{/if}}"></i>
-					<i class="fas fa-heartbeat toggle-icon {{#if data.flags.critical}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusCritical'}}" data-property-id="critical"
-					   data-value="{{#if data.flags.critical}}true{{else}}false{{/if}}"></i>
-					<i class="fas fa-heart-broken toggle-icon {{#if data.flags.dying}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDying'}}" data-property-id="dying"
-					   data-value="{{#if data.flags.dying}}true{{else}}false{{/if}}"></i>
-					<i class="fas fa-skull toggle-icon {{#if data.flags.dead}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDead'}}" data-property-id="dead"
-					   data-value="{{#if data.flags.dead}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-dizzy toggle-icon {{#if actor.system.flags.unconscious}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusUnconscious'}}" data-property-id="unconscious"
+					   data-value="{{#if actor.system.flags.unconscious}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-user-injured toggle-icon {{#if actor.system.flags.injured}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusInjured'}}" data-property-id="injured"
+					   data-value="{{#if actor.system.flags.injured}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-heartbeat toggle-icon {{#if actor.system.flags.critical}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusCritical'}}" data-property-id="critical"
+					   data-value="{{#if actor.system.flags.critical}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-heart-broken toggle-icon {{#if actor.system.flags.dying}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDying'}}" data-property-id="dying"
+					   data-value="{{#if actor.system.flags.dying}}true{{else}}false{{/if}}"></i>
+					<i class="fas fa-skull toggle-icon {{#if actor.system.flags.dead}}icon-on{{/if}}" title="{{localize 'Hardboiled.StatusDead'}}" data-property-id="dead"
+					   data-value="{{#if actor.system.flags.dead}}true{{else}}false{{/if}}"></i>
 				</div>
 			</div>
 		</div>

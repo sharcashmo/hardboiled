@@ -1,8 +1,8 @@
-<ol class="items-list">
+<ol class="items-list main-profession-skills">
 	<li class="item skillrow item-header">
 		<a class="item-button item-create" title="{{localize "Hardboiled.AddSkill"}}" data-type="skill">{{localize "Hardboiled.AddSkill"}}</a>
 	</li>
-	{{#each skills as |item id|}}
+	{{#each system.primarySkills as |item id|}}
 	<li class="item skillrow" data-item-id="{{item._id}}">
 		<div class="item-image"><img src="{{item.img}}" title="{{item.name}}"/></div>
 		<div class="item-name rollable" data-skillCheck="{{item._id}}">{{item.name}}</div>

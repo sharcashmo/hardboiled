@@ -1,0 +1,31 @@
+<form class="{{cssClass}} talent-sheet" autocomplete="off">
+
+	{{!-- Sheet Header --}}
+	<header class="sheet-header">
+		<div class="header-fields">
+			<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+			<input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+		</div>
+	</header>
+
+	{{!-- Sheet Tab Navigation --}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		<a class="item" data-tab="description">{{localize "Hardboiled.Description"}}</a>
+		<a class="item" data-tab="skills">{{localize "Hardboiled.Skills"}}</a>
+	</nav>
+
+	{{!-- Sheet Body --}}
+	<section class="sheet-body">
+		{{!-- Description Tab --}}
+		<div class="tab description" data-group="primary" data-tab="description">
+			<div class="item-description-section">
+			{{!-- Description --}}
+			{{editor system.description target="item.system.description" button=true owner=owner editable=editable}}
+			</div>
+		</div>
+		{{!-- Profession Skills Tab --}}
+		<div class="tab skills" data-group="primary" data-tab="skills">
+			{{> "systems/hardboiled/templates/item/parts/item-profession-skills-section.html"}}
+		</div>
+	</section>
+</form>

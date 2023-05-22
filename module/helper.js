@@ -119,9 +119,8 @@ export class HardboiledCardHelper extends HardboiledHelper {
 	 * 
 	 * @param {ChatLog} 	app		The ChatLog object
 	 * @param {Object}		html	A DOM object of section#chat
-	 * @param {Object}		data	html string of the sheet
 	 */
-	static activateListeners(app, html, data) {
+	static activateListeners(app, html) {
 		html.on('click', '.card-button', HardboiledCardHelper._onCardButton.bind(this));
 		html.on('click', '.toggle-switch.enabled', HardboiledCardHelper._onToggleSwitch.bind(this));
 	}

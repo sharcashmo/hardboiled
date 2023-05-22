@@ -26,7 +26,7 @@ export class HardboiledActor extends Actor {
 	   */
 	prepareDerivedData() {
 
-		const actorData = this.data;
+		const actorData = this;
 		//const data = actorData.data;
 		//const flags = actorData.flags;
 
@@ -43,40 +43,40 @@ export class HardboiledActor extends Actor {
 	async toggleProperty(propertyId) {
 		switch (propertyId) {
 			case 'unconscious':
-				this.data.data.flags.unconscious = !Boolean(this.data.data.flags.unconscious);
+				this.system.flags.unconscious = !Boolean(this.system.flags.unconscious);
 				break;
 			case 'injured':
-				this.data.data.flags.injured = !Boolean(this.data.data.flags.injured);
-				this.data.data.flags.critical = false;
-				this.data.data.flags.dying = false;
-				this.data.data.flags.dead = false;
+				this.system.flags.injured = !Boolean(this.system.flags.injured);
+				this.system.flags.critical = false;
+				this.system.flags.dying = false;
+				this.system.flags.dead = false;
 				break;
 			case 'critical':
-				this.data.data.flags.critical = !Boolean(this.data.data.flags.critical);
-				this.data.data.flags.injured = this.data.data.flags.critical || this.data.data.flags.injured;
-				this.data.data.flags.dying = false;
-				this.data.data.flags.dead = false;
+				this.system.flags.critical = !Boolean(this.system.flags.critical);
+				this.system.flags.injured = this.system.flags.critical || this.system.flags.injured;
+				this.system.flags.dying = false;
+				this.system.flags.dead = false;
 				break;
 			case 'dying':
-				this.data.data.flags.dying = !Boolean(this.data.data.flags.dying);
-				this.data.data.flags.injured = this.data.data.flags.dying || this.data.data.flags.injured;
-				this.data.data.flags.critical = this.data.data.flags.dying || this.data.data.flags.critical;
-				this.data.data.flags.dead = false;
+				this.system.flags.dying = !Boolean(this.system.flags.dying);
+				this.system.flags.injured = this.system.flags.dying || this.system.flags.injured;
+				this.system.flags.critical = this.system.flags.dying || this.system.flags.critical;
+				this.system.flags.dead = false;
 				break;
 			case 'dead':
-				this.data.data.flags.dead = !Boolean(this.data.data.flags.dead);
-				this.data.data.flags.injured = this.data.data.flags.dead || this.data.data.flags.injured;
-				this.data.data.flags.critical = this.data.data.flags.dead || this.data.data.flags.critical;
-				this.data.data.flags.dying = this.data.data.flags.dead || this.data.data.flags.dying;
+				this.system.flags.dead = !Boolean(this.system.flags.dead);
+				this.system.flags.injured = this.system.flags.dead || this.system.flags.injured;
+				this.system.flags.critical = this.system.flags.dead || this.system.flags.critical;
+				this.system.flags.dying = this.system.flags.dead || this.system.flags.dying;
 				break;
 		}
 
 		await this.update({
-			'data.flags.unconscious': this.data.data.flags.unconscious,
-			'data.flags.injured': this.data.data.flags.injured,
-			'data.flags.critical': this.data.data.flags.critical,
-			'data.flags.dying': this.data.data.flags.dying,
-			'data.flags.dead': this.data.data.flags.dead
+			'system.flags.unconscious': this.system.flags.unconscious,
+			'system.flags.injured': this.system.flags.injured,
+			'system.flags.critical': this.system.flags.critical,
+			'system.flags.dying': this.system.flags.dying,
+			'system.flags.dead': this.system.flags.dead
 		})
 	}
 
@@ -89,6 +89,7 @@ export class HardboiledActor extends Actor {
 		const talents = [];
 		const weapons = [];
 		const equipment = [];
+		const professionItems = [];
 		for (let item of actorData.items) {
 			switch (item.type) {
 				case 'skill':
@@ -103,8 +104,11 @@ export class HardboiledActor extends Actor {
 				case 'equipment':
 					equipment.push(item);
 					break;
+				case 'profession':
+					professionItems.push(item);
+					break;
 				default:
-					console.log("Unknown item type!!")
+					console.log("Unknown item type!!:", item.type)
 			}
 		}
 		// Get additional values for weapons
@@ -112,7 +116,8 @@ export class HardboiledActor extends Actor {
 		actorData.talents = talents
 		actorData.weapons = weapons
 		actorData.equipment = equipment
-		//console.log("_prepareCharacterData actorData", actorData)
+		actorData.professionItems = professionItems
+		console.log("_prepareCharacterData actorData", actorData)
 		this._getCombatValues(actorData);
 	}
 
@@ -120,9 +125,14 @@ export class HardboiledActor extends Actor {
 	 * Get combat values
 	 */
 	_getCombatValues(actorData) {
-		const data = actorData.data;
-
-		[data.fightingSkill, data.shootingSkill] = this.combatSkills;
+		//const system = actorData;
+		console.log("Gettting Combat")
+		//[actorData.fightingSkill, actorData.shootingSkill] = this.combatSkills;
+		const [fightingSkill, shootingSkill] = this.combatSkills;
+		actorData.fightingSkill = fightingSkill;
+		actorData.shootingSkill = shootingSkill;
+		console.log("combat siklls setup complete:", actorData)
+		
 	}
 
 	/**
@@ -135,7 +145,7 @@ export class HardboiledActor extends Actor {
 		const speaker = ChatMessage.getSpeaker(this);
 		const roll = new Roll("1d100");
 		await roll.evaluate({ async: true });
-		const attrValue = Number(this.data.data.characteristics[attribute].value);
+		const attrValue = Number(this.system.characteristics[attribute].value);
 
 		// Modifier dialog
 		const usage = await RollDialog.create();
@@ -144,7 +154,7 @@ export class HardboiledActor extends Actor {
 			diceModifier = usage.get('modifier') * 10;
 		}
 
-		if (this.data.data.flags.injured && (attribute === 'vigour' || (attribute === 'dextery'))) diceModifier -= 20;
+		if (this.system.flags.injured && (attribute === 'vigour' || (attribute === 'dextery'))) diceModifier -= 20;
 
 		// Values needed for the chat card
 		const context = {
@@ -155,7 +165,7 @@ export class HardboiledActor extends Actor {
 				success: (roll.result <= (attrValue + diceModifier) ? true : false)
 			},
 			checking: {
-				name: game.i18n.localize(this.data.data.characteristics[attribute].label),
+				name: game.i18n.localize(this.system.characteristics[attribute].label),
 				value: Math.max(0, attrValue + diceModifier),
 			},
 			diceModifier: (diceModifier > 0 ? '+' + diceModifier : diceModifier)
@@ -220,16 +230,18 @@ export class HardboiledActor extends Actor {
 	 * @private
 	 */
 	async startUnarmedAttack() {
+		console.log("lalala")
 		const speaker = ChatMessage.getSpeaker(this);
+		console.log("lalalbbassa")
 		const [fightingSkill, shootingSkill] = this.combatSkills;
 		const template = 'systems/hardboiled/templates/chat/combat/melee-combat.html';
 		const combatSkill = fightingSkill;
-		const skillValue = Number(combatSkill.data.value);
+		const skillValue = Number(combatSkill.system.value);
 
 		// Values needed for the chat card
 		const context = {
 			cssClass: "hardboiled",
-			actor: this.data,
+			actor: this.system,
 			skill: combatSkill,
 			weapon: null,
 			modifiedValues: {
@@ -253,59 +265,56 @@ export class HardboiledActor extends Actor {
 	get combatSkills() {
 		const fightingSkillStr = game.settings.get("hardboiled", "fightingSkill");
 		const shootingSkillStr = game.settings.get("hardboiled", "shootingSkill");
-		const data = this.data.data;
-		//console.log("combatSkills: data", data);
-		//console.log("combatSkills: this.data", this.data);
+		const system = this.system;
 		let fightingSkill = {
-			name: game.i18n.localize(data.characteristics.vigour.label),
-			data: {
-				value: Math.floor(data.characteristics.vigour.value / 10)
+			name: game.i18n.localize(system.characteristics.vigour.label),
+			system: {
+				value: Math.floor(system.characteristics.vigour.value / 10)
 			}
 		};
 
 		let shootingSkill = {
-			name: game.i18n.localize(data.characteristics.dextery.label),
-			data: {
-				value: Math.floor(data.characteristics.dextery.value / 10)
+			name: game.i18n.localize(system.characteristics.dextery.label),
+			system: {
+				value: Math.floor(system.characteristics.dextery.value / 10)
 			}
 		};
 
 		//console.log("Shoting Skill before:", shootingSkill)
 		// Get combat skills
-		for (let skill of this.data.skills) {
+		for (let skill of this.skills) {
 			if (skill.name.toLowerCase() == fightingSkillStr.toLowerCase()) {
 				fightingSkill.name = skill.name;
-				fightingSkill.data.value = skill.data.data.value;
+				fightingSkill.system.value = skill.system.value;
 			}
 			if (skill.name.toLowerCase() == shootingSkillStr.toLowerCase()) {
 				shootingSkill.name = skill.name;
-				shootingSkill.data.value = skill.data.data.value;
+				shootingSkill.system.value = skill.system.value;
 			}
 		}
 
-		//console.log("Shoting Skill after:", shootingSkill)
 		return [fightingSkill, shootingSkill];
 	}
 
 	get maxHP() {
-		if (this.data.data.attributes.maxhp.auto) {
-			if (this.data.data.characteristics.vigour.value != null) {
+		if (this.system.attributes.maxhp.auto) {
+			if (this.system.characteristics.vigour.value != null) {
 				const maxHP = 10;
 				return maxHP;
 			}
 			else return null;
 		}
-		return parseInt(this.data.data.attributes.maxhp.value);
+		return parseInt(this.system.attributes.maxhp.value);
 	}
 
 	get punch() {
-		if (this.data.data.attributes.punch.auto) {
-			if (this.data.data.characteristics.vigour.value != null) {
-				const punch = Math.floor((this.data.data.characteristics.vigour.value - 1) / 10) + 1;
+		if (this.system.attributes.punch.auto) {
+			if (this.system.characteristics.vigour.value != null) {
+				const punch = Math.floor((this.system.characteristics.vigour.value - 1) / 10) + 1;
 				return punch;
 			}
 			else return null;
 		}
-		return parseInt(this.data.data.attributes.punch.value);
+		return parseInt(this.system.attributes.punch.value);
 	}
 }

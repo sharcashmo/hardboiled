@@ -1,5 +1,6 @@
 <div class="item-description-section">
 	<label>{{localize "Hardboiled.Description"}}</label>
 	{{!-- Description --}}
-	{{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+	{{ log 'item desc' .}}
+	{{editor richDescription target="system.description" button=true owner=owner editable=editable}}
 </div>

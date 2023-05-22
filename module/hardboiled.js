@@ -133,7 +133,7 @@ Hooks.on('renderChatLog', (app, html, data) => HardboiledCardHelper.activateList
 async function createHardboiledMacro(data, slot) {
 	if (data.type !== "Item") return;
 	if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
-	const item = data.data;
+	const item = await Item.fromDropData(data);
 
 	// Create the macro command
 	const command = `game.hardboiled.rollItemMacro("${item.name}");`;

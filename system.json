@@ -1,17 +1,10 @@
 {
-  "name": "hardboiled",
   "title": "Hardboiled system",
   "description": "The Hardboiled system for FoundryVTT",
-  "author": "sharcashmo",
-  "authors": [],
   "url": "https://github.com/sharcashmo/hardboiled/",
   "license": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE",
   "readme": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/README.md",
-  "flags": {},
   "version": "1.2.0",
-  "minimumCoreVersion": "9.238",
-  "compatibleCoreVersion": "9.269",
-  "scripts": [],
   "esmodules": [
     "module/hardboiled.js"
   ],
@@ -22,31 +15,35 @@
     {
       "lang": "es",
       "name": "Español",
-      "path": "lang/es.json"
+      "path": "lang/es.json",
+      "flags": {}
     },
     {
       "lang": "ca",
       "name": "Català",
-      "path": "lang/ca.json"
+      "path": "lang/ca.json",
+      "flags": {}
     },
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "eu",
       "name": "Euskera",
-      "path": "lang/eu.json"
+      "path": "lang/eu.json",
+      "flags": {}
     }
   ],
-  "packs": [],
-  "system": [],
-  "dependencies": [],
-  "socket": false,
   "manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
   "download": "https://github.com/sharcashmo/hardboiled/archive/V1.2.0.zip",
-  "protected": false,
   "gridDistance": 5,
-  "gridUnits": "ft"
+  "gridUnits": "ft",
+  "id": "hardboiled",
+  "compatibility": {
+    "minimum": "10.291",
+    "verified": "10.291"
+  }
 }

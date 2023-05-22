@@ -20,18 +20,21 @@ export class HardboiledItemSheet extends ItemSheet {
 	get template() {
 		const path = "systems/hardboiled/templates/item";
 		// Return a different sheet for each item type
-		return `${path}/item-${this.item.data.type}-sheet.html`;
+		//console.log (this.item)
+		return `${path}/item-${this.item.type}-sheet.html`;
 	}
 
 	/* -------------------------------------------- */
 
 	/** @override */
 	getData() {
-		const data = super.getData();
-		//console.log("Item Sheet data:", data);
-		return data;
+		const context = super.getData();
+		console.log('context', context)
+		context.richDescription = TextEditor.enrichHTML(context.item.system.description, {async: false})
+		console.log("Item Sheet context:", context);
+		return context;
 	}
-
+	
 	/* -------------------------------------------- */
 
 	/** @override */
