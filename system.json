@@ -4,7 +4,7 @@
   "url": "https://github.com/sharcashmo/hardboiled/",
   "license": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/LICENSE",
   "readme": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/README.md",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "esmodules": [
     "module/hardboiled.js"
   ],
@@ -38,12 +38,12 @@
     }
   ],
   "manifest": "https://raw.githubusercontent.com/sharcashmo/hardboiled/master/system.json",
-  "download": "https://github.com/sharcashmo/hardboiled/archive/V1.3.2.zip",
+  "download": "https://github.com/sharcashmo/hardboiled/archive/V1.3.3.zip",
   "gridDistance": 5,
   "gridUnits": "ft",
   "id": "hardboiled",
   "compatibility": {
     "minimum": "10.291",
-    "verified": "11.299"
+    "verified": "11"
   }
 }
