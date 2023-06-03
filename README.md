@@ -24,6 +24,9 @@ Install in foundry VTT from the Game Systems tab using the following manifest :
 
 ## What is working
 
+Version 1.3.3 :
+* Report compatibility with Foundry 11
+ 
 Version 1.3.2 :
 * Report compatibility with Foundry 11.299
 
